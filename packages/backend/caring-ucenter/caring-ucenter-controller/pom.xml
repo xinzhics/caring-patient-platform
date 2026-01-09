@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>caring-ucenter</artifactId>
+        <groupId>com.caring.sass</groupId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>caring-ucenter-controller</artifactId>
+    <name>${project.artifactId}</name>
+    <description>用户中心-控制器模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-ucenter-biz</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-security-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-log-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>

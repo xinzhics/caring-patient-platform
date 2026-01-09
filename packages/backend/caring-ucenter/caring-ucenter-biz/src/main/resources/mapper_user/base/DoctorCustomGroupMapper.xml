@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.user.dao.DoctorCustomGroupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.user.entity.DoctorCustomGroup">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="group_name" jdbcType="VARCHAR" property="groupName"/>
+        <result column="group_number_total" jdbcType="INTEGER" property="groupNumberTotal"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        doctor_id, group_name, group_number_total
+    </sql>
+
+</mapper>

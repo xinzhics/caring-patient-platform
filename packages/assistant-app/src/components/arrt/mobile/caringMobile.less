@@ -1,0 +1,123 @@
+.single-line-mobile {
+  .box1 {
+    padding-bottom: 2rem;
+    background-color: #fff;
+    padding-top: 18px;
+  }
+
+  .title {
+    width: 100%;
+    background-color: #fff;
+    // padding-left: 1rem !important;
+    line-height: 2rem;
+    height: 2rem;
+
+    .mustchoose {
+      width: 1rem;
+      color: red;
+    }
+
+    .username {
+      font-size: 1rem;
+      color: #333;
+      padding-left: 13px;
+    }
+
+    .errmess {
+      margin-left: 14.5rem;
+      color: red;
+      font-size: .8rem;
+    }
+  }
+
+  .depict {
+    width: 21.4rem;
+    margin-left: 13px;
+    margin-right: 13px;
+    font-size: .8rem;
+    color: #999;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+  }
+
+  .unit {
+    font-size: 16px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #999999;
+    position: absolute;
+    right: 2rem;
+    bottom: .7rem;
+    // top: 0;
+  }
+
+  .userinfo {
+    margin-top: .7rem;
+    position: relative;
+  }
+
+  /deep/.van-cell {
+    width: 92%;
+    background: rgba(245, 245, 245, 0.39);
+    margin-left: 13px;
+    margin-right: 13px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border: 1px solid #D6D6D6;
+    border-radius: 8px;
+    height: 2.875rem
+    /* 46/16 */
+  ;
+
+
+  }
+
+  .cell2 {
+    border: 1px solid red !important;
+
+    span {
+      color: red !important;
+    }
+
+    /deep/.van-field__control::-webkit-input-placeholder {
+      /* placeholder颜色 */
+      color: red;
+
+    }
+  }
+
+
+  /deep/.van-cell__value {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  //输入框样式
+  /deep/.van-field__control {
+    width: 10rem;
+    // background-color: red;
+    margin-left: 1rem;
+  }
+
+  // 字数统计样式
+  /deep/.van-field__word-limit {
+    width: 30%;
+    height: 1rem;
+    //margin: 0 !important;
+    position: absolute;
+    //top: -50%;
+    right: .5rem;
+    // top: -.5rem;
+    color: #b8b8b8;
+    // line-height: 1rem;
+  }
+
+  .van-popup {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+  }
+
+
+}

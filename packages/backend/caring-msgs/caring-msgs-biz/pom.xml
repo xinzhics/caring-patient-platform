@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>caring-msgs</artifactId>
+        <groupId>com.caring.sass</groupId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>caring-msgs-biz</artifactId>
+    <name>${project.artifactId}</name>
+    <description>消息服务业务层</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-msgs-entity</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-tenant-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-nursing-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-cms-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-ucenter-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-databases</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-dozer-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-cache-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-j2cache-starter</artifactId>
+        </dependency>
+        <!-- 环信SDK -->
+        <dependency>
+            <groupId>com.easemob</groupId>
+            <artifactId>rest-java-sdk</artifactId>
+            <version>1.0.5</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>okio</artifactId>
+                    <groupId>com.squareup.okio</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.jpush.api</groupId>
+            <artifactId>jiguang-common</artifactId>
+            <version>1.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.jpush.api</groupId>
+            <artifactId>jpush-client</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
+        <!-- OpenAi工具包-->
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>client</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>service</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <!-- 非官方工具包，后续进行定制，支持多个AI端口 -->
+        <dependency>
+            <groupId>com.unfbx</groupId>
+            <artifactId>chatgpt-java</artifactId>
+            <version>1.0.12</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>adapter-rxjava2</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-jackson</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-wx-api</artifactId>
+            <version>c.2.5.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+
+</project>

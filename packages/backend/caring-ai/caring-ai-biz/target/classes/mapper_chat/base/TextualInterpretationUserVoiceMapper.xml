@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.textual.dao.TextualInterpretationUserVoiceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.textual.TextualInterpretationUserVoice">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="voice_url" jdbcType="VARCHAR" property="voiceUrl"/>
+        <result column="default_voice" jdbcType="TINYINT" property="defaultVoice"/>
+        <result column="h_file_id" jdbcType="BIGINT" property="hFileId"/>
+        <result column="h_voice_id" jdbcType="VARCHAR" property="voiceId"/>
+        <result column="h_demo_audio" jdbcType="VARCHAR" property="demoAudio"/>
+        <result column="h_has_clone" jdbcType="TINYINT" property="hasClone"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="fail_reason" jdbcType="VARCHAR" property="failReason"/>
+        <result column="delete_status" jdbcType="TINYINT" property="deleteStatus"/>
+        <result column="use_count" jdbcType="INTEGER" property="useCount"/>
+        <result column="h_account" jdbcType="VARCHAR" property="hAccount"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        user_id, voice_url, default_voice, h_file_id, h_voice_id, h_demo_audio, h_has_clone, name, fail_reason, delete_status, use_count, h_account
+    </sql>
+
+</mapper>

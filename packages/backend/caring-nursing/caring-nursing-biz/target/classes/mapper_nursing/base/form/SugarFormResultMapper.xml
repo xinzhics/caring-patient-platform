@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.form.SugarFormResultMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.form.SugarFormResult">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="sugar_value" jdbcType="FLOAT" property="sugarValue"/>
+        <result column="patient_id" jdbcType="BIGINT" property="patientId"/>
+        <result column="del_flag" jdbcType="TINYINT" property="delFlag"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="type" jdbcType="TINYINT" property="type"/>
+        <result column="create_day" jdbcType="BIGINT" property="createDay"/>
+        <result column="message_id" jdbcType="BIGINT" property="messageId"/>
+        <result column="time_" jdbcType="VARCHAR" property="time"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        sugar_value, patient_id, del_flag, remarks, type,create_day,time_, message_id
+    </sql>
+
+</mapper>

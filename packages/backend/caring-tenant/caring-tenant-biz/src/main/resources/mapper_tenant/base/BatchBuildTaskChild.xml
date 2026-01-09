@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.tenant.dao.BatchBuildTaskChildMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.tenant.entity.BatchBuildTaskChild">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="batch_build_apk_task_id" jdbcType="BIGINT" property="batchBuildApkTaskId"/>
+        <result column="message" jdbcType="VARCHAR" property="message"/>
+        <result column="app_version_name" jdbcType="VARCHAR" property="appVersionName"/>
+        <result column="app_version_name_last" jdbcType="VARCHAR" property="appVersionNameLast"/>
+        <result column="task_status" jdbcType="VARCHAR" property="taskStatus"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="last_update_time" jdbcType="BIGINT" property="lastUpdateTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,update_time, create_user, update_user, batch_build_apk_task_id,  message, task_status,
+        code, start_time, end_time, app_version_name, last_update_time, app_version_name_last
+    </sql>
+
+</mapper>

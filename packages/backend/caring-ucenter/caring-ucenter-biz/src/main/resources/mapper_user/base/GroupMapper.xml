@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.user.dao.GroupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.user.entity.Group">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="nurse_id" jdbcType="BIGINT" property="nurseId"/>
+        <result column="nurse_name" jdbcType="VARCHAR" property="nurseName"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="order_" jdbcType="INTEGER" property="order"/>
+        <result column="org_id" jdbcType="BIGINT" property="organId"/>
+        <result column="organ_name" jdbcType="VARCHAR" property="organName"/>
+        <result column="contact_name" jdbcType="VARCHAR" property="contactName"/>
+        <result column="contact_mobile" jdbcType="VARCHAR" property="contactMobile"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="class_code" jdbcType="LONGVARCHAR" property="classCode"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        nurse_id, nurse_name, icon, name, order_, org_id, organ_name, contact_name, contact_mobile, address, remarks, class_code
+    </sql>
+
+    <select id="findPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM u_user_group s ${ew.customSqlSegment}
+    </select>
+
+
+</mapper>

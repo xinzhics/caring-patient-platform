@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>caring-msgs</artifactId>
+        <groupId>com.caring.sass</groupId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>caring-sms-biz</artifactId>
+    <name>${project.artifactId}</name>
+    <description>短信服务业务模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-msgs-entity</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-databases</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-dozer-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-boot</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+        </dependency>
+        <!-- aliyun -->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>dysmsapi20170525</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <!-- 腾讯 -->
+        <dependency>
+            <groupId>com.github.qcloudsms</groupId>
+            <artifactId>qcloudsms</artifactId>
+        </dependency>
+        <!-- 百度 -->
+        <dependency>
+            <groupId>com.baidubce</groupId>
+            <artifactId>bce-java-sdk</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-tenant-api</artifactId>
+            <version>${caring-project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.tenant.dao.AppConfigMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.tenant.entity.AppConfig">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="qr_code_background" jdbcType="VARCHAR" property="qrCodeBackground"/>
+        <result column="app_application_name" jdbcType="VARCHAR" property="appApplicationName"/>
+        <result column="app_application_id" jdbcType="VARCHAR" property="appApplicationId"/>
+        <result column="app_version_code" jdbcType="INTEGER" property="appVersionCode"/>
+        <result column="app_version_name" jdbcType="VARCHAR" property="appVersionName"/>
+        <result column="app_launch_image" jdbcType="VARCHAR" property="appLaunchImage"/>
+        <result column="app_login_background" jdbcType="VARCHAR" property="appLoginBackground"/>
+        <result column="app_agreement" jdbcType="LONGVARCHAR" property="appAgreement"/>
+        <result column="app_frequently_asked_question" jdbcType="LONGVARCHAR" property="appFrequentlyAskedQuestion"/>
+        <result column="question_feedback" jdbcType="LONGVARCHAR" property="questionFeedback"/>
+        <result column="app_about_us" jdbcType="LONGVARCHAR" property="appAboutUs"/>
+        <result column="app_huawei_appid" jdbcType="VARCHAR" property="appHuaweiAppid"/>
+        <result column="app_weixin_key" jdbcType="VARCHAR" property="appWeixinKey"/>
+        <result column="app_img_key" jdbcType="VARCHAR" property="appImgKey"/>
+        <result column="app_im_password" jdbcType="VARCHAR" property="appImPassword"/>
+        <result column="app_icon" jdbcType="VARCHAR" property="appIcon"/>
+        <result column="apk_url" jdbcType="VARCHAR" property="apkUrl"/>
+        <result column="package_status" jdbcType="TINYINT" property="packageStatus"/>
+        <result column="uni_package_status" jdbcType="TINYINT" property="uniPackageStatus"/>
+        <result column="doctor_qr_url" jdbcType="VARCHAR" property="doctorQrUrl"/>
+        <result column="upload_url" jdbcType="VARCHAR" property="uploadUrl"/>
+        <result column="jpush_channel" jdbcType="VARCHAR" property="jpushChannel"/>
+        <result column="jpush_appkey" jdbcType="VARCHAR" property="jpushAppkey"/>
+        <result column="jpush_master_secret" jdbcType="VARCHAR" property="jpushMasterSecret"/>
+        <result column="drugstore_qrcode_url" jdbcType="VARCHAR" property="drugstoreQrcodeUrl"/>
+        <result column="drugstore_apk_url" jdbcType="VARCHAR" property="drugstoreApkUrl"/>
+        <result column="drugstore_apk_packing_status" jdbcType="TINYINT" property="drugstoreApkPackingStatus"/>
+        <result column="mi_app_id" jdbcType="VARCHAR" property="miAppId"/>
+        <result column="mi_app_key" jdbcType="VARCHAR" property="miAppKey"/>
+        <result column="tenant_id" jdbcType="BIGINT" property="tenantId"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="appointment_switch" jdbcType="TINYINT" property="appointmentSwitch"/>
+        <result column="consultation_switch" jdbcType="TINYINT" property="consultationSwitch"/>
+        <result column="referral_switch" jdbcType="TINYINT" property="referralSwitch"/>
+        <result column="patient_manage_switch" jdbcType="TINYINT" property="patientManageSwitch"/>
+        <result column="wx_user_call" jdbcType="VARCHAR" property="wxUserCall"/>
+        <result column="app_user_call" jdbcType="VARCHAR" property="appUserCall"/>
+        <result column="appointment_doctor_scope" jdbcType="VARCHAR" property="appointmentDoctorScope"/>
+        <result column="renew_record" jdbcType="VARCHAR" property="renewRecord"/>
+        <result column="dcloud_appkey" jdbcType="VARCHAR" property="dcloudAppkey"/>
+        <result column="dcloud_appid" jdbcType="VARCHAR" property="dcloudAppid"/>
+        <result column="uniApkUrl" jdbcType="VARCHAR" property="uni_apk_url"/>
+        <result column="uni_apk_download_url" jdbcType="VARCHAR" property="uniApkDownloadUrl"/>
+        <result column="uni_renew_record" jdbcType="VARCHAR" property="uniRenewRecord"/>
+        <result column="uni_app_version_name" jdbcType="VARCHAR" property="uniAppVersionName"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,qr_code_background, app_application_name, app_application_id, app_version_code, app_version_name,
+         app_launch_image, app_login_background, app_agreement, app_frequently_asked_question, question_feedback,
+          app_about_us, app_huawei_appid, app_weixin_key, app_img_key, app_im_password, app_icon, apk_url,
+          package_status, doctor_qr_url, upload_url, jpush_channel, jpush_appkey, jpush_master_secret,
+          drugstore_qrcode_url, drugstore_apk_url, drugstore_apk_packing_status, mi_app_id, mi_app_key, tenant_id, patient_manage_switch,
+          create_user,create_time,update_user,update_time,appointment_switch, consultation_switch,wx_user_call,app_user_call,referral_switch,
+            appointment_doctor_scope, renew_record,dcloud_appkey,dcloud_appid, uni_apk_url, uni_apk_download_url, uni_package_status,
+             uni_renew_record, uni_app_version_name
+    </sql>
+
+    <select id="listAllConfigByTenantCode" resultMap="BaseResultMap" parameterType="java.util.List">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM d_tenant_app_config WHERE tenant_code in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+
+    <sql id="appointment_doctor_scope_Column_List">
+        id, tenant_code, appointment_doctor_scope
+    </sql>
+
+    <resultMap id="AppointmentDoctorResultMap" type="com.caring.sass.tenant.entity.AppConfig">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+        <result column="appointment_doctor_scope" jdbcType="VARCHAR" property="appointmentDoctorScope"/>
+    </resultMap>
+
+    <select id="selectAppointmentDoctorScope" resultMap="AppointmentDoctorResultMap">
+        SELECT
+        <include refid="appointment_doctor_scope_Column_List"></include>
+        FROM d_tenant_app_config
+    </select>
+
+
+
+</mapper>

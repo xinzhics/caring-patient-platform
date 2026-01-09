@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.caring.sass</groupId>
+        <artifactId>caring-admin-cloud</artifactId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>caring-ai</artifactId>
+    <name>${project.artifactId}</name>
+    <description>AI服务</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>caring-ai-api</module>
+        <module>caring-ai-entity</module>
+        <module>caring-ai-biz</module>
+        <module>caring-ai-controller</module>
+        <module>caring-ai-server</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-ai-entity</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-ai-biz</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-ai-controller</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

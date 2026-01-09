@@ -1,0 +1,127 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:8.0
+    container_name: caring-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change-this-password}
+      MYSQL_DATABASE: caring_standalone
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change-this-password}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./packages/backend/config-example/standalone/docker/mysql/init:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - caring-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    container_name: caring-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-change-this-password}
+    networks:
+      - caring-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      timeout: 10s
+      retries: 5
+
+  # 后端服务
+  backend:
+    build:
+      context: ./packages/backend
+      dockerfile: Dockerfile.standalone
+    container_name: caring-backend
+    restart: unless-stopped
+    environment:
+      - SPRING_PROFILES_ACTIVE=standalone
+      - CARING_MYSQL_IP=mysql
+      - CARING_MYSQL_PORT=3306
+      - CARING_MYSQL_DATABASE=caring_standalone
+      - CARING_MYSQL_USERNAME=caring
+      - CARING_MYSQL_PASSWORD=${MYSQL_PASSWORD:-change-this-password}
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+      - SPRING_REDIS_PASSWORD=${REDIS_PASSWORD:-change-this-password}
+      - JWT_SECRET=${JWT_SECRET:-change-this-secret-key}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    volumes:
+      - backend_uploads:/app/uploads
+      - backend_logs:/app/logs
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - caring-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/caring-standalone/actuator/health"]
+      timeout: 30s
+      retries: 5
+
+  # Nginx反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: caring-nginx
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - backend_uploads:/var/www/uploads:ro
+    depends_on:
+      - backend
+    networks:
+      - caring-network
+
+  # 前端开发服务器（可选）
+  frontend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: caring-frontend-dev
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - caring-network
+    profiles:
+      - dev
+
+volumes:
+  mysql_data:
+  redis_data:
+  backend_uploads:
+  backend_logs:
+  node_modules:
+
+networks:
+  caring-network:
+    driver: bridge

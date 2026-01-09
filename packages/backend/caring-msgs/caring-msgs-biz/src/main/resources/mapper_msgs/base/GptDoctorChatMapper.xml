@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.msgs.dao.GptDoctorChatMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.msgs.entity.GptDoctorChat">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="session_id" jdbcType="VARCHAR" property="sessionId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="sender_im_account" jdbcType="VARCHAR" property="senderImAccount"/>
+        <result column="sender_id" jdbcType="BIGINT" property="senderId"/>
+        <result column="sender_role_type" jdbcType="VARCHAR" property="senderRoleType"/>
+        <result column="im_group_id" jdbcType="BIGINT" property="imGroupId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="type_" jdbcType="VARCHAR" property="type"/>
+        <result column="send_status" jdbcType="VARCHAR" property="sendStatus"/>
+        <result column="send_error_msg" jdbcType="VARCHAR" property="sendErrorMsg"/>
+        <result column="reply_msg_id" jdbcType="VARCHAR" property="replyMsgId"/>
+        <result column="reply_status" jdbcType="VARCHAR" property="replyStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        sender_im_account, sender_id, sender_role_type, im_group_id, content, type_, reply_msg_id, reply_status
+    </sql>
+
+</mapper>

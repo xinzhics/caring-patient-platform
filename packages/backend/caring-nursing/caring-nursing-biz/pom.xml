@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>caring-nursing</artifactId>
+        <groupId>com.caring.sass</groupId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>caring-nursing-biz</artifactId>
+    <name>${project.artifactId}</name>
+    <description>护理计划-业务模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-nursing-entity</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-tenant-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-file-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-wx-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-cms-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-ucenter-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-msgs-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-ucenter-api</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-databases</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-dozer-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-authority-biz</artifactId>
+            <version>${caring-project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-cache-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-j2cache-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-boot</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+        </dependency>
+
+        <!-- html解析工具 -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${caring-project-html-org-jsoup-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caring.sass</groupId>
+            <artifactId>caring-ucenter-biz</artifactId>
+            <version>c.2.5.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+</project>

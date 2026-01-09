@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.caring.sass</groupId>
+        <artifactId>caring-admin-cloud</artifactId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>caring-support</artifactId>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <description>支撑模块</description>
+
+    <modules>
+        <!-- 监控和全链路调用监控 开发环境可以不用启动 -->
+        <module>caring-monitor</module>
+    </modules>
+
+</project>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.cms.dao.ChannelContentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.cms.entity.ChannelContent">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="c_channel_id" jdbcType="BIGINT" property="channelId"/>
+        <result column="c_title" jdbcType="VARCHAR" property="title"/>
+        <result column="c_icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="c_source_id" jdbcType="BIGINT" property="sourceId"/>
+        <result column="c_source_entity_class" jdbcType="VARCHAR" property="sourceEntityClass"/>
+        <result column="c_link" jdbcType="VARCHAR" property="link"/>
+        <result column="n_sort" jdbcType="INTEGER" property="sort"/>
+        <result column="n_is_top" jdbcType="INTEGER" property="isTop"/>
+        <result column="n_hit_count" jdbcType="BIGINT" property="hitCount"/>
+        <result column="c_channel_type" jdbcType="VARCHAR" property="channelType"/>
+        <result column="c_summary" jdbcType="LONGVARCHAR" property="summary"/>
+        <result column="n_can_comment" jdbcType="INTEGER" property="canComment"/>
+        <result column="n_message_num" jdbcType="INTEGER" property="messageNum"/>
+        <result column="owner_type" jdbcType="VARCHAR" property="ownerType"/>
+        <result column="c_content" jdbcType="VARCHAR" property="content"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="doctor_owner" jdbcType="BIT" property="doctorOwner"/>
+        <result column="library_id" jdbcType="BIGINT" property="libraryId"/>
+        <result column="patient_home_show" jdbcType="INTEGER" property="patientHomeShow"/>
+        <result column="patient_home_region" jdbcType="VARCHAR" property="patientHomeRegion"/>
+        <result column="english_title" jdbcType="VARCHAR" property="englishTitle"/>
+        <result column="c_keyword" jdbcType="VARCHAR" property="keyWord"/>
+        <result column="c_cms_period" jdbcType="VARCHAR" property="cmsPeriod"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        c_channel_id, c_title, c_icon, c_source_id, c_source_entity_class,
+         c_link, n_sort, n_is_top, n_hit_count, c_channel_type, english_title,  c_keyword, c_cms_period,
+         c_summary, n_can_comment, n_message_num,owner_type,c_content,n_is_top,author,doctor_owner, library_id, patient_home_show, patient_home_region
+    </sql>
+
+    <select id="selectByIdWithoutTenant" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM  t_cms_channel_content
+        WHERE id=#{id}
+    </select>
+
+    <select id="selectByIdWithoutTenantNoContent" resultMap="BaseResultMap">
+        SELECT
+        id, c_title, c_icon, c_link, n_hit_count
+        FROM  t_cms_channel_content
+        WHERE id=#{id}
+    </select>
+
+    <select id="selectTitleByIdWithoutTenant" resultMap="BaseResultMap">
+        SELECT c_title, c_icon, english_title, c_keyword, c_summary, c_link
+        FROM t_cms_channel_content
+        WHERE id=#{id}
+    </select>
+</mapper>

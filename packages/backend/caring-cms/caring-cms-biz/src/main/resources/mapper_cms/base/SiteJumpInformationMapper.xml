@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.cms.dao.SiteJumpInformationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.cms.entity.SiteJumpInformation">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="folder_id" jdbcType="BIGINT" property="folderId"/>
+        <result column="page_id" jdbcType="BIGINT" property="pageId"/>
+        <result column="module_id" jdbcType="BIGINT" property="moduleId"/>
+        <result column="module_plate_id" jdbcType="BIGINT" property="modulePlateId"/>
+        <result column="jump_type" jdbcType="VARCHAR" property="jumpType"/>
+        <result column="jump_page_id" jdbcType="BIGINT" property="jumpPageId"/>
+        <result column="jump_app_id" jdbcType="VARCHAR" property="jumpAppId"/>
+        <result column="jump_app_page_url" jdbcType="VARCHAR" property="jumpAppPageUrl"/>
+        <result column="jump_website" jdbcType="LONGVARCHAR" property="jumpWebsite"/>
+        <result column="jump_cms_id" jdbcType="BIGINT" property="jumpCmsId"/>
+        <result column="jump_video_id" jdbcType="BIGINT" property="jumpVideoId"/>
+        <result column="jump_video_url" jdbcType="VARCHAR" property="jumpVideoUrl"/>
+        <result column="jump_video_title" jdbcType="VARCHAR" property="jumpVideoTitle"/>
+        <result column="jump_video_cover" jdbcType="VARCHAR" property="jumpVideoCover"/>
+        <result column="jump_video_source" jdbcType="VARCHAR" property="jumpVideoSource"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        folder_id, page_id, module_id, module_plate_id, jump_type, jump_page_id, jump_app_id,
+        jump_app_page_url, jump_website, jump_cms_id, jump_video_url, jump_video_id,
+         jump_video_title, jump_video_cover, jump_video_source
+    </sql>
+
+</mapper>

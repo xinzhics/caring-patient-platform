@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.appointment.AppointmentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.appointment.Appointment">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="organization_id" jdbcType="BIGINT" property="organizationId"/>
+        <result column="patient_id" jdbcType="BIGINT" property="patientId"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="appoint_date" jdbcType="TIMESTAMP" property="appointDate"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="time" jdbcType="INTEGER" property="time"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="group_id" jdbcType="BIGINT" property="groupId"/>
+        <result column="doctor_name" jdbcType="VARCHAR" property="doctorName"/>
+        <result column="appointment_sort" jdbcType="INTEGER" property="appointmentSort"/>
+        <result column="audit_fail_reason" jdbcType="VARCHAR" property="auditFailReason"/>
+        <result column="audit_fail_reason_desc" jdbcType="VARCHAR" property="auditFailReasonDesc"/>
+        <result column="patient_delete_mark" jdbcType="INTEGER" property="patientDeleteMark"/>
+        <result column="appointment_date" jdbcType="TIMESTAMP" property="appointmentDate"/>
+        <result column="visit_time" jdbcType="TIMESTAMP" property="visitTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        organization_id, patient_id, patient_name, appoint_date, status, time, doctor_id, doctor_name,group_id,
+        appointment_sort, audit_fail_reason, audit_fail_reason_desc, patient_delete_mark,appointment_date, visit_time
+    </sql>
+
+</mapper>

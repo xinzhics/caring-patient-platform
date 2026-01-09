@@ -1,0 +1,187 @@
+.main {
+  background-color: #fff;
+  padding-bottom: 13px;
+  padding-top: 13px;
+
+  .cell2 {
+    border: 1px solid red !important;
+    span {
+      color: red !important;
+    }
+  }
+
+  .title {
+    margin-left: .8125rem
+      /* 13/16 */
+    ;
+
+    .name {
+      font-size: 16px;
+      font-family: Source Han Sans CN;
+      color: #333333;
+    }
+
+    .mustchoose {
+      font-size: 16px;
+      font-family: Source Han Sans CN;
+        color: #FF5555;
+      opacity: 1;
+    }
+
+    .describe {
+      font-size: 13px;
+      font-family: Source Han Sans CN;
+      font-weight: 400;
+      color: #999999;
+      opacity: 1;
+      margin-top: .3rem
+        /* 8/16 */
+      ;
+      margin-bottom: .8125rem /* 13/16 */;
+    }
+  }
+
+  .dropdown {
+    width: 92%;
+    margin-left: .8125rem;
+    margin-right: .8125rem;
+    padding-bottom: 10px;
+
+
+    /deep/.van-cell {
+      padding: 0px 0px 10px 0px !important;
+      width: 100%;
+      background: rgba(245, 245, 245, 0.39);
+      border: 1px solid #D6D6D6;
+      opacity: 1;
+      border-radius: 8px;
+
+      span {
+        display: block;
+        margin-top: .6375rem
+          /* 15/16 */
+        ;
+        margin-left: .8125rem
+          /* 13/16 */
+        ;
+        color: #b6b6b6;
+      }
+
+      .van-icon {
+        margin-top: .6375rem;
+        margin-right: 8px
+          /* 6/16 */
+        ;
+      }
+    }
+  }
+
+  .showbox {
+    height: 0;
+    overflow: hidden;
+  }
+
+  .show {
+    width: 92%;
+    background: rgba(255, 255, 255, 0.39);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.12);
+    opacity: 1;
+    border-radius: 8px;
+    margin-left: .8125rem
+      /* 13/16 */
+    ;
+    margin-right: .8125rem
+      /* 13/16 */
+    ;
+    margin-top: .375rem
+      /* 6/16 */
+    ;
+
+    // padding-bottom: .9375rem
+    /* 15/16 */
+    ;
+
+    .show1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // flex-wrap: wrap;
+      width: 94%;
+      margin-left: 13px;
+      .choose {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 10px 20px;
+        color: #666;
+      }
+
+      .choose2 {
+        color: #6F7D97;
+      }
+
+      .icon {
+        margin-left: 1rem
+          /* 9/16 */
+        ;
+        height: 2.8rem;
+        line-height: 2.8rem;
+      }
+
+    }
+
+  }
+
+}
+
+
+
+.cell2 {
+  border: 1px solid red;
+}
+
+.cell3 {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0 !important;
+  padding: 0 !important;
+  margin-left: .81rem;
+  margin-right: 1rem;
+  width: 92%;
+  border: 1px solid #d6d6d6;
+  opacity: 1;
+  border-radius: 8px;
+
+  height: 10.4375rem
+    /* 167/16 */
+  ;
+  margin-top: .8125rem
+    /* 13/16 */
+  ;
+
+  /deep/.van-field__control {
+    height: 8.5rem
+      /* 183/16 */
+    ;
+    padding-top: .6375rem
+      /* 15/16 */
+    ;
+    padding-left: .8125rem
+      /* 13/16 */
+    ;
+  }
+
+  /deep/.van-field__word-limit {
+    padding-right: .8125rem
+      /* 13/16 */
+    ;
+  }
+}
+
+.line2 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 92%;
+  height: 1px;
+  background-color: #d6d6d6;
+  margin-top: 2rem;
+}

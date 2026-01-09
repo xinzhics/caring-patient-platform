@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.cms.dao.SiteFolderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.cms.entity.SiteFolder">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="folder_name" jdbcType="VARCHAR" property="folderName"/>
+        <result column="template" jdbcType="INTEGER" property="template"/>
+        <result column="copy_number" jdbcType="INTEGER" property="copyNumber"/>
+        <result column="replica_" jdbcType="INTEGER" property="replica"/>
+        <result column="delete_status" jdbcType="INTEGER" property="deleteStatus"/>
+        <result column="can_share" jdbcType="INTEGER" property="canShare"/>
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime"/>
+        <result column="folder_name_pinyin" jdbcType="VARCHAR" property="folderNamePinyin"/>
+        <result column="share_error_message" jdbcType="VARCHAR" property="shareErrorMessage"/>
+        <result column="name_first_letter" jdbcType="VARCHAR" property="nameFirstLetter"/>
+        <result column="delete_day" jdbcType="INTEGER" property="deleteDay"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        folder_name, template, copy_number, replica_, delete_status, delete_time,
+        folder_name_pinyin, name_first_letter, can_share, share_error_message, delete_day, tenant_code
+    </sql>
+
+    <resultMap id="DeleteFolderResultMap" type="com.caring.sass.cms.entity.SiteFolder">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="delete_status" jdbcType="INTEGER" property="deleteStatus"/>
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime"/>
+        <result column="delete_day" jdbcType="INTEGER" property="deleteDay"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+    </resultMap>
+
+    <select id="queryDeleteFolder" resultMap="DeleteFolderResultMap">
+        SELECT
+         id, delete_status, delete_time, delete_day, tenant_code
+        FROM  t_build_site_folder
+        WHERE delete_status=1
+    </select>
+
+
+</mapper>

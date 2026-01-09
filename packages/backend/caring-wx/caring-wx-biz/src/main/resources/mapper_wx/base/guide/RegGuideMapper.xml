@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.wx.dao.guide.RegGuideMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.wx.entity.guide.RegGuide">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="guide" jdbcType="VARCHAR" property="guide"/>
+        <result column="describe_" jdbcType="VARCHAR" property="describe"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="del_flag" jdbcType="INTEGER" property="delFlag"/>
+        <result column="enable_intro" jdbcType="TINYINT" property="enableIntro"/>
+        <result column="intro" jdbcType="LONGVARCHAR" property="intro"/>
+        <result column="agreement" jdbcType="LONGVARCHAR" property="agreement"/>
+        <result column="doctor_agreement" jdbcType="LONGVARCHAR" property="doctorAgreement"/>
+        <result column="nursing_target" jdbcType="VARCHAR" property="nursingTarget"/>
+        <result column="success_msg_type" jdbcType="TINYINT" property="successMsgType"/>
+        <result column="success_msg" jdbcType="VARCHAR" property="successMsg"/>
+        <result column="has_show_doctor" jdbcType="TINYINT" property="hasShowDoctor"/>
+        <result column="has_show_org_name" jdbcType="TINYINT" property="hasShowOrgName"/>
+        <result column="has_fill_wx_name" jdbcType="TINYINT" property="hasFillWxName"/>
+        <result column="has_show_recommend_drugs" jdbcType="TINYINT" property="hasShowRecommendDrugs"/>
+        <result column="has_fill_drugs" jdbcType="TINYINT" property="hasFillDrugs"/>
+        <result column="form_history_record" jdbcType="TINYINT" property="formHistoryRecord"/>
+        <result column="base_info_name" jdbcType="VARCHAR" property="baseInfoName"/>
+        <result column="health_info_name" jdbcType="VARCHAR" property="healthInfoName"/>
+        <result column="has_unregistered_reminder" jdbcType="TINYINT" property="hasUnregisteredReminder"/>
+        <result column="unregistered_reminder" jdbcType="VARCHAR" property="unregisteredReminder"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+        <result column="buy_drugs_url" jdbcType="VARCHAR" property="buyDrugsUrl"/>
+        <result column="buy_drugs_url_switch" jdbcType="TINYINT" property="buyDrugsUrlSwitch"/>
+        <result column="wx_user_default_role" jdbcType="TINYINT" property="wxUserDefaultRole"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,guide, describe_, icon, url, del_flag, enable_intro, intro, agreement, nursing_target,
+         success_msg_type, success_msg,has_show_doctor,has_show_org_name,has_fill_wx_name,hasShowRecommendDrugs,has_fill_drugs,
+         base_info_name,health_info_name, has_unregistered_reminder, unregistered_reminder, form_history_record
+          tenant_code,buy_drugs_url,buy_drugs_url_switch, doctor_agreement, wx_user_default_role
+    </sql>
+
+
+    <resultMap id="selectWxUserDefaultRoleResultMap" type="com.caring.sass.wx.entity.guide.RegGuide">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="wx_user_default_role" jdbcType="TINYINT" property="wxUserDefaultRole"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+    </resultMap>
+
+    <sql id="select_wx_user_default_role_column_list">
+        id, wx_user_default_role, tenant_code
+    </sql>
+
+    <select id="selectWxUserDefaultRole" resultMap="selectWxUserDefaultRoleResultMap">
+        SELECT
+        <include refid="select_wx_user_default_role_column_list"/>
+        FROM t_wx_reg_guide
+    </select>
+
+</mapper>

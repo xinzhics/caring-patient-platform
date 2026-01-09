@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.tag.AssociationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.tag.Association">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="tag_id" jdbcType="BIGINT" property="tagId"/>
+        <result column="association_id" jdbcType="VARCHAR" property="associationId"/>
+        <result column="order_" jdbcType="VARCHAR" property="order"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        tag_id, association_id, order_
+    </sql>
+
+
+    <select id="selectTagCountPatientNumber" parameterType="java.util.Map" resultType="com.caring.sass.nursing.dto.tag.TagPatientCountResult">
+        SELECT ta.tag_id as tagId, count(*) as patientCount from t_tag_association as ta
+         LEFT JOIN u_user_patient up on ta.association_id = up.id
+        WHERE
+        1 = 1
+        <if test="serviceAdvisorId != null">
+            AND up.service_advisor_id = #{serviceAdvisorId}
+        </if>
+        <if test="doctorId != null">
+            AND up.doctor_id = #{doctorId}
+        </if>
+        <if test="doctorIds != null and doctorIds.size > 0">
+            AND up.doctor_id IN
+            <foreach item="item" index="index" collection="doctorIds" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        GROUP BY
+        ta.tag_id
+    </select>
+
+
+</mapper>

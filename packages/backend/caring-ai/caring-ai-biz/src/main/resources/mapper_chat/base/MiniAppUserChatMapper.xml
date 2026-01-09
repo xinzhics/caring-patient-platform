@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.chat.dao.MiniAppUserChatMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.chat.MiniAppUserChat">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="history_id" jdbcType="BIGINT" property="historyId"/>
+        <result column="session_id" jdbcType="VARCHAR" property="sessionId"/>
+        <result column="sender_id" jdbcType="BIGINT" property="senderId"/>
+        <result column="current_user_type" jdbcType="VARCHAR" property="currentUserType"/>
+        <result column="sender_role_type" jdbcType="VARCHAR" property="senderRoleType"/>
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+        <result column="type_" jdbcType="VARCHAR" property="type"/>
+        <result column="send_status" jdbcType="VARCHAR" property="sendStatus"/>
+        <result column="send_error_msg" jdbcType="LONGVARCHAR" property="sendErrorMsg"/>
+        <result column="reply_msg_id" jdbcType="BIGINT" property="replyMsgId"/>
+        <result column="reply_status" jdbcType="VARCHAR" property="replyStatus"/>
+        <result column="more_question" jdbcType="VARCHAR" property="more_question"/>
+        <result column="reference" jdbcType="VARCHAR" property="reference"/>
+        <result column="refer" jdbcType="VARCHAR" property="refer"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        history_id, session_id, sender_id, current_user_type, sender_role_type, content, type_, send_status, send_error_msg, reply_msg_id, reply_status, more_question, reference, refer
+    </sql>
+
+</mapper>

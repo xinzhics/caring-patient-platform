@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.form.dao.IndicatorsConditionMonitoringMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.form.IndicatorsConditionMonitoring">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="plan_id" jdbcType="BIGINT" property="planId"/>
+        <result column="plan_name" jdbcType="VARCHAR" property="planName"/>
+        <result column="form_id" jdbcType="BIGINT" property="formId"/>
+        <result column="field_id" jdbcType="VARCHAR" property="fieldId"/>
+        <result column="field_label" jdbcType="VARCHAR" property="fieldLabel"/>
+        <result column="max_condition_symbol" jdbcType="VARCHAR" property="maxConditionSymbol"/>
+        <result column="max_condition_value" jdbcType="VARCHAR" property="maxConditionValue"/>
+        <result column="min_condition_symbol" jdbcType="VARCHAR" property="minConditionSymbol"/>
+        <result column="min_condition_value" jdbcType="VARCHAR" property="minConditionValue"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        plan_id, plan_name, form_id, field_id, field_label, max_condition_symbol, max_condition_value, min_condition_symbol, min_condition_value
+    </sql>
+
+</mapper>

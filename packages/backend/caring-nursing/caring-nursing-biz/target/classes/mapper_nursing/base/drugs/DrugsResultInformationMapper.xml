@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.drugs.DrugsResultInformationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.drugs.DrugsResultInformation">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="warning_type" jdbcType="TINYINT" property="warningType"/>
+        <result column="patient_id" jdbcType="BIGINT" property="patientId"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="doctor_name" jdbcType="VARCHAR" property="doctorName"/>
+        <result column="drugs_available_day" jdbcType="INTEGER" property="drugsAvailableDay"/>
+        <result column="drugs_end_time" jdbcType="TIMESTAMP" property="drugsEndTime"/>
+        <result column="drugs_condition_id" jdbcType="BIGINT" property="drugsConditionId"/>
+        <result column="drugs_id" jdbcType="BIGINT" property="drugsId"/>
+        <result column="drugs_name" jdbcType="VARCHAR" property="drugsName"/>
+        <result column="spec" jdbcType="VARCHAR" property="spec"/>
+        <result column="manufactor" jdbcType="VARCHAR" property="manufactor"/>
+        <result column="reminder_time" jdbcType="BIGINT" property="reminderTime"/>
+        <result column="buying_medicine_url" jdbcType="VARCHAR" property="buyingMedicineUrl"/>
+        <result column="template_msg_id" jdbcType="BIGINT" property="templateMsgId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        warning_type, patient_id, patient_name, avatar, doctor_id, doctor_name, drugs_available_day, drugs_end_time, drugs_condition_id, drugs_id, drugs_name, spec, manufactor, reminder_time, buying_medicine_url, template_msg_id
+    </sql>
+
+    <select id="selectDrugsDeficiencyPageList" parameterType="java.util.Map" resultType="com.caring.sass.nursing.vo.DrugsAvailableVo">
+        SELECT * from (SELECT
+         patient_id AS patientId,
+         patient_name  AS patientName,
+         avatar  AS avatar,
+         doctor_id  AS doctorId,
+         doctor_name  AS doctorName,
+        min(drugs_available_day)  AS drugsAvailableDay,
+        min( drugs_end_time ) AS drugsEndTime
+        FROM
+        t_nursing_drugs_result_information
+        WHERE
+        <if test=" warningType != null">
+             warning_type = #{warningType}
+        </if>
+        <if test="dto != null and dto.nursingId != null">
+            AND nursing_id = #{dto.nursingId}
+        </if>
+        <if test="dto != null and dto.tenant != null and dto.tenant.trim() != ''">
+            AND tenant_code = #{dto.tenant}
+        </if>
+        <if test="dto != null and dto.patientName != null and dto.patientName.trim() != '' ">
+            AND patient_name like concat(concat('%', #{dto.patientName}),'%')
+        </if>
+        GROUP BY
+        patient_id
+        ) t
+        <if test="dto != null and dto.timeSort ==2 ">
+            ORDER BY t.drugsEndTime desc
+        </if>
+        <if test="dto != null and dto.timeSort ==1 ">
+            ORDER BY t.drugsEndTime asc
+        </if>
+        <if test="dto != null and dto.drugsSort ==2 ">
+            ORDER BY t.drugsAvailableDay desc
+        </if>
+        <if test="dto != null and dto.drugsSort ==1 ">
+            ORDER BY t.drugsAvailableDay asc
+        </if>
+
+    </select>
+
+    <select id="selectDrugsDate"  resultType="com.caring.sass.nursing.vo.DrugsAvailableMessageData">
+        SELECT
+        drugs_id AS drugsId,
+        drugs_name AS drugsName,
+        drugs_available_day AS drugsAvailableDay,
+        drugs_end_time AS drugsEndTime
+        FROM
+        t_nursing_drugs_result_information
+        WHERE
+        <if test=" patientId != null">
+             patient_id = #{patientId}
+        </if>
+        <if test=" warningType != null">
+            AND warning_type = #{warningType}
+        </if>
+        <if test="dto != null and dto.nursingId != null">
+            AND nursing_id = #{dto.nursingId}
+        </if>
+        <if test="dto != null and dto.tenant != null and dto.tenant.trim() != ''">
+            AND tenant_code = #{dto.tenant}
+        </if>
+        ORDER BY drugs_end_time desc
+    </select>
+
+    <select id="getDrugsNumber" resultType="java.lang.Integer">
+    SELECT
+	count( 1 )
+    FROM
+	(SELECT
+	patient_id
+     FROM
+	t_nursing_drugs_result_information
+    WHERE
+	tenant_code = #{tenant}
+	AND nursing_id = #{userId}
+	AND warning_type = #{warningType}
+    <if test="drugsId != null">
+        AND drugs_id = #{drugsId}
+    </if>
+    GROUP BY
+	patient_id)t
+    </select>
+</mapper>

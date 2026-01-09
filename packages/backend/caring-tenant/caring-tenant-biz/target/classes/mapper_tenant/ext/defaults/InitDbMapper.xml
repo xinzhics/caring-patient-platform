@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.tenant.dao.InitDbMapper">
+
+    <update id="createDatabase" parameterType="java.util.Map">
+        CREATE DATABASE IF NOT EXISTS ${database} DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci
+    </update>
+
+
+    <delete id="dropDatabase" parameterType="java.util.Map">
+        DROP DATABASE IF EXISTS ${database}
+    </delete>
+
+    <delete id="deleteDate" parameterType="java.lang.String">
+        <if test="tenantCode != null and tenantCode != ''">
+            DELETE FROM c_auth_application WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_auth_resource WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_auth_menu WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_auth_role_authority WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_auth_role_org WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_auth_user_role WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_auth_role WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_auth_user_token WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_auth_user WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM c_common_area WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_common_dictionary WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_common_dictionary_item WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM c_common_login_log WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_common_opt_log WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_common_parameter WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM c_core_org WHERE tenant_code = #{tenantCode};
+            DELETE FROM c_core_station WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM d_global_user WHERE tenant_code = #{tenantCode};
+            DELETE FROM d_tenant_app_config WHERE tenant_code = #{tenantCode};
+            DELETE FROM d_tenant_app_version WHERE tenant_code = #{tenantCode};
+            DELETE FROM d_tenant_step WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_tenant_library WHERE tenant_code = #{tenantCode};
+            DELETE FROM s_statistics_tenant WHERE code = #{tenantCode};
+
+            DELETE FROM f_attachment WHERE tenant_code = #{tenantCode};
+            DELETE FROM f_file WHERE tenant_code = #{tenantCode};
+            DELETE FROM f_file_classification WHERE tenant_code = #{tenantCode};
+            DELETE FROM f_file_my WHERE tenant_code = #{tenantCode};
+            DELETE FROM f_file_recently_used WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_cms_channel_content WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_channel WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_content_reply WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_article_news WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_article_other WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_channel_group WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_content_collect WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_content_reply WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_mass_mailing WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_cms_reply_like_log WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM m_msg_chat_at_record WHERE tenant_code = #{tenantCode};
+            DELETE FROM m_msg_chat WHERE tenant_code = #{tenantCode};
+            DELETE FROM m_msg_chat_group_send WHERE tenant_code = #{tenantCode};
+            DELETE FROM m_msg_chat_user_new WHERE tenant_code = #{tenantCode};
+            DELETE FROM m_msg_consultation_chat WHERE tenant_code = #{tenantCode};
+            DELETE FROM m_msg_consultation_message_status WHERE tenant_code = #{tenantCode};
+            DELETE FROM m_msg_gpt_doctor_chat WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM sms_task WHERE tenant_code = #{tenantCode};
+            DELETE FROM sms_template WHERE tenant_code = #{tenantCode};
+            DELETE FROM sms_send_status WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM a_appoint_config WHERE tenant_code = #{tenantCode};
+            DELETE FROM a_appointment WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_custom_commend_drugs WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_custom_drugs_category WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_drugs_condition_monitoring WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_drugs_result_handle_his WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_drugs_result_information WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_patient_day_drugs WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_patient_drugs WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_patient_drugs_history_log WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_patient_drugs_time WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_patient_drugs_time_setting WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_nursing_follow_task WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_follow_task_content WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_function_configuration WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_custom_form WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_custom_form_result WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_custom_sugar_form_result WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_custom_form_result_back_up WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_custom_form_result_export WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_indicators_condition_monitoring WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_indicators_result_information WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_custom_form_patient_field_reference WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_nursing_completeness_information WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_completion_information_statistics WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_completion_information_statistics_detail WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_information_integrity_monitoring WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_information_monitoring_interval WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_management_history WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_management_history_detail WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_patient_information_field WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_nursing_aim WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_plan WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_plan_detail WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_plan_detail_time WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_plan_learn_detail WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_plan_tag WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_plan_reminder_log WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_patient_nursing_plan WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_patient_custom_plan_time WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_plan_cms_reminder_log WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_form_statistics_baseline_value WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_form_statistics_compliance_rate WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_form_statistics_compliance_rate WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_form_statistics_data WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_form_statistics_data_month WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_form_statistics_data_new WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_form_statistics_interval WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_form_statistics_master WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_form_statistics_task WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_tag WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_tag_association WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_tag_attr WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_h5_ui WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_h5_router WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_wx_config WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_wx_config_additional WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_wx_pre_auth_code WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_wx_custom_menu WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_wx_keyword WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_wx_reg_guide WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_wx_template_msg WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_wx_template_msg_fields WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM u_user_doctor WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_group WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_nursing_staff WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_patient WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_bulk_notification WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_bulk_notification_scan_user WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_bulk_notification WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_common_msg WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_consultation_group WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_consultation_group_member WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_custom_grouping WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_custom_grouping_patient WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_doctor_audit WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_doctor_custom_group WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_doctor_custom_group_patient WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_doctor_group WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_doctor_no_read_group_doctor_msg WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_follow_reply WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_group WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_keyword_project_settings WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_keyword_reply WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_keyword_reply_trigger_record WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_keyword_setting WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_keyword_trigger_record WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_patient_recommend_relationship WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_patient_recommend_setting WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_referral WHERE tenant_code = #{tenantCode};
+            DELETE FROM s_statistics_doctor WHERE tenant_code = #{tenantCode};
+            DELETE FROM s_statistics_nursing_staff WHERE tenant_code = #{tenantCode};
+            DELETE FROM u_user_system_msg WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM d_tenant_configuration_mark WHERE tenant_code = #{tenantCode};
+            DELETE FROM d_tenant_configuration_schedule WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_patient_manage_menu WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_trace_into_field_option_config WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_trace_into_form_result_last_push_time WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_trace_into_result WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_trace_into_result_field_abnormal WHERE tenant_code = #{tenantCode};
+
+            DELETE FROM t_nursing_unfinished_form_setting WHERE tenant_code = #{tenantCode};
+            DELETE FROM t_nursing_unfinished_patient_record WHERE tenant_code = #{tenantCode};
+        </if>
+    </delete>
+
+</mapper>

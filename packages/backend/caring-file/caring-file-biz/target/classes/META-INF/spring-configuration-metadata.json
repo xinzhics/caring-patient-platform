@@ -1,0 +1,113 @@
+{
+  "groups": [
+    {
+      "name": "caring.file",
+      "type": "com.caring.sass.file.properties.FileServerProperties",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties"
+    },
+    {
+      "name": "caring.file.ali",
+      "type": "com.caring.sass.file.properties.FileServerProperties$Ali",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties",
+      "sourceMethod": "public com.caring.sass.file.properties.FileServerProperties.Ali getAli() "
+    },
+    {
+      "name": "caring.file.hw",
+      "type": "com.caring.sass.file.properties.FileServerProperties$HW",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties",
+      "sourceMethod": "public com.caring.sass.file.properties.FileServerProperties.HW getHw() "
+    }
+  ],
+  "properties": [
+    {
+      "name": "caring.file.ali.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$Ali"
+    },
+    {
+      "name": "caring.file.ali.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$Ali"
+    },
+    {
+      "name": "caring.file.ali.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$Ali"
+    },
+    {
+      "name": "caring.file.ali.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$Ali"
+    },
+    {
+      "name": "caring.file.ali.uri-prefix",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$Ali"
+    },
+    {
+      "name": "caring.file.down-by-biz-id",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties"
+    },
+    {
+      "name": "caring.file.down-by-id",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties"
+    },
+    {
+      "name": "caring.file.down-by-url",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties"
+    },
+    {
+      "name": "caring.file.hw.access-key",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$HW"
+    },
+    {
+      "name": "caring.file.hw.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$HW"
+    },
+    {
+      "name": "caring.file.hw.end-point",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$HW"
+    },
+    {
+      "name": "caring.file.hw.security-key",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$HW"
+    },
+    {
+      "name": "caring.file.hw.x-project-id",
+      "type": "java.lang.String",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties$HW"
+    },
+    {
+      "name": "caring.file.inner-uri-prefix",
+      "type": "java.lang.String",
+      "description": "内网通道前缀 主要用于解决某些服务器的无法访问外网ip的问题",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties"
+    },
+    {
+      "name": "caring.file.storage-path",
+      "type": "java.lang.String",
+      "description": "文件存储路径",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties"
+    },
+    {
+      "name": "caring.file.type",
+      "type": "com.caring.sass.file.enumeration.FileStorageType",
+      "description": "为以下3个值，指定不同的自动化配置 qiniu：七牛oss aliyun：阿里云oss fastdfs：本地部署的fastDFS",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties"
+    },
+    {
+      "name": "caring.file.uri-prefix",
+      "type": "java.lang.String",
+      "description": "文件访问前缀",
+      "sourceType": "com.caring.sass.file.properties.FileServerProperties"
+    }
+  ],
+  "hints": []
+}

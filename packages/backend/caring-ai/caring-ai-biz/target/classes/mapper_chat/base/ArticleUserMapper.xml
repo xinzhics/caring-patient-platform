@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.article.dao.ArticleUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.article.ArticleUser">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="user_mobile" jdbcType="VARCHAR" property="userMobile" typeHandler="com.caring.sass.common.mybaits.EncryptedStringTypeHandler"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_gender" jdbcType="VARCHAR" property="userGender"/>
+        <result column="personal_profile" jdbcType="VARCHAR" property="personalProfile"/>
+        <result column="membership_level" jdbcType="VARCHAR" property="membershipLevel"/>
+        <result column="membership_expiration" jdbcType="VARCHAR" property="membershipExpiration"/>
+        <result column="energy_beans" jdbcType="BIGINT" property="energyBeans"/>
+        <result column="free_energy_beans" jdbcType="BIGINT" property="freeEnergyBeans"/>
+        <result column="first_creation" jdbcType="INTEGER" property="firstCreation"/>
+        <result column="first_creation_date" jdbcType="TIMESTAMP" property="firstCreationDate"/>
+        <result column="day_7_active" jdbcType="INTEGER" property="day7Active"/>
+        <result column="day_30_active" jdbcType="INTEGER" property="day30Active"/>
+        <result column="look_guide" jdbcType="INTEGER" property="lookGuide"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        user_mobile, password, user_name, user_gender, personal_profile, membership_level,
+        membership_expiration, energy_beans, free_energy_beans, first_creation,
+        first_creation_date, day_7_active, day_30_active, look_guide
+    </sql>
+
+</mapper>

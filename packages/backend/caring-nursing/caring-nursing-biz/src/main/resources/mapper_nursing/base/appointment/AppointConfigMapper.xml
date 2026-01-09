@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.appointment.AppointConfigMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.appointment.AppointConfig">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="organization_id" jdbcType="BIGINT" property="organizationId"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="num_of_monday_morning" jdbcType="INTEGER" property="numOfMondayMorning"/>
+        <result column="num_of_monday_afternoon" jdbcType="INTEGER" property="numOfMondayAfternoon"/>
+        <result column="num_of_tuesday_morning" jdbcType="INTEGER" property="numOfTuesdayMorning"/>
+        <result column="num_of_tuesday_afternoon" jdbcType="INTEGER" property="numOfTuesdayAfternoon"/>
+        <result column="num_of_wednesday_morning" jdbcType="INTEGER" property="numOfWednesdayMorning"/>
+        <result column="num_of_wednesday_afternoon" jdbcType="INTEGER" property="numOfWednesdayAfternoon"/>
+        <result column="num_of_thursday_morning" jdbcType="INTEGER" property="numOfThursdayMorning"/>
+        <result column="num_of_thursday_afternoon" jdbcType="INTEGER" property="numOfThursdayAfternoon"/>
+        <result column="num_of_friday_morning" jdbcType="INTEGER" property="numOfFridayMorning"/>
+        <result column="num_of_friday_afternoon" jdbcType="INTEGER" property="numOfFridayAfternoon"/>
+        <result column="num_of_saturday_morning" jdbcType="INTEGER" property="numOfSaturdayMorning"/>
+        <result column="num_of_saturday_afternoon" jdbcType="INTEGER" property="numOfSaturdayAfternoon"/>
+        <result column="num_of_sunday_morning" jdbcType="INTEGER" property="numOfSundayMorning"/>
+        <result column="num_of_sunday_afternoon" jdbcType="INTEGER" property="numOfSundayAfternoon"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        organization_id, doctor_id, num_of_monday_morning, num_of_monday_afternoon, num_of_tuesday_morning, num_of_tuesday_afternoon, num_of_wednesday_morning, num_of_wednesday_afternoon, num_of_thursday_morning, num_of_thursday_afternoon, num_of_friday_morning, num_of_friday_afternoon, num_of_saturday_morning, num_of_saturday_afternoon, num_of_sunday_morning, num_of_sunday_afternoon
+    </sql>
+
+</mapper>

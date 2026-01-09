@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.know.dao.KnowledgeFileMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.know.KnowledgeFile">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="know_id" jdbcType="BIGINT" property="knowId"/>
+        <result column="know_dify_id" jdbcType="VARCHAR" property="knowDifyId"/>
+        <result column="file_user_id" jdbcType="BIGINT" property="fileUserId"/>
+        <result column="know_type" jdbcType="VARCHAR" property="knowType"/>
+        <result column="file_name" jdbcType="VARCHAR" property="fileName"/>
+        <result column="initial_file_name" jdbcType="VARCHAR" property="initialFileName"/>
+        <result column="file_url" jdbcType="VARCHAR" property="fileUrl"/>
+        <result column="file_size" jdbcType="BIGINT" property="fileSize"/>
+        <result column="file_upload_time" jdbcType="TIMESTAMP" property="fileUploadTime"/>
+        <result column="dify_file_status" jdbcType="VARCHAR" property="difyFileStatus"/>
+        <result column="dify_file_index_progress" jdbcType="VARCHAR" property="difyFileIndexProgress"/>
+        <result column="dify_batch" jdbcType="VARCHAR" property="difyBatch"/>
+        <result column="dify_file_id" jdbcType="VARCHAR" property="difyFileId"/>
+        <result column="view_permissions" jdbcType="INTEGER" property="viewPermissions"/>
+        <result column="download_permission" jdbcType="INTEGER" property="downloadPermission"/>
+        <result column="is_update_permissions" jdbcType="TINYINT" property="downloadPermission"/>
+        <result column="try_count" jdbcType="INTEGER" property="tryCount"/>
+        <result column="system_file_id" jdbcType="BIGINT" property="systemFileId"/>
+        <result column="file_type" jdbcType="VARCHAR" property="fileType"/>
+        <result column="file_cover" jdbcType="VARCHAR" property="fileCover"/>
+        <result column="set_metadata" jdbcType="INTEGER" property="setMetadata"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        know_id, know_dify_id, file_user_id, know_type, file_name, file_size, file_url, initial_file_name,
+        file_upload_time, dify_file_status, dify_file_index_progress, dify_batch, dify_file_id,
+        download_permission, view_permissions, is_update_permissions, try_count, system_file_id, file_type, file_cover, set_metadata
+    </sql>
+
+</mapper>

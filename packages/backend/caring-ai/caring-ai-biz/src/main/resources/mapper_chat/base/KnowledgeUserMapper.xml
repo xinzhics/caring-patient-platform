@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.know.dao.KnowledgeUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.know.KnowledgeUser">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_mobile" jdbcType="VARCHAR" property="userMobile" typeHandler="com.caring.sass.common.mybaits.EncryptedStringTypeHandler"/>
+        <result column="user_type" jdbcType="VARCHAR" property="userType"/>
+        <result column="user_domain" jdbcType="VARCHAR" property="userDomain"/>
+        <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar"/>
+        <result column="membership_level" jdbcType="VARCHAR" property="membershipLevel"/>
+        <result column="membership_expiration" jdbcType="TIMESTAMP" property="membershipExpiration"/>
+        <result column="experience_ai_time" jdbcType="TIMESTAMP" property="experienceAiTime"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="share_poster" jdbcType="VARCHAR" property="sharePoster"/>
+        <result column="basic_membership_price" jdbcType="VARCHAR" property="basicMembershipPrice"/>
+        <result column="professional_version_price" jdbcType="VARCHAR" property="professionalVersionPrice"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="user_set_ui_style" jdbcType="INTEGER" property="userSetUiStyle"/>
+        <result column="number_views" jdbcType="BIGINT" property="numberViews"/>
+        <result column="work_unit" jdbcType="VARCHAR" property="workUnit"/>
+        <result column="department" jdbcType="VARCHAR" property="department"/>
+        <result column="doctor_title" jdbcType="VARCHAR" property="doctorTitle"/>
+        <result column="personal_profile" jdbcType="VARCHAR" property="personalProfile"/>
+        <result column="ai_studio_url" jdbcType="VARCHAR" property="aiStudioUrl"/>
+        <result column="digital_studio_url" jdbcType="VARCHAR" property="digitalStudioUrl"/>
+        <result column="other_url" jdbcType="VARCHAR" property="otherUrl"/>
+        <result column="sort_" jdbcType="INTEGER" property="sort"/>
+        <result column="ai_studio_doctor_id" jdbcType="VARCHAR" property="aiStudioDoctorId"/>
+        <result column="ai_interactive_audio_trial_listening" jdbcType="VARCHAR" property="aiInteractiveAudioTrialListening"/>
+        <result column="greeting_video" jdbcType="VARCHAR" property="greetingVideo"/>
+        <result column="greeting_video_cover" jdbcType="VARCHAR" property="greetingVideoCover"/>
+        <result column="real_human_avatar" jdbcType="VARCHAR" property="realHumanAvatar"/>
+        <result column="knowledge_menu_id" jdbcType="VARCHAR" property="knowledgeMenuId"/>
+        <result column="menu_domain" jdbcType="VARCHAR" property="menuDomain"/>
+        <result column="specialty" jdbcType="VARCHAR" property="specialty"/>
+        <result column="subscribe_switch" jdbcType="BOOLEAN" property="subscribeSwitch"/>
+        <result column="subscribe_user_name" jdbcType="VARCHAR" property="subscribeUserName"/>
+        <result column="subscribe_last_update_time" jdbcType="TIMESTAMP" property="subscribeLastUpdateTime"/>
+        <result column="open_monthly_payment" jdbcType="BOOLEAN" property="openMonthlyPayment"/>
+        <result column="open_annual_payment" jdbcType="BOOLEAN" property="openAnnualPayment"/>
+        <result column="open_article_data" jdbcType="BOOLEAN" property="openArticleData"/>
+        <result column="open_academic_materials" jdbcType="BOOLEAN" property="openAcademicMaterials"/>
+        <result column="open_personal_achievements" jdbcType="BOOLEAN" property="openPersonalAchievements"/>
+        <result column="open_case_database" jdbcType="BOOLEAN" property="openCaseDatabase"/>
+        <result column="open_daily_collection" jdbcType="BOOLEAN" property="openDailyCollection"/>
+        <result column="show_in_docuknow" jdbcType="BOOLEAN" property="showInDocuKnow"/>
+        <result column="data_source" jdbcType="VARCHAR" property="dataSource"/>
+        <result column="third_party_user_id" jdbcType="BIGINT" property="thirdPartyUserId"/>
+        <result column="third_party_knowledge_link" jdbcType="VARCHAR" property="thirdPartyKnowledgeLink"/>
+        <result column="child_domain_menu_id" jdbcType="VARCHAR" property="childDomainMenuId"/>
+        <result column="child_domain" jdbcType="VARCHAR" property="childDomain"/>
+        <result column="open_text_ual" jdbcType="BOOLEAN" property="openTextual"/>
+        <result column="total_call_duration" jdbcType="INTEGER" property="totalCallDuration"/>
+        <result column="call_switch" jdbcType="INTEGER" property="callSwitch"/>
+        <result column="saas_tenant_code" jdbcType="VARCHAR" property="saasTenantCode"/>
+        <result column="sms_code_login_first_time" jdbcType="TIMESTAMP" property="smsCodeLoginFirstTime"/>
+        <result column="sms_code_login_last_time" jdbcType="TIMESTAMP" property="smsCodeLoginLastTime"/>
+        <result column="upload_qualification_remind_time" jdbcType="TIMESTAMP" property="uploadQualificationRemindTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, create_user, update_user, update_time,
+        user_name, user_mobile, user_type, user_domain, user_avatar, membership_level,
+        experience_ai_time, membership_expiration, open_id, share_poster, basic_membership_price, professional_version_price,
+        password, user_set_ui_style, number_views, work_unit, department, doctor_title, personal_profile, ai_studio_url,
+        digital_studio_url, other_url, sort_, ai_studio_doctor_id, ai_interactive_audio_trial_listening,
+        greeting_video, greeting_video_cover, real_human_avatar, knowledge_menu_id, menu_domain,specialty,
+        subscribe_switch, subscribe_user_name, subscribe_last_update_time, open_monthly_payment, open_annual_payment, open_article_data,
+        open_academic_materials, open_personal_achievements, open_case_database, open_daily_collection, show_in_docuknow,
+        data_source, third_party_user_id, third_party_knowledge_link, child_domain_menu_id, child_domain, open_text_ual,
+        total_call_duration, call_switch, saas_tenant_code, sms_code_login_first_time, sms_code_login_last_time, upload_qualification_remind_time
+    </sql>
+
+</mapper>

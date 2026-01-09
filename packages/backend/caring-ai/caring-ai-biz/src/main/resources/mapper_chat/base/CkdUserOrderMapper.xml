@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.ckd.dao.CkdUserOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.ckd.CkdUserOrder">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="goods_type" jdbcType="VARCHAR" property="goodsType"/>
+        <result column="goods_price" jdbcType="INTEGER" property="goodsPrice"/>
+        <result column="payment_status" jdbcType="VARCHAR" property="paymentStatus"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="pay_time" jdbcType="VARCHAR" property="payTime"/>
+        <result column="refund_time" jdbcType="VARCHAR" property="refundTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        goods_type, goods_price, payment_status, open_id
+    </sql>
+
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.drugs.SysDrugsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.drugs.SysDrugs">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="generic_name" jdbcType="VARCHAR" property="genericName"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="gyzz" jdbcType="VARCHAR" property="gyzz"/>
+        <result column="manufactor" jdbcType="VARCHAR" property="manufactor"/>
+        <result column="spec" jdbcType="VARCHAR" property="spec"/>
+        <result column="usage_" jdbcType="VARCHAR" property="usage"/>
+        <result column="instructions" jdbcType="LONGVARCHAR" property="instructions"/>
+        <result column="applicable_disease" jdbcType="LONGVARCHAR" property="applicableDisease"/>
+        <result column="dosage" jdbcType="LONGVARCHAR" property="dosage"/>
+        <result column="taboo" jdbcType="LONGVARCHAR" property="taboo"/>
+        <result column="side_effects" jdbcType="LONGVARCHAR" property="sideEffects"/>
+        <result column="interaction" jdbcType="LONGVARCHAR" property="interaction"/>
+        <result column="del_flag" jdbcType="INTEGER" property="delFlag"/>
+        <result column="number" jdbcType="INTEGER" property="number"/>
+        <result column="dose" jdbcType="FLOAT" property="dose"/>
+        <result column="time" jdbcType="VARCHAR" property="time"/>
+        <result column="cycle" jdbcType="INTEGER" property="cycle"/>
+        <result column="unit" jdbcType="VARCHAR" property="unit"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="pyszm" jdbcType="VARCHAR" property="pyszm"/>
+        <result column="commondity_name" jdbcType="VARCHAR" property="commondityName"/>
+        <result column="characters" jdbcType="VARCHAR" property="characters"/>
+        <result column="english_name" jdbcType="VARCHAR" property="englishName"/>
+        <result column="c_executive_standard" jdbcType="VARCHAR" property="executiveStandard"/>
+        <result column="is_mi" jdbcType="TINYINT" property="isMi"/>
+        <result column="is_otc" jdbcType="TINYINT" property="isOtc"/>
+        <result column="pack" jdbcType="VARCHAR" property="pack"/>
+        <result column="storage" jdbcType="VARCHAR" property="storage"/>
+        <result column="category_id" jdbcType="BIGINT" property="categoryId"/>
+        <result column="valid_time" jdbcType="VARCHAR" property="validTime"/>
+        <result column="sticky" jdbcType="INTEGER" property="sticky"/>
+        <result column="sticky_time" jdbcType="TIMESTAMP" property="stickyTime"/>
+        <result column="reptile_ok" jdbcType="INTEGER" property="reptileOk"/>
+        <result column="reptile" jdbcType="INTEGER" property="reptile"/>
+        <result column="link" jdbcType="VARCHAR" property="link"/>
+        <result column="dosage_form" jdbcType="VARCHAR" property="dosageForm"/>
+        <result column="dosage_count" jdbcType="INTEGER" property="dosageCount"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        name, generic_name, icon, gyzz, manufactor, spec, usage_, instructions, applicable_disease, dosage,
+         taboo, side_effects, interaction, del_flag, number, dose, time, cycle, unit,
+          code, pyszm, commondity_name, characters, english_name, c_executive_standard,
+          is_mi, is_otc, pack, storage, category_id, valid_time, sticky, sticky_time, reptile_ok, reptile, link, dosage_form,dosage_count
+    </sql>
+
+</mapper>

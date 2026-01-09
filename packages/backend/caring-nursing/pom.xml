@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.caring.sass</groupId>
+        <artifactId>caring-admin-cloud</artifactId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>caring-nursing</artifactId>
+    <name>${project.artifactId}</name>
+    <description>护理计划服务</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>caring-nursing-api</module>
+        <module>caring-nursing-entity</module>
+        <module>caring-nursing-biz</module>
+        <module>caring-nursing-controller</module>
+        <module>caring-nursing-server</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-nursing-entity</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-nursing-biz</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-nursing-controller</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

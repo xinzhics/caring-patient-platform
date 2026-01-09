@@ -1,0 +1,9 @@
+${AnsiColor.BRIGHT_YELLOW}
+  ___   __   ____  __  __ _   ___        __   __      ____  ____  ____  _  _  ____  ____
+ / __) / _\ (  _ \(  )(  ( \ / __) ___  / _\ (  )___ / ___)(  __)(  _ \/ )( \(  __)(  _ \
+( (__ /    \ )   / )( /    /( (_ \(___)/    \ )((___)\___ \ ) _)  )   /\ \/ / ) _)  )   /
+ \___)\_/\_/(__\_)(__)\_)__) \___/     \_/\_/(__)    (____/(____)(__\_) \__/ (____)(__\_)
+
+Application Version: @project.description@ - @project.version@
+Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}
+${AnsiColor.DEFAULT}

@@ -1,0 +1,93 @@
+package com.caring.sass.user.dto;
+
+import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.caring.sass.base.entity.Entity;
+import com.baomidou.mybatisplus.annotation.TableField;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+import lombok.Data;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+import com.caring.sass.common.constant.DictionaryType;
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 实体类
+ * 小组
+ * </p>
+ *
+ * @author leizhi
+ * @since 2020-09-25
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
+@Builder
+@ApiModel(value = "GroupPageDTO", description = "小组")
+public class GroupPageDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 医助ID
+     */
+    @ApiModelProperty(value = "医助ID")
+    private Long nurseId;
+    /**
+     * 医助名字
+     */
+    @ApiModelProperty(value = "医助名字")
+    @Length(max = 20, message = "医助名字长度不能超过20")
+    private String nurseName;
+    /**
+     * 小组名字
+     */
+    @ApiModelProperty(value = "小组名字")
+    @Length(max = 32, message = "小组名字长度不能超过32")
+    private String name;
+    /**
+     * 机构ID
+     */
+    @ApiModelProperty(value = "机构ID")
+    private Long organId;
+    /**
+     * 机构名字
+     */
+    @ApiModelProperty(value = "机构名字")
+    @Length(max = 50, message = "机构名字长度不能超过50")
+    private String organName;
+    /**
+     * 联系人
+     */
+    @ApiModelProperty(value = "联系人")
+    @Length(max = 32, message = "联系人长度不能超过32")
+    private String contactName;
+    /**
+     * 联系人电话
+     */
+    @ApiModelProperty(value = "联系人电话")
+    @Length(max = 12, message = "联系人电话长度不能超过12")
+    private String contactMobile;
+    /**
+     * 机构CLASSCODE
+     */
+    @ApiModelProperty(value = "机构CLASSCODE")
+    @Length(max = 65535, message = "机构CLASSCODE长度不能超过65,535")
+    private String classCode;
+
+}

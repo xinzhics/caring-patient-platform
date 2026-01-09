@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.user.dao.MerckPersonMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.user.merck.MerckPerson">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="person_id" jdbcType="BIGINT" property="personId"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="union_id" jdbcType="VARCHAR" property="unionId"/>
+        <result column="information_sync" jdbcType="INTEGER" property="informationSync"/>
+        <result column="subscribe" jdbcType="INTEGER" property="subscribe"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        person_id, open_id, union_id, information_sync, subscribe
+    </sql>
+
+</mapper>

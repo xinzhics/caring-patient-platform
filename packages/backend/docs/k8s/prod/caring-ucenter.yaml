@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caring-ucenter-deployment
+spec:
+  selector:
+    matchLabels:
+      app: caring-ucenter-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: caring-ucenter-server
+    spec:
+      containers:
+        - name: caring-ucenter-server
+          image: registry.cn-beijing.aliyuncs.com/caring/caring-ucenter-server:c.2.5.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 8773
+      imagePullSecrets:
+        - name: regsecret-cn
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caring-ucenter-server
+spec:
+  selector:
+    app: caring-ucenter-server
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8773
+      targetPort: 8773

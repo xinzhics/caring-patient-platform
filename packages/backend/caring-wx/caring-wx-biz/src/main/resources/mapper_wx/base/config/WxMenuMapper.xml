@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.wx.dao.config.WxMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.wx.entity.config.WxMenu">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="menu_name" jdbcType="VARCHAR" property="menuName"/>
+        <result column="menu_type" jdbcType="VARCHAR" property="menuType"/>
+        <result column="menu_key" jdbcType="VARCHAR" property="menuKey"/>
+        <result column="menu_url" jdbcType="VARCHAR" property="menuUrl"/>
+        <result column="media_id" jdbcType="VARCHAR" property="mediaId"/>
+        <result column="article_id" jdbcType="VARCHAR" property="articleId"/>
+        <result column="appid" jdbcType="VARCHAR" property="appid"/>
+        <result column="pagepath" jdbcType="VARCHAR" property="pagepath"/>
+        <result column="text_content" jdbcType="VARCHAR" property="textContent"/>
+        <result column="wx_app_id" jdbcType="VARCHAR" property="wxAppId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        menu_name, menu_type, menu_key, menu_url, media_id, article_id, appid, pagepath, text_content, wx_app_id
+    </sql>
+
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.form.FormScoreRuleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.form.FormScoreRule">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="form_result_count_way" jdbcType="VARCHAR" property="formResultCountWay"/>
+        <result column="show_result_sum" jdbcType="INTEGER" property="showResultSum"/>
+        <result column="show_group_sum" jdbcType="INTEGER" property="showGroupSum"/>
+        <result column="show_average" jdbcType="INTEGER" property="showAverage"/>
+        <result column="form_id" jdbcType="BIGINT" property="formId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        form_result_count_way, show_result_sum, show_group_sum, show_average, form_id
+    </sql>
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.article.dao.ArticleUserVoiceTaskMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.article.ArticleUserVoiceTask">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="voice_id" jdbcType="BIGINT" property="voiceId"/>
+        <result column="talk_text" jdbcType="LONGVARCHAR" property="talkText"/>
+        <result column="generate_audio_url" jdbcType="VARCHAR" property="generateAudioUrl"/>
+        <result column="task_status" jdbcType="VARCHAR" property="taskStatus"/>
+        <result column="task_id" jdbcType="VARCHAR" property="taskId"/>
+        <result column="task_name" jdbcType="VARCHAR" property="taskName"/>
+        <result column="task_type" jdbcType="VARCHAR" property="taskType"/>
+        <result column="template_id" jdbcType="BIGINT" property="templateId"/>
+        <result column="template_type" jdbcType="INTEGER" property="templateType"/>
+        <result column="create_type" jdbcType="INTEGER" property="createType"/>
+        <result column="audio_url" jdbcType="VARCHAR" property="audioUrl"/>
+        <result column="podcast_id" jdbcType="BIGINT" property="podcastId"/>
+        <result column="error_message" jdbcType="VARCHAR" property="errorMessage"/>
+        <result column="human_video_cover" jdbcType="VARCHAR" property="humanVideoCover"/>
+        <result column="show_ai_knowledge" jdbcType="INTEGER" property="showAIKnowledge"/>
+        <result column="make_video_time" jdbcType="TIMESTAMP" property="makeVideoTime"/>
+        <result column="open_volcengine_take" jdbcType="INTEGER" property="openVolcengineTake"/>
+        <result column="cover_video" jdbcType="VARCHAR" property="coverVideo"/>
+        <result column="back_cover_video" jdbcType="VARCHAR" property="backCoverVideo"/>
+        <result column="final_video_result" jdbcType="VARCHAR" property="finalVideoResult"/>
+        <result column="wait_merge_cover" jdbcType="INTEGER" property="waitMergeCover"/>
+        <result column="final_video_result_cover" jdbcType="VARCHAR" property="finalVideoResultCover"/>
+        <result column="fail_refund" jdbcType="INTEGER" property="failRefund"/>
+        <result column="textual_" jdbcType="INTEGER" property="textual"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id
+        ,create_time,create_user,update_user,update_time,
+        user_id, voice_id, talk_text, generate_audio_url,
+        task_status, task_id,task_name, task_type, template_id,
+        template_type, create_type, audio_url, podcast_id, error_message, human_video_cover,
+        show_ai_knowledge, make_video_time, open_volcengine_take, cover_video, back_cover_video,
+        final_video_result, wait_merge_cover, final_video_result_cover, fail_refund, textual_
+    </sql>
+
+</mapper>

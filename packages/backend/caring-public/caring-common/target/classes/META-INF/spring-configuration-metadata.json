@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "caring.application",
+      "type": "com.caring.sass.common.constant.ApplicationProperties",
+      "sourceType": "com.caring.sass.common.constant.ApplicationProperties"
+    },
+    {
+      "name": "ignore.token",
+      "type": "com.caring.sass.common.properties.IgnoreTokenProperties",
+      "sourceType": "com.caring.sass.common.properties.IgnoreTokenProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "ignore.token.base-uri",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.caring.sass.common.properties.IgnoreTokenProperties"
+    },
+    {
+      "name": "ignore.token.tenant",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.caring.sass.common.properties.IgnoreTokenProperties"
+    },
+    {
+      "name": "ignore.token.token",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.caring.sass.common.properties.IgnoreTokenProperties"
+    }
+  ],
+  "hints": []
+}

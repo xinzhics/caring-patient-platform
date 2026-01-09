@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.podcast.dao.PodcastAudioTaskMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.podcast.PodcastAudioTask">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="podcast_id" jdbcType="BIGINT" property="podcastId"/>
+        <result column="audio_text" jdbcType="LONGVARCHAR" property="audioText"/>
+        <result column="sound_set_id" jdbcType="BIGINT" property="soundSetId"/>
+        <result column="task_id" jdbcType="VARCHAR" property="taskId"/>
+        <result column="task_status" jdbcType="VARCHAR" property="taskStatus"/>
+        <result column="audio_url" jdbcType="VARCHAR" property="audioUrl"/>
+        <result column="task_error_message" jdbcType="VARCHAR" property="taskErrorMessage"/>
+        <result column="task_sort" jdbcType="INTEGER" property="taskSort"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        podcast_id, audio_text, sound_set_id, task_id, task_status, audio_url, task_error_message, task_sort, user_id
+    </sql>
+
+</mapper>

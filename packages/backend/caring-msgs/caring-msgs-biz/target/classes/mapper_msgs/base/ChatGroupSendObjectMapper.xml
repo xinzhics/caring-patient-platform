@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.msgs.dao.ChatGroupSendObjectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.msgs.entity.ChatGroupSendObject">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="chat_group_send_id" jdbcType="BIGINT" property="chatGroupSendId"/>
+        <result column="object_association_id" jdbcType="VARCHAR" property="objectAssociationId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="user_role" jdbcType="VARCHAR" property="userRole"/>
+        <result column="object_association_type" jdbcType="VARCHAR" property="objectAssociationType"/>
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, create_user, update_time, update_user,
+        chat_group_send_id, object_association_id, object_association_type, user_id, user_role
+    </sql>
+
+</mapper>

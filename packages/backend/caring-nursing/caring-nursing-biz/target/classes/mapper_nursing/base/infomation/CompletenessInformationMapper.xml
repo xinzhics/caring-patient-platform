@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.information.CompletenessInformationMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap"
+               type="com.caring.sass.nursing.entity.information.CompletenessInformation">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP"
+                property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP"
+                property="updateTime"/>
+        <result column="patient_id" jdbcType="BIGINT" property="patientId"/>
+        <result column="last_write_time" jdbcType="TIMESTAMP"
+                property="lastWriteTime"/>
+        <result column="completion" jdbcType="INTEGER" property="completion"/>
+        <result column="complete" jdbcType="INTEGER" property="complete"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        patient_id, last_write_time, completion, complete
+    </sql>
+
+<!--    <select id="selectPage" resultMap="BaseResultMap">-->
+<!--        select nci.*, uup.avatar, uup.doctor_id, uup.doctor_name, uup.name-->
+<!--        from t_nursing_completeness_information nci-->
+<!--        left join u_user_patient uup on nci.patient_id = uup.id-->
+<!--        <where>-->
+<!--            <if test="name != null and name != ''">-->
+<!--                uup.name like concat('%', #{name}, '%')-->
+<!--            </if>-->
+<!--            <if test="min != null and max !=null">-->
+<!--                nci.completion &gt;= #{min,jdbcType=INTEGER} &lt;= #{max,jdbcType=INTEGER}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+</mapper>

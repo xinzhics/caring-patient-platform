@@ -1,0 +1,135 @@
+.messagebox {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  .messagebox-header {
+    border-bottom: 1px solid #d6dce0;
+    box-sizing   : border-box;
+    height       : 50px;
+    line-height  : 50px;
+    outline      : none;
+    margin-bottom: 0;
+    padding-left : 0;
+    padding      : 0 16px;
+    list-style   : none;
+    z-index      : 1050;
+    color        : rgba(0, 0, 0, 0.65);
+    background   : #fff;
+    font-size    : 12px;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+
+    .user-ellipsis {
+      float      : right;
+      display    : inline-block;
+      height     : 50px;
+      line-height: 50px;
+      cursor     : pointer;
+    }
+
+    .user-goback {
+      float      : left;
+      display    : inline-block;
+      height     : 50px;
+      line-height: 50px;
+      cursor     : pointer;
+    }
+
+    .icon-setting {
+      position: absolute;
+      right   : 20px;
+      top     : 131px;
+      cursor  : pointer;
+    }
+  }
+
+  .messagebox-content {
+    width     : 100%;
+    top       : 50px;
+    padding   : 10px 0px;
+    background-color: #F5F5F9;
+    overflow  : scroll;
+
+    .message-group {
+      padding-top: 3px;
+      font-size  : 14px;
+      line-height: 1.5;
+      clear      : both;
+      width      : 100%;
+
+      p {
+        list-style   : none;
+        min-width    : 100px;
+        background   : #fff;
+        text-align   : left;
+        padding      : 13px 15px;
+        margin       : 5px 0 0 0;
+        border-radius: 25px;
+        border       : 1px solid #eceff1;
+        display      : inline-block;
+        margin-top   : 11px;
+        word-break   : break-all;
+
+        &.byself {
+          background: #eceff1;
+          float     : right;
+        }
+      }
+    }
+  }
+}
+
+.messagebox-footer {
+  border-top   : 1px solid #d6dce0;
+  bottom       : 0;
+  width        : 100%;
+  height       : 50px;
+  color        : rgba(0, 0, 0, 0.65);
+  background   : #fff;
+  display: flex;
+  align-items: center;
+
+
+  .footer-icon {
+    padding   : 15px 0px;
+    text-align: left;
+    height: 40px;
+    display: flex;
+
+    .van-icon {
+      margin-left: 8px;
+      cursor: pointer;
+    }
+
+    .icon {
+      color: rgba(0, 0, 0, 0.65);
+      font-size: 20px;
+      margin-left: 8px;
+    }
+  }
+
+  .fotter-send {
+    .sengTxt {
+      text-align: left;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 14px;
+      box-shadow: 0 0 0 0;
+      background-color: #F5F5F9;
+      border: 1px solid #F5F5F9;
+      padding-left: 10px;
+      padding-right: 10px;
+      outline-style: none;
+      border-radius: 5px
+    }
+
+    .van-icon {
+      position: initial;
+      right   : 10px;
+      top     : 45px;
+    }
+  }
+}
+

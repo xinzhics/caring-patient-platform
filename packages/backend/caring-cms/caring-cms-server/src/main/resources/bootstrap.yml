@@ -1,0 +1,64 @@
+# @xxx@ 从pom.xml中取值, 所以 @xx@ 标注的值，都不能从nacos中获取
+caring:
+  nacos:
+    ip: ${NACOS_IP:@nacos.ip@}
+    port: ${NACOS_PORT:@nacos.port@}
+    namespace: ${NACOS_ID:@nacos.namespace@}
+    group: ${NACOS_GROUP:@nacos.group@}
+    discoverygroup: ${NACOS_DISCOVERYGROUP:@nacos.discoverygroup@}
+    username: ${NACOS_ID:@nacos.username@}
+    password: ${NACOS_ID:@nacos.password@}
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profile.active@
+  cloud:
+    nacos:
+      config:
+        server-addr: ${caring.nacos.ip}:${caring.nacos.port}
+        file-extension: yml
+        namespace: ${caring.nacos.namespace}
+        group: ${caring.nacos.group}
+        shared-configs:
+          - dataId: common.yml
+            group: ${caring.nacos.group}
+            refresh: true
+          - dataId: redis.yml
+            group: ${caring.nacos.group}
+            refresh: true
+          - dataId: mysql.yml
+            group: ${caring.nacos.group}
+            refresh: true
+          - dataId: rabbitmq.yml
+            group: ${caring.nacos.group}
+            refresh: false
+          - dataId: job.yml
+            group: ${caring.nacos.group}
+        enabled: true
+        username: ${caring.nacos.username}
+        password: ${caring.nacos.password}
+      discovery:
+        username: ${caring.nacos.username}
+        password: ${caring.nacos.password}
+        server-addr: ${caring.nacos.ip}:${caring.nacos.port}
+        namespace: ${caring.nacos.namespace}
+        group: ${caring.nacos.discoverygroup}
+        metadata: # 元数据，用于权限服务实时获取各个服务的所有接口
+          management.context-path: ${server.servlet.context-path:}${spring.mvc.servlet.path:}${management.endpoints.web.base-path:}
+
+# 只能配置在bootstrap.yml ，否则会生成 log.path_IS_UNDEFINED 文件夹
+# window会自动在 代码所在盘 根目录下自动创建文件夹，  如： D:/data/projects/logs
+logging:
+  file:
+    path: @logging.file.path@
+    name: ${logging.file.path}/${spring.application.name}/root.log
+
+# 用于/actuator/info
+info:
+  name: '@project.name@'
+  description: '@project.description@'
+  version: '@project.version@'

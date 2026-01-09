@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.cms.dao.SiteVideoWarehouseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.cms.entity.SiteVideoWarehouse">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="video_url" jdbcType="VARCHAR" property="videoUrl"/>
+        <result column="video_title" jdbcType="VARCHAR" property="videoTitle"/>
+        <result column="video_duration" jdbcType="FLOAT" property="videoDuration"/>
+        <result column="video_file_size" jdbcType="FLOAT" property="videoFileSize"/>
+        <result column="video_cover" jdbcType="VARCHAR" property="videoCover"/>
+        <result column="obs_file_name" jdbcType="VARCHAR" property="obsFileName"/>
+        <result column="title_pinyin" jdbcType="VARCHAR" property="titlePinyin"/>
+        <result column="video_desc" jdbcType="VARCHAR" property="videoDesc"/>
+        <result column="title_first_letter" jdbcType="VARCHAR" property="titleFirstLetter"/>
+        <result column="delete_mark" jdbcType="INTEGER" property="deleteMark"/>
+        <result column="number_views" jdbcType="INTEGER" property="numberViews"/>
+        <result column="message_num" jdbcType="INTEGER" property="messageNum"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user, number_views, message_num
+        video_url, video_title, video_duration, video_file_size, video_cover, obs_file_name, title_pinyin, title_first_letter, delete_mark, video_desc
+    </sql>
+
+    <update id="updateNumberViews" >
+        update t_build_site_video_warehouse set number_views = number_views + 1 WHERE id=#{id}
+    </update>
+
+</mapper>

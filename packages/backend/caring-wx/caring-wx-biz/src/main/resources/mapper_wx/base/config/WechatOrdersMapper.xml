@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.wx.dao.config.WechatOrdersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.wx.entity.config.WechatOrders">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="app_id" jdbcType="VARCHAR" property="appId"/>
+        <result column="mchid" jdbcType="VARCHAR" property="mchid"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="time_expire" jdbcType="TIMESTAMP" property="timeExpire"/>
+        <result column="amount" jdbcType="INTEGER" property="amount"/>
+        <result column="amount_currency" jdbcType="VARCHAR" property="amountCurrency"/>
+        <result column="prepay_id" jdbcType="VARCHAR" property="prepayId"/>
+        <result column="error_code" jdbcType="VARCHAR" property="errorCode"/>
+        <result column="error_desc" jdbcType="VARCHAR" property="errorDesc"/>
+        <result column="notify_id" jdbcType="VARCHAR" property="notifyId"/>
+        <result column="notify_create_time" jdbcType="TIMESTAMP" property="notifyCreateTime"/>
+        <result column="notify_event_type" jdbcType="VARCHAR" property="notifyEventType"/>
+        <result column="notify_resource_type" jdbcType="VARCHAR" property="notifyResourceType"/>
+        <result column="notify_summary" jdbcType="VARCHAR" property="notifySummary"/>
+        <result column="transaction_id" jdbcType="VARCHAR" property="transactionId"/>
+        <result column="trade_type" jdbcType="VARCHAR" property="tradeType"/>
+        <result column="bank_type" jdbcType="VARCHAR" property="bankType"/>
+        <result column="trade_state" jdbcType="VARCHAR" property="tradeState"/>
+        <result column="success_time" jdbcType="VARCHAR" property="successTime"/>
+        <result column="payer_total" jdbcType="INTEGER" property="payerTotal"/>
+        <result column="payer_currency" jdbcType="VARCHAR" property="payerCurrency"/>
+        <result column="payer_openid" jdbcType="VARCHAR" property="payerOpenid"/>
+        <result column="business_id" jdbcType="BIGINT" property="businessId"/>
+        <result column="business_type" jdbcType="VARCHAR" property="businessType"/>
+        <result column="pay_way" jdbcType="VARCHAR" property="payWay"/>
+        <result column="notify_url" jdbcType="VARCHAR" property="notifyUrl"/>
+
+        <result column="refund_id" jdbcType="VARCHAR" property="refundId"/>
+        <result column="refund_channel" jdbcType="VARCHAR" property="refundChannel"/>
+        <result column="user_received_account" jdbcType="VARCHAR" property="userReceivedAccount"/>
+        <result column="refund_success_time" jdbcType="VARCHAR" property="refundSuccessTime"/>
+        <result column="refund_status" jdbcType="VARCHAR" property="refundStatus"/>
+        <result column="refund_account" jdbcType="VARCHAR" property="refundAccount"/>
+        <result column="refund_amount" jdbcType="VARCHAR" property="refundAmount"/>
+
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        app_id, mchid, open_id, description, time_expire, amount, amount_currency,
+        prepay_id, error_code, error_desc, notify_id, notify_create_time, notify_event_type,
+        notify_resource_type, notify_summary, transaction_id, trade_type, bank_type, trade_state,
+        success_time, payer_total, payer_currency, payer_openid, business_id, business_type, pay_way, notify_url,
+        refund_id, refund_channel, user_received_account, refund_success_time, refund_status, refund_account, refund_amount
+
+    </sql>
+
+</mapper>

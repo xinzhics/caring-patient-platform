@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.plan.PlanDetailTimeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.plan.PlanDetailTime">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="frequency" jdbcType="INTEGER" property="frequency"/>
+        <result column="time_" jdbcType="TIME" property="time"/>
+        <result column="nursing_plan_detail_id" jdbcType="BIGINT" property="nursingPlanDetailId"/>
+        <result column="pre_time" jdbcType="INTEGER" property="preTime"/>
+        <result column="template_message_id" jdbcType="VARCHAR" property="templateMessageId"/>
+        <result column="cms_title" jdbcType="VARCHAR" property="cmsTitle"/>
+        <result column="send_url" jdbcType="INTEGER" property="sendUrl"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        frequency, time_, nursing_plan_detail_id, pre_time, template_message_id, send_url, cms_title
+    </sql>
+
+    <select id="selectMenuLikeUrl" resultMap="BaseResultMap">
+        select id, tenant_code from t_nursing_plan_detail_time where send_url = 1 and template_message_id like #{shareUrl}
+    </select>
+
+</mapper>

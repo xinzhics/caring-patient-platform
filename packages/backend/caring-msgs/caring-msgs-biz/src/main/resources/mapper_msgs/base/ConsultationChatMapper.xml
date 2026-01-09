@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.msgs.dao.ConsultationChatMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.msgs.entity.ConsultationChat">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="sender_im_account" jdbcType="VARCHAR" property="senderImAccount"/>
+        <result column="sender_id" jdbcType="BIGINT" property="senderId"/>
+        <result column="sender_name" jdbcType="VARCHAR" property="senderName"/>
+        <result column="sender_role_type" jdbcType="VARCHAR" property="senderRoleType"/>
+        <result column="sender_role_remark" jdbcType="VARCHAR" property="senderRoleRemark"/>
+        <result column="sender_avatar" jdbcType="VARCHAR" property="senderAvatar"/>
+        <result column="group_id" jdbcType="BIGINT" property="groupId"/>
+        <result column="im_group_id" jdbcType="VARCHAR" property="imGroupId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="type_" jdbcType="VARCHAR" property="type"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, create_user, update_time, update_user, sender_im_account, sender_id, sender_name, sender_role_type, sender_role_remark,
+        sender_avatar, group_id, im_group_id, content, type_
+    </sql>
+
+</mapper>

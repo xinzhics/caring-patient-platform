@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>caring-admin-cloud</artifactId>
+        <groupId>com.caring.sass</groupId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>caring-ucenter</artifactId>
+    <name>${project.artifactId}</name>
+    <description>用户中心服务</description>
+    <packaging>pom</packaging>
+    <modules>
+        <module>caring-oauth-controller</module>
+        <module>caring-oauth-biz</module>
+        <module>caring-oauth-entity</module>
+
+        <module>caring-ucenter-api</module>
+        <module>caring-ucenter-server</module>
+        <module>caring-ucenter-entity</module>
+        <module>caring-ucenter-biz</module>
+        <module>caring-ucenter-controller</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-ucenter-entity</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-ucenter-biz</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caring.sass</groupId>
+                <artifactId>caring-ucenter-controller</artifactId>
+                <version>${caring-project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.wx.dao.config.ConfigAdditionalMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.wx.entity.config.ConfigAdditional">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="wx_app_id" jdbcType="VARCHAR" property="wxAppId"/>
+        <result column="message_callback_handler_url" jdbcType="VARCHAR" property="messageCallbackHandlerUrl"/>
+        <result column="image_message_handler_url" jdbcType="VARCHAR" property="imageMessageHandlerUrl"/>
+        <result column="link_message_handler_url" jdbcType="VARCHAR" property="linkMessageHandlerUrl"/>
+        <result column="location_message_handler_url" jdbcType="VARCHAR" property="locationMessageHandlerUrl"/>
+        <result column="text_message_handler_url" jdbcType="VARCHAR" property="textMessageHandlerUrl"/>
+        <result column="video_message_handler_url" jdbcType="VARCHAR" property="videoMessageHandlerUrl"/>
+        <result column="voice_message_handler_url" jdbcType="VARCHAR" property="voiceMessageHandlerUrl"/>
+        <result column="voice_reconige_message_handler_url" jdbcType="VARCHAR"
+                property="voiceReconigeMessageHandlerUrl"/>
+        <result column="subscribe_event_handler_url" jdbcType="VARCHAR" property="subscribeEventHandlerUrl"/>
+        <result column="click_event_handler_url" jdbcType="VARCHAR" property="clickEventHandlerUrl"/>
+        <result column="location_event_handler_url" jdbcType="VARCHAR" property="locationEventHandlerUrl"/>
+        <result column="scan_event_handler_url" jdbcType="VARCHAR" property="scanEventHandlerUrl"/>
+        <result column="template_job_finish_event_handler_url" jdbcType="VARCHAR"
+                property="templateJobFinishEventHandlerUrl"/>
+        <result column="unsubscribe_event_handler_url" jdbcType="VARCHAR" property="unsubscribeEventHandlerUrl"/>
+        <result column="view_event_handler_url" jdbcType="VARCHAR" property="viewEventHandlerUrl"/>
+        <result column="doctor_weixin_login_url" jdbcType="VARCHAR" property="doctorWeixinLoginUrl"/>
+        <result column="patient_clock_url" jdbcType="VARCHAR" property="patientClockUrl"/>
+        <result column="patient_pain_log_url" jdbcType="VARCHAR" property="patientPainLogUrl"/>
+        <result column="patient_check_data_url" jdbcType="VARCHAR" property="patientCheckDataUrl"/>
+        <result column="appointment_url" jdbcType="VARCHAR" property="appointmentUrl"/>
+        <result column="patient_group_url" jdbcType="VARCHAR" property="patientGroupUrl"/>
+        <result column="doctor_chat" jdbcType="VARCHAR" property="doctorChat"/>
+        <result column="patient_chat" jdbcType="VARCHAR" property="patientChat"/>
+        <result column="blood_pressure_url" jdbcType="VARCHAR" property="bloodPressureUrl"/>
+        <result column="blood_glucose_url" jdbcType="VARCHAR" property="bloodGlucoseUrl"/>
+        <result column="review_reminder_url" jdbcType="VARCHAR" property="reviewReminderUrl"/>
+        <result column="health_log_url" jdbcType="VARCHAR" property="healthLogUrl"/>
+        <result column="study_plan_url" jdbcType="VARCHAR" property="studyPlanUrl"/>
+        <result column="nutrition_recipes_url" jdbcType="VARCHAR" property="nutritionRecipesUrl"/>
+        <result column="key_word_status" jdbcType="INTEGER" property="keyWordStatus"/>
+        <result column="automatic_reply" jdbcType="INTEGER" property="automaticReply"/>
+        <result column="tenant_code" jdbcType="INTEGER" property="tenantCode"/>
+        <result column="cms_url" jdbcType="VARCHAR" property="cmsUrl"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        wx_app_id, message_callback_handler_url, image_message_handler_url, link_message_handler_url, location_message_handler_url,
+        text_message_handler_url, video_message_handler_url, voice_message_handler_url, voice_reconige_message_handler_url,
+        subscribe_event_handler_url, click_event_handler_url, location_event_handler_url, scan_event_handler_url,
+        template_job_finish_event_handler_url, unsubscribe_event_handler_url, view_event_handler_url,
+        doctor_weixin_login_url, patient_clock_url, patient_pain_log_url, patient_check_data_url, appointment_url,
+        patient_group_url, doctor_chat, patient_chat, blood_pressure_url, blood_glucose_url, review_reminder_url,
+        health_log_url, study_plan_url, nutrition_recipes_url, key_word_status, automatic_reply,tenant_code,cms_url
+    </sql>
+
+</mapper>

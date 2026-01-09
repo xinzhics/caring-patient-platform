@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caring-nursing-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: caring-nursing-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: caring-nursing-server
+    spec:
+      containers:
+        - name: caring-nursing-server
+          image: registry.cn-beijing.aliyuncs.com/caring/caring-nursing-server:c.2.5.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 31005
+      imagePullSecrets:
+        - name: regsecret-cn
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caring-nursing-server
+spec:
+  selector:
+    app: caring-nursing-server
+  #    env: prod
+  ports:
+    - protocol: TCP
+      port: 31005
+      targetPort: 31005

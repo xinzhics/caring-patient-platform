@@ -1,0 +1,248 @@
+.single-choice {
+  .box1 {
+    padding-top: 10px;
+    background-color: #fff;
+    padding-bottom: 2rem;
+    // padding-top: 1.5rem;
+
+    .title {
+      display: flex;
+      background-color: #fff;
+
+      .mustchoose {
+        width: 1rem;
+        color: red;
+        margin-top: .8rem;
+        margin-left: .5rem;
+      }
+
+      .username {
+        // display: block;
+        font-size: 1rem;
+        color: #333;
+        padding-left: 13px;
+        margin-top: .8rem;
+      }
+
+      .errmess {
+        margin-left: 14.5rem;
+        color: red;
+        font-size: .8rem;
+      }
+    }
+  }
+
+  .cell2 {
+    border: 1px solid red !important;
+
+    span {
+      color: red !important;
+    }
+  }
+
+  .box {
+    display: flex;
+    background-color: #fff;
+
+    .box1 {
+      // background-color: red;
+      text-align: left;
+      // line-height: 32/20rem;
+      padding-left: 1rem;
+      font-size: 1rem;
+      font-family: Source Han Sans CN;
+      color: #333333;
+    }
+
+    .box2 {
+      // height: 32/20rem;
+      color: red;
+      padding-left: .2rem;
+    }
+  }
+
+  .depict {
+    width: 21.4rem;
+    margin-left: 13px;
+    margin-right: 13px;
+    font-size: .8rem;
+    color: #999;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    margin-bottom: 17px;
+
+  }
+
+  .choose {
+    width: 92%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 7rem;
+
+    // background-color: lawngreen;
+    /deep/.van-field__control {
+      padding-left: .8125rem
+        /* 13/16 */
+      ;
+      min-height: 24px;
+    }
+
+    .title {
+      // width: 100%;
+      height: 4rem;
+      text-align: center !important;
+      line-height: 4rem;
+      font-size: .8rem;
+      border-bottom: 1px solid #66728B;
+      margin-bottom: 3rem;
+      margin: 0 auto !important;
+      display: flex;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .hook1 {
+      position: relative;
+      font-size: .8rem;
+      color: #6F7D97;
+
+      .options {
+        margin-top: 25px;
+        height: 2.875rem
+          /* 46/16 */
+        ;
+        background-color: #F5F5F5;
+        text-align: center;
+        line-height: 2.875rem;
+        border-radius: 47px;
+        color: #666;
+        font-size: 16px;
+        border: 2px solid #F5F5F5;
+      }
+
+      .options2 {
+        background-color: #fff;
+        border: 2px solid #6F7D97;
+        color: #6F7D97
+      }
+
+      .hook {
+        position: absolute;
+        right: 1rem;
+        top: .6rem
+          /* 18/16 */
+        ;
+        font-size: 18px;
+        // color: #fff;
+      }
+    }
+
+
+    /deep/.van-cell {
+      width: 100% !important;
+      padding: 0 !important;
+      margin-top: 1rem;
+      border-bottom: 1px solid #CED1D9;
+    }
+
+    // /deep/.van-popup__close-icon--top-right {
+    //   top: 10rem !important;
+    //   right: 16px;
+    // }
+
+  }
+
+  /deep/.van-field__word-limit {
+    margin-bottom: .2rem;
+  }
+
+
+  .firstcell {
+    background-color: #FAFAFA;
+    width: 92%;
+    margin-left: .8125rem ;
+    padding: 0 !important;
+    line-height: 3rem;
+    border: 1px solid #CED1D9;
+    padding-left: .8125rem !important;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
+    min-height: 44px;
+
+    .van-cell__value {
+      text-align: left;
+      padding-right: 20px;
+      line-height: 25px;
+    }
+
+    .van-cell__value--alone {
+      display: flex;
+      align-content: center;
+    }
+
+    .van-cell__right-icon {
+      display: flex;
+      align-items: center;
+      margin-right: 7px;
+    }
+
+    .van-cell__title span {
+      color: #b8b8b8;
+    }
+  }
+
+
+
+
+  /deep/.van-cell__label {
+    width: 19rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+
+  /deep/.van-popup__close-icon {
+    // color: black;
+    padding-top: .35rem;
+  }
+
+
+
+
+  /deep/.van-button {
+    background-color: rgb(102, 114, 139);
+    border: none;
+    margin-top: 5rem;
+    width: 15rem;
+    // position: absolute;
+    // left: 50%;
+    // transform: translateX(-50%);
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(102, 114, 139);
+    border: none;
+
+  }
+}
+
+.noshowbox {
+  // margin-top: 2rem !important;
+  /deep/.van-cell__label {
+    display: none;
+  }
+}
+
+.showbox {
+  // margin-top: 2rem;
+  /deep/.van-cell__label {
+    display: block;
+  }
+}

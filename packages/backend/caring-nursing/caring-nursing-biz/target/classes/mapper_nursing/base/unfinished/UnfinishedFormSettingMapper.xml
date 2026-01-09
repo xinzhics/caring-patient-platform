@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.unfinished.UnfinishedFormSettingMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.unfinished.UnfinishedFormSetting">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="plan_id" jdbcType="BIGINT" property="planId"/>
+        <result column="plan_name" jdbcType="VARCHAR" property="planName"/>
+        <result column="form_id" jdbcType="BIGINT" property="formId"/>
+        <result column="reminder_time" jdbcType="VARCHAR" property="reminderTime"/>
+        <result column="reminder_day" jdbcType="INTEGER" property="reminderDay"/>
+        <result column="medicine_push" jdbcType="VARCHAR" property="medicinePush"/>
+        <result column="plan_type" jdbcType="INTEGER" property="planType"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        plan_id, plan_name, form_id, reminder_time, reminder_day, medicine_push, plan_type
+    </sql>
+
+</mapper>

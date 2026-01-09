@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.tenant.dao.router.H5RouterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.tenant.entity.router.H5Router">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="status_" jdbcType="BIT" property="status"/>
+        <result column="ban_delete" jdbcType="BIT" property="banDelete"/>
+        <result column="icon_url" jdbcType="VARCHAR" property="iconUrl"/>
+        <result column="sort_value" jdbcType="INTEGER" property="sortValue"/>
+        <result column="dict_item_id" jdbcType="BIGINT" property="dictItemId"/>
+        <result column="dict_item_name" jdbcType="VARCHAR" property="dictItemName"/>
+        <result column="dict_item_type" jdbcType="VARCHAR" property="dictItemType"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="patient_menu_doctor_status" jdbcType="BIT" property="patientMenuDoctorStatus"/>
+        <result column="patient_menu_nursing_status" jdbcType="BIT" property="patientMenuNursingStatus"/>
+        <result column="module_type" jdbcType="VARCHAR" property="moduleType"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        name, status_, ban_delete, icon_url, sort_value, dict_item_id, dict_item_name, dict_item_type, path, patient_menu_doctor_status, patient_menu_nursing_status, module_type
+    </sql>
+
+    <select id="selectMenuLikeUrl" resultMap="BaseResultMap">
+        select id, tenant_code from t_h5_router where path like #{shareUrl}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.caring.sass</groupId>
+        <artifactId>caring-admin-cloud</artifactId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>caring-tenant</artifactId>
+    <name>${project.artifactId}</name>
+    <description>权限服务</description>
+    <packaging>pom</packaging>
+    <modules>
+        <module>caring-tenant-entity</module>
+        <module>caring-tenant-biz</module>
+        <module>caring-tenant-controller</module>
+        <module>caring-tenant-server</module>
+        <module>caring-tenant-api</module>
+    </modules>
+
+</project>

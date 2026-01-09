@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caring-file-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: caring-file-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: caring-file-server
+    spec:
+      containers:
+        - name: caring-file-server
+          image: registry.cn-beijing.aliyuncs.com/caring/caring-file-server:c.2.5.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 8765
+      imagePullSecrets:
+        - name: regsecret-cn
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caring-file-server
+spec:
+  selector:
+    app: caring-file-server
+  #    env: prod
+  ports:
+    - protocol: TCP
+      port: 8765
+      targetPort: 8765

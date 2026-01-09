@@ -1,0 +1,34 @@
+# 环境变量文件
+.env
+.env.local
+.env.production
+
+# 实际配置文件（非示例文件）
+config-prod.properties
+config-dev.properties
+config-ys_local.properties
+
+# Nacos实际配置文件
+nacos/conf/application.properties
+nacos/clientConfig/mysql.yml
+nacos/clientConfig/redis.yml
+nacos/clientConfig/third-party.yml
+
+# 证书和密钥文件
+*.pem
+*.pfx
+*.p12
+*.key
+*.jks
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.temp
+
+# 系统文件
+.DS_Store
+Thumbs.db

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.wx.dao.keyword.KeywordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.wx.entity.keyword.Keyword">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="key_word" jdbcType="VARCHAR" property="keyWord"/>
+        <result column="match_type" jdbcType="TINYINT" property="matchType"/>
+        <result column="message_type" jdbcType="TINYINT" property="msgType"/>
+        <result column="media_id" jdbcType="VARCHAR" property="mediaId"/>
+        <result column="del_flag" jdbcType="TINYINT" property="delFlag"/>
+        <result column="reply" jdbcType="VARCHAR" property="reply"/>
+        <result column="rule_name" jdbcType="VARCHAR" property="ruleName"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        key_word, match_type, message_type, media_id, del_flag, reply,rule_name
+    </sql>
+
+</mapper>

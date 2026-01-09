@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caring-authority-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: caring-authority-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: caring-authority-server
+    spec:
+      containers:
+        - name: caring-authority-server
+          image: registry.cn-beijing.aliyuncs.com/caring/caring-authority-server:c.2.5.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 8764
+      imagePullSecrets:
+        - name: regsecret-cn
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caring-authority-server
+spec:
+  selector:
+    app: caring-authority-server
+  #    env: prod
+  ports:
+    - protocol: TCP
+      port: 8764
+      targetPort: 8764

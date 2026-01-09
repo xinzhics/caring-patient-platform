@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.plan.PlanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.plan.Plan">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="name_" jdbcType="VARCHAR" property="name"/>
+        <result column="status_" jdbcType="INTEGER" property="status"/>
+        <result column="project_id" jdbcType="BIGINT" property="projectId"/>
+        <result column="type_" jdbcType="INTEGER" property="type"/>
+        <result column="is_admin_template" jdbcType="INTEGER" property="isAdminTemplate"/>
+        <result column="execute_" jdbcType="INTEGER" property="execute"/>
+        <result column="effective_time" jdbcType="INTEGER" property="effectiveTime"/>
+        <result column="plan_type" jdbcType="INTEGER" property="planType"/>
+        <result column="system_template" jdbcType="INTEGER" property="systemTemplate"/>
+        <result column="follow_up_plan_type" jdbcType="VARCHAR" property="followUpPlanType"/>
+        <result column="plan_desc" jdbcType="VARCHAR" property="planDesc"/>
+        <result column="plan_icon" jdbcType="VARCHAR" property="planIcon"/>
+        <result column="learn_plan_role" jdbcType="VARCHAR" property="learnPlanRole"/>
+        <result column="plan_model" jdbcType="INTEGER" property="planModel"/>
+        <result column="next_remind" jdbcType="INTEGER" property="nextRemind"/>
+        <result column="time_out_remind" jdbcType="INTEGER" property="timeOutRemind"/>
+        <result column="time_out_remind_template" jdbcType="BIGINT" property="timeOutRemindTemplate"/>
+        <result column="timeout_recovery" jdbcType="INTEGER" property="timeoutRecovery"/>
+        <result column="remind_template_title" jdbcType="VARCHAR" property="remindTemplateTitle"/>
+        <result column="time_out_remind_template_title" jdbcType="VARCHAR" property="timeOutRemindTemplateTitle"/>
+        <result column="time_out_recovery_remind_template_title" jdbcType="VARCHAR" property="timeOutRecoveryRemindTemplateTitle"/>
+        <result column="time_out_plan_id" jdbcType="BIGINT" property="timeOutPlanId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        name_, status_, project_id, type_, is_admin_template, execute_,
+        effective_time, plan_type, system_template, follow_up_plan_type, plan_desc, plan_icon, learn_plan_role,
+         plan_model, next_remind, time_out_remind, time_out_remind_template, timeout_recovery, remind_template_title, time_out_remind_template_title, time_out_recovery_remind_template_title, time_out_plan_id
+    </sql>
+
+
+    <select id="queryGenerateDrugsPush" resultType="java.util.Map">
+        SELECT
+            t.tenant_code AS tenantCode,
+            t.id AS drugsId,
+            t.dose AS drugsDose,
+            t.drugs_time AS drugsTime,
+            t.patient_id AS patientId,
+            t.unit AS unit
+        FROM
+            t_patient_drugs t
+            LEFT JOIN t_patient_nursing_plan s ON t.patient_id = s.patient_id
+            LEFT JOIN t_nursing_plan n ON s.nursing_plant_id = n.id
+        WHERE
+            t.`status` = 0
+            AND n.status_ = 1
+            AND n.plan_type = 4
+            AND s.is_subscribe = 1
+    </select>
+
+</mapper>

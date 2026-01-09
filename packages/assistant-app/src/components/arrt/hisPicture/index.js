@@ -1,0 +1,112 @@
+import Vue from 'vue'
+import {
+  Uploader,
+  Dialog
+} from 'vant'
+import '@vant/touch-emulator'
+import { fileUpload } from '@/api/fileUpload'
+import FormCheckFuncEvent from '../formVue'
+
+Vue.use(Uploader)
+export default {
+  components: {
+    [Dialog.Component.name]: Dialog.Component
+  },
+  data () {
+    return {
+      deletable: false,
+      fileList: [],
+      showred: false,
+      show: false
+    }
+  },
+  created () {
+    if (this.field.values.length === 0 && this.field.modifyTags === true) {
+      this.show = false
+    } else {
+      this.show = true
+    }
+    this.cleanFileValues()
+  },
+  mounted () {
+    FormCheckFuncEvent.$on('formResultCheck', () => {
+      this.checkFieldValues()
+    })
+    if (this.field.values.length > 0 && this.field.values[0].attrValue === undefined) {
+      this.field.values = []
+    } else if (this.field.values.length > 0 && this.field.values[0].attrValue !== undefined) {
+      for (let i = 0; i < this.field.values.length; i++) {
+        this.fileList.push({
+          url: this.field.values[i].attrValue,
+        })
+      }
+    }
+    // console.log(this.field);
+  },
+  methods: {
+
+    beforeDelete (val, index) {
+      Dialog.confirm({
+        message: '确认要删除该照片吗？',
+      })
+        .then(() => {
+          this.fileList.splice(index.index, 1)
+          this.field.values.splice(index.index, 1)
+          return true
+        })
+        .catch(() => {
+          return false
+        })
+    },
+
+    afterRead (files) {
+      this.showred = false
+      if (files) {
+        files.status = 'uploading'
+        files.message = '上传中...'
+        var formData = new FormData()
+        formData.append('file', files.file)
+        formData.append('folderId', 1308295372556206080)
+        fileUpload(formData).then(res => {
+          this.field.values.push({
+            attrValue: res.data.data.url
+          })
+          files.status = 'done '
+          files.message = '上传完成'
+        })
+      }
+    },
+    cleanFileValues () {
+      if (this.field.values.length >= 1) {
+        for (let i = this.field.values.length - 1; i > 0; i--) {
+          if (this.field.values[i].attrValue === undefined) {
+            this.field.values.split(i, 1)
+          }
+        }
+      }
+    },
+    checkFieldValues () {
+      this.cleanFileValues()
+      if (this.field.required) {
+        // 先 清理一下 垃圾数据
+        if (!this.field.values || !this.field.values[0] || !this.field.values[0].attrValue) {
+          this.showred = true
+        } else {
+          this.showred = false
+        }
+      } else {
+        this.showred = false
+      }
+    }
+  },
+  props: {
+    field: {
+      type: Object,
+      default: {}
+    },
+    userRole: {
+      type: String,
+      default: ''
+    }
+  },
+}

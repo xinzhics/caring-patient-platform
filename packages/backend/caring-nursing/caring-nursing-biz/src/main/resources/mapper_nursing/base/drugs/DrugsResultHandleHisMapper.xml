@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.drugs.DrugsResultHandleHisMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.drugs.DrugsResultHandleHis">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="warning_type" jdbcType="TINYINT" property="warningType"/>
+        <result column="patient_id" jdbcType="BIGINT" property="patientId"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="doctor_name" jdbcType="VARCHAR" property="doctorName"/>
+        <result column="handle_time" jdbcType="TIMESTAMP" property="handleTime"/>
+        <result column="handle_user" jdbcType="BIGINT" property="handleUser"/>
+        <result column="clear_status" jdbcType="TINYINT" property="clearStatus"/>
+        <result column="drugs_condition_id" jdbcType="BIGINT" property="drugsConditionId"/>
+        <result column="drugs_id" jdbcType="BIGINT" property="drugsId"/>
+        <result column="drugs_name" jdbcType="VARCHAR" property="drugsName"/>
+        <result column="spec" jdbcType="VARCHAR" property="spec"/>
+        <result column="manufactor" jdbcType="VARCHAR" property="manufactor"/>
+        <result column="reminder_time" jdbcType="BIGINT" property="reminderTime"/>
+        <result column="buying_medicine_url" jdbcType="VARCHAR" property="buyingMedicineUrl"/>
+        <result column="template_msg_id" jdbcType="BIGINT" property="templateMsgId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        warning_type, patient_id, patient_name, avatar, doctor_id, doctor_name, handle_time, handle_user, clear_status, drugs_condition_id, drugs_id, drugs_name, spec, manufactor, reminder_time, buying_medicine_url, template_msg_id
+    </sql>
+    <select id="selectDrugsHandled" parameterType="java.util.Map" resultType="com.caring.sass.nursing.vo.DrugsHandledVo">
+        SELECT
+        t.patient_id AS patientId,
+        t.patient_name AS patientName,
+        t.avatar AS avatar,
+        t.warning_type AS warningType,
+        t.doctor_id AS doctorId,
+        t.doctor_name AS doctorName,
+        t.handle_time AS handleTime
+        FROM
+        t_nursing_drugs_result_handle_his t
+        LEFT JOIN
+        t_nursing_drugs_result_handle_his b
+        ON t.patient_id = b.patient_id
+        AND t.handle_time &lt; b.handle_time
+        where
+        <if test=" clearStatus != null">
+            t.clear_status = #{clearStatus}
+        </if>
+        <if test="dto != null and dto.nursingId != null">
+            AND t.nursing_id = #{dto.nursingId}
+        </if>
+        <if test="dto != null and dto.tenant != null and dto.tenant.trim() != ''">
+            AND t.tenant_code = #{dto.tenant}
+        </if>
+        <if test="dto != null and dto.patientName != null and dto.patientName.trim() != '' ">
+            AND t.patient_name like concat(concat('%', #{dto.patientName}),'%')
+        </if>
+        AND b.handle_time IS NULL
+        <if test="dto != null and dto.timeSort ==1 ">
+            ORDER BY t.handle_time desc
+        </if>
+        <if test="dto != null and dto.timeSort ==2 ">
+            ORDER BY t.handle_time asc
+        </if>
+
+    </select>
+</mapper>

@@ -1,0 +1,61 @@
+{
+  "name": "caring-patient-platform",
+  "version": "1.0.0",
+  "description": "患者私域管理平台 - 完整的医疗健康管理系统全栈解决方案（前端+后端）",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "build": "lerna run build",
+    "dev": "lerna run dev --parallel",
+    "test": "lerna run test",
+    "lint": "lerna run lint",
+    "version": "lerna version",
+    "publish": "lerna publish from-git",
+    "install:all": "npm install && lerna bootstrap",
+    "clean:all": "lerna clean && rm -rf node_modules",
+    "backend:install": "cd packages/backend && mvn clean install -DskipTests",
+    "backend:build": "cd packages/backend && mvn clean package -DskipTests",
+    "backend:test": "cd packages/backend && mvn test",
+    "backend:run": "cd packages/backend && mvn spring-boot:run",
+    "full:build": "npm run backend:build && npm run build",
+    "full:start": "npm run backend:run",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-vue": "^9.15.1",
+    "lerna": "^7.1.4",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/caring-patient-platform.git"
+  },
+  "keywords": [
+    "healthcare",
+    "medical",
+    "patient-management",
+    "vue",
+    "typescript",
+    "monorepo",
+    "spring-boot",
+    "java",
+    "fullstack"
+  ],
+  "author": "Caring Team",
+  "license": "MIT"
+}

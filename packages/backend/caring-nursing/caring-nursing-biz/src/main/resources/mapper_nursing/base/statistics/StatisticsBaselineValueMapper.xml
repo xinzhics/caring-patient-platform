@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.statistics.StatisticsBaselineValueMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.statistics.StatisticsBaselineValue">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+
+        <result column="statistics_task_id" jdbcType="BIGINT" property="statisticsTaskId"/>
+        <result column="form_field_label" jdbcType="VARCHAR" property="formFieldLabel"/>
+        <result column="chart_order" jdbcType="INTEGER" property="chartOrder"/>
+        <result column="chart_width" jdbcType="INTEGER" property="chartWidth"/>
+        <result column="show_or_hide" jdbcType="VARCHAR" property="showOrHide"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        statistics_task_id, chart_order, chart_width, show_or_hide, form_field_label
+    </sql>
+
+</mapper>

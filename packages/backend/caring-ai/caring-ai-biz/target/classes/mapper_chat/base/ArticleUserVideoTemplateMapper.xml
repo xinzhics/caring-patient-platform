@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.article.dao.ArticleUserVideoTemplateMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.article.ArticleUserVideoTemplate">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="template_video_id" jdbcType="VARCHAR" property="templateVideoId"/>
+        <result column="template_id" jdbcType="VARCHAR" property="templateId"/>
+        <result column="video_url" jdbcType="VARCHAR" property="videoUrl"/>
+        <result column="video_name" jdbcType="VARCHAR" property="videoName"/>
+        <result column="file_name" jdbcType="VARCHAR" property="fileName"/>
+        <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl"/>
+        <result column="type_" jdbcType="INTEGER" property="type"/>
+        <result column="video_height" jdbcType="VARCHAR" property="videoHeight"/>
+        <result column="video_width" jdbcType="VARCHAR" property="videoWidth"/>
+        <result column="use_count" jdbcType="INTEGER" property="useCount"/>
+        <result column="delete_status" jdbcType="INTEGER" property="deleteStatus"/>
+        <result column="auth_video_url" jdbcType="INTEGER" property="authVideoUrl"/>
+        <result column="volcengine_image_task_id" jdbcType="VARCHAR" property="volcengineImageTaskId"/>
+        <result column="volcengine_image_result" jdbcType="VARCHAR" property="volcengineImageResult"/>
+        <result column="volcengine_image_error_message" jdbcType="VARCHAR" property="volcengineImageErrorMessage"/>
+        <result column="clone_voice" jdbcType="INTEGER" property="cloneVoice"/>
+        <result column="clone_voice_status" jdbcType="INTEGER" property="cloneVoiceStatus"/>
+
+
+        <result column="water_job_id" jdbcType="VARCHAR" property="waterJobId"/>
+        <result column="water_job_request_id" jdbcType="VARCHAR" property="waterJobRequestId"/>
+        <result column="water_job_result_list_json" jdbcType="VARCHAR" property="waterJobResultListJson"/>
+        <result column="water_job_start_time" jdbcType="TIMESTAMP" property="waterJobStartTime"/>
+        <result column="water_job_query_result_json" jdbcType="VARCHAR" property="waterJobQueryResultJson"/>
+        <result column="file_url_back" jdbcType="VARCHAR" property="fileUrlBack"/>
+        <result column="water_job_status" jdbcType="VARCHAR" property="waterJobStatus"/>
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time, avatar_url, type_,
+        user_id, template_video_id, template_id, video_url, video_name, file_name,
+        video_height, video_width, use_count, delete_status, auth_video_url,
+        volcengine_image_task_id, volcengine_image_result, volcengine_image_error_message,
+        clone_voice, clone_voice_status, water_job_id, water_job_request_id, water_job_result_list_json,
+        water_job_start_time, water_job_query_result_json, file_url_back, water_job_status
+    </sql>
+
+</mapper>

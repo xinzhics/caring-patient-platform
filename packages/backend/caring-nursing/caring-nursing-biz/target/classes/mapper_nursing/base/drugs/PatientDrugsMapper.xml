@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.drugs.PatientDrugsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.drugs.PatientDrugs">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="patient_id" jdbcType="BIGINT" property="patientId"/>
+        <result column="drugs_id" jdbcType="BIGINT" property="drugsId"/>
+        <result column="number_of_day" jdbcType="INTEGER" property="numberOfDay"/>
+        <result column="checkin_num" jdbcType="INTEGER" property="checkinNum"/>
+        <result column="drugs_time" jdbcType="VARCHAR" property="drugsTime"/>
+        <result column="cycle" jdbcType="INTEGER" property="cycle"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="dose" jdbcType="FLOAT" property="dose"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="unit" jdbcType="VARCHAR" property="unit"/>
+        <result column="cycle_day" jdbcType="INTEGER" property="cycleDay"/>
+        <result column="medicine_icon" jdbcType="VARCHAR" property="medicineIcon"/>
+        <result column="medicine_name" jdbcType="VARCHAR" property="medicineName"/>
+        <result column="number_of_boxes" jdbcType="INTEGER" property="numberOfBoxes"/>
+        <result column="close_remind" jdbcType="INTEGER" property="closeRemind"/>
+        <result column="stop_reason" jdbcType="VARCHAR" property="stopReason"/>
+        <result column="stop_reason_remark" jdbcType="VARCHAR" property="stopReasonRemark"/>
+        <result column="buy_drugs_reminder_time" jdbcType="TIMESTAMP" property="buyDrugsReminderTime"/>
+        <result column="early_warning_monitor" jdbcType="INTEGER" property="earlyWarningMonitor"/>
+        <result column="start_take_medicine_date" jdbcType="TIMESTAMP" property="startTakeMedicineDate"/>
+        <result column="time_period" jdbcType="VARCHAR" property="timePeriod"/>
+        <result column="cycle_duration" jdbcType="INTEGER" property="cycleDuration"/>
+        <result column="next_reminder_date" jdbcType="TIMESTAMP" property="nextReminderDate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        patient_id, drugs_id, number_of_day, checkin_num, drugs_time, cycle, end_time, dose, status, unit, cycle_day,
+         medicine_icon, medicine_name, number_of_boxes, close_remind, stop_reason, stop_reason_remark,buy_drugs_reminder_time,
+          early_warning_monitor, start_take_medicine_date, time_period, cycle_duration, next_reminder_date
+    </sql>
+    <select id="doGetDrugsPatient" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM (
+        SELECT
+	    patient_id
+        FROM
+	    t_patient_drugs
+        WHERE
+	    (
+		drugs_id = #{drugsId}
+		AND STATUS = #{code}
+	    AND patient_id IN ( SELECT id FROM u_user_patient WHERE service_advisor_id = #{userId} ))
+        GROUP BY
+	    patient_id) t
+    </select>
+</mapper>

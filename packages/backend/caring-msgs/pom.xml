@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.caring.sass</groupId>
+        <artifactId>caring-admin-cloud</artifactId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>caring-msgs</artifactId>
+    <name>${project.artifactId}</name>
+    <description>消息服务</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>caring-msgs-api</module>
+        <module>caring-msgs-server</module>
+        <module>caring-sms-controller</module>
+        <module>caring-sms-biz</module>
+        <module>caring-msgs-controller</module>
+        <module>caring-msgs-biz</module>
+        <module>caring-msgs-entity</module>
+    </modules>
+</project>

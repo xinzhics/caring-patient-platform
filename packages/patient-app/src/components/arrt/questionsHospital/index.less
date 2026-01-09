@@ -1,0 +1,93 @@
+.main {
+  background-color: #fff;
+  padding-bottom: 13px;
+  padding-top:13px;
+
+  .title {
+    margin-left: .8125rem
+      /* 13/16 */
+    ;
+
+    .name {
+      font-size: 16px;
+      font-family: Source Han Sans CN;
+      font-weight: 500;
+      color: #333333;
+    }
+
+    .mustchoose {
+      font-size: 16px;
+      font-weight: 500;
+      color: #FF5555;
+      opacity: 1;
+    }
+
+    .describe {
+      font-size: 13px;
+      font-family: Source Han Sans CN;
+      font-weight: 400;
+      color: #999999;
+      opacity: 1;
+      margin-top: .3rem
+        /* 8/16 */
+      ;
+      margin-bottom: 17px;
+    }
+  }
+}
+
+
+
+/deep/.cell {
+  padding: 0 !important;
+  width: 92%;
+  margin-left: 13px;
+  margin-right: 13px;
+  height: 51px;
+    /* 46/16 */
+  ;
+  background: rgba(245, 245, 245, 0.39);
+  border: 1px solid #D6D6D6;
+  opacity: 1;
+  border-radius: 42px;
+  position: relative;
+
+  /* 13/16 */
+  ;
+
+
+
+}
+
+/deep/.van-cell__value {
+  line-height: 2.875rem;
+  padding-left: .8125rem
+}
+
+/deep/.van-icon {
+  margin-top: .7rem !important
+    /* 13/16 */
+  ;
+  margin-right: .5rem;
+
+}
+.hosp{
+  position: relative;
+  top: 0;
+}
+/deep/.cellColor{
+  .van-cell__value{
+    color: #333333;
+  }
+}
+/deep/.nodatacolor{
+  .van-cell__value{
+    color: #b6b6b6;
+  }
+}
+/deep/.noData{
+  border: 1px solid red;
+  .van-cell__value{
+    color: red;
+  }
+}

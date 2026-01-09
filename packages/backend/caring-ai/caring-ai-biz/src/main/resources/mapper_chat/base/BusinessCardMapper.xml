@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.card.dao.BusinessCardMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.card.BusinessCard">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="doctor_name" jdbcType="VARCHAR" property="doctorName"/>
+        <result column="doctor_title" jdbcType="VARCHAR" property="doctorTitle"/>
+        <result column="doctor_department" jdbcType="VARCHAR" property="doctorDepartment"/>
+        <result column="doctor_hospital" jdbcType="VARCHAR" property="doctorHospital"/>
+        <result column="doctor_be_good_at" jdbcType="VARCHAR" property="doctorBeGoodAt"/>
+        <result column="doctor_personal" jdbcType="VARCHAR" property="doctorPersonal"/>
+        <result column="doctor_meta_human" jdbcType="VARCHAR" property="doctorMetaHuman"/>
+        <result column="doctor_studio" jdbcType="VARCHAR" property="doctorStudio"/>
+        <result column="doctor_AI_dialogue" jdbcType="VARCHAR" property="doctorAiDialogue"/>
+        <result column="doctor_meta_human_poster" jdbcType="VARCHAR" property="doctorMetaHumanPoster"/>
+        <result column="doctor_avatar" jdbcType="VARCHAR" property="doctorAvatar"/>
+        <result column="doctor_ai_type" jdbcType="INTEGER" property="doctorAiType"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone" typeHandler="com.caring.sass.common.mybaits.EncryptedStringTypeHandler"/>
+        <result column="organ_id" jdbcType="BIGINT" property="organId"/>
+        <result column="has_doctor_studio" jdbcType="INTEGER" property="hasDoctorStudio"/>
+        <result column="create_button_status" jdbcType="INTEGER" property="createButtonStatus"/>
+        <result column="activation_time" jdbcType="TIMESTAMP" property="activationTime"/>
+        <result column="open_video_account" jdbcType="INTEGER" property="openVideoAccount"/>
+        <result column="finder_user_name" jdbcType="VARCHAR" property="finderUserName"/>
+        <result column="feed_id" jdbcType="VARCHAR" property="feedId"/>
+        <result column="open_contact_me" jdbcType="INTEGER" property="openContactMe"/>
+        <result column="contact_img_url" jdbcType="VARCHAR" property="contactImgUrl"/>
+        <result column="member_version" jdbcType="VARCHAR" property="memberVersion"/>
+        <result column="give_thumbs_up_count" jdbcType="INTEGER" property="giveThumbsUpCount"/>
+        <result column="number_of_views" jdbcType="INTEGER" property="numberOfViews"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        doctor_id, doctor_name, doctor_title, doctor_department, doctor_hospital, doctor_be_good_at, doctor_personal,
+        doctor_meta_human, doctor_studio, doctor_AI_dialogue, doctor_meta_human_poster, doctor_avatar, doctor_ai_type,
+        user_id, has_doctor_studio, create_button_status, organ_id, activation_time,
+        open_video_account, finder_user_name, feed_id, open_contact_me, contact_img_url, member_version,
+        give_thumbs_up_count, number_of_views, phone
+    </sql>
+
+</mapper>

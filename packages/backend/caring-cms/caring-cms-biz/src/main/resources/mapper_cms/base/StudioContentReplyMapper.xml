@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.cms.dao.StudioContentReplyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.cms.entity.StudioContentReply">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="c_parent_comment_id" jdbcType="BIGINT" property="cParentCommentId"/>
+        <result column="c_replier_id" jdbcType="BIGINT" property="cReplierId"/>
+        <result column="c_cms_id" jdbcType="BIGINT" property="cCmsId"/>
+        <result column="c_content" jdbcType="VARCHAR" property="cContent"/>
+        <result column="n_audit_status" jdbcType="INTEGER" property="auditStatus"/>
+        <result column="like_count" jdbcType="BIGINT" property="likeCount"/>
+        <result column="replier_name" jdbcType="VARCHAR" property="replierName"/>
+        <result column="replier_avatar" jdbcType="VARCHAR" property="replierAvatar"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,
+        c_parent_comment_id, c_replier_id, c_cms_id, c_content, n_audit_status, like_count, replier_name, replier_avatar
+    </sql>
+
+</mapper>

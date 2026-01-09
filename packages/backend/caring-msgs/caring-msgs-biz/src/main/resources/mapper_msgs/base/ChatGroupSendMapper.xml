@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.msgs.dao.ChatGroupSendMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.msgs.entity.ChatGroupSend">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="sender_im_account" jdbcType="VARCHAR" property="senderImAccount"/>
+        <result column="sender_id" jdbcType="VARCHAR" property="senderId"/>
+        <result column="sender_name" jdbcType="VARCHAR" property="senderName"/>
+        <result column="sender_avatar" jdbcType="VARCHAR" property="senderAvatar"/>
+        <result column="receiver_ids" jdbcType="VARCHAR" property="receiverIds"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="cms_id" jdbcType="BIGINT" property="cmsId"/>
+        <result column="cms_title" jdbcType="VARCHAR" property="cmsTitle"/>
+        <result column="type_" jdbcType="VARCHAR" property="type"/>
+        <result column="patient_number" jdbcType="BIGINT" property="patientNumber"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, create_user, update_time, update_user,
+        sender_im_account, sender_id, sender_name, sender_avatar, receiver_ids, content, cms_id, cms_title,
+         type_, patient_number, tenant_code
+    </sql>
+
+    <select id="queryChatGroupTiming" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM m_msg_chat_group_send where send_time = #{sendTime} and send_status = 0
+    </select>
+
+    <select id="pageDoctorChatGroupSearch" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from m_msg_chat_group_send WHERE sender_id = #{userId}
+        <if test="searchKeyName != null and searchKeyName != ''">
+            and (( content LIKE #{searchKeyName} and type_ = 'text' ) or ( cms_title like #{searchKeyName} and type_ = 'cms' ))
+        </if>
+        <if test="searchKeyName != null">
+        OR id IN (
+        SELECT
+        gso.chat_group_send_id
+        FROM
+        m_msg_chat_group_send_object as gso
+        WHERE
+        gso.user_id = #{userId} AND gso.user_role = #{userRole}
+            and (
+                ( object_association_type = 'DISEASE' AND object_association_name like #{searchKeyName} ) OR
+                ( object_association_type = 'CUSTOM_GROUP' AND object_association_name like #{searchKeyName} ) OR
+                ( object_association_type = 'PATIENT' AND object_association_id IN (select id from u_user_patient where doctor_id = #{userId} and name like #{searchKeyName}))
+            )
+        )
+        or cms_id
+        </if>
+        order by create_time desc
+        limit #{pageIndex}, 5
+    </select>
+
+
+</mapper>

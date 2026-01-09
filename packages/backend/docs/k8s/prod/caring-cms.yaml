@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caring-cms-deployment
+spec:
+  selector:
+    matchLabels:
+      app: caring-cms-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: caring-cms-server
+    spec:
+      containers:
+        - name: caring-cms-server
+          image: registry.cn-beijing.aliyuncs.com/caring/caring-cms-server:c.2.5.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 30008
+      imagePullSecrets:
+        - name: regsecret-cn
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caring-cms-server
+spec:
+  selector:
+    app: caring-cms-server
+  ports:
+    - protocol: TCP
+      port: 30008
+      targetPort: 30008

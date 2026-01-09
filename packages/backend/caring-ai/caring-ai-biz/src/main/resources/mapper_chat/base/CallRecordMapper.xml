@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.call.dao.CallRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.call.CallRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="user_mobile" jdbcType="VARCHAR" property="userMobile"/>
+        <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="dial_user_id" jdbcType="BIGINT" property="dialUserId"/>
+        <result column="blogger_user_id" jdbcType="BIGINT" property="bloggerUserId"/>
+        <result column="call_start_time" jdbcType="TIMESTAMP" property="callStartTime"/>
+        <result column="call_last_updated_time" jdbcType="TIMESTAMP" property="callLastUpdatedTime"/>
+        <result column="call_end_time" jdbcType="TIMESTAMP" property="callEndTime"/>
+        <result column="call_duration" jdbcType="INTEGER" property="callDuration"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        user_mobile, user_avatar, user_name, dial_user_id, blogger_user_id, call_start_time, call_last_updated_time, call_end_time, call_duration
+    </sql>
+
+</mapper>

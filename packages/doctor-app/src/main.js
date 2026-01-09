@@ -1,0 +1,139 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+// import FastClick from 'fastclick'
+import VueRouter from 'vue-router'
+import App from './App'
+import store from "./webIM/store";
+import router from './router/index'
+import './assets/css/weui/weui.css'
+import {initDict, getDictItem, showHist, getShowHist} from './components/utils/dictItem'
+import { cleanFieldRepeat } from './components/utils/formResultField'
+import sassWxJs from './components/utils/wxConfigUrl'
+import compressionImg from '@/components/utils/compressImg'
+
+import Tools from './service/common/tools'
+import { Constants } from '@/api/constants';
+import 'vant/lib/index.css';
+import 'vant/lib/icon/local.css';
+import {
+  Checkbox, CheckboxGroup, Icon, Uploader, Image as VanImage, Col, Row, ImagePreview, PullRefresh, Toast, Switch, Search,
+  Overlay, Loading, List, Form, Field, CellGroup, Cell as VanCell, Button
+} from 'vant';
+import {
+  LoadingPlugin,
+  ToastPlugin,
+  AlertPlugin,
+  GroupTitle,
+  Cell,
+  Grid,
+  GridItem,
+  XHeader,
+  Popup,
+  TransferDom,
+  XSwitch,
+  Tabbar,
+  TabbarItem,
+  Flexbox,
+  FlexboxItem,
+  XDialog,
+  Group,
+  XButton,
+  XInput,
+  Icon as XIcon
+} from 'vux'
+// Vue.use(vant)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(Icon)
+Vue.use(PullRefresh)
+Vue.use(VanImage)
+Vue.use(Uploader)
+Vue.use(Col)
+Vue.use(Toast)
+Vue.use(Row)
+Vue.use(LoadingPlugin)
+Vue.use(AlertPlugin)
+Vue.use(ToastPlugin)
+Vue.use(ImagePreview)
+Vue.use(Loading)
+Vue.use(Switch)
+Vue.use(Search)
+Vue.use(Overlay)
+Vue.use(List)
+Vue.use(Form)
+Vue.use(Field)
+Vue.use(CellGroup)
+Vue.use(Button)
+Vue.use(VanCell)
+Vue.prototype.$initDict = initDict
+Vue.prototype.$getDictItem = getDictItem
+Vue.prototype.$showHist = showHist
+Vue.prototype.$cleanFieldRepeat = cleanFieldRepeat
+Vue.prototype.$getShowHist = getShowHist
+Vue.prototype.$getWxConfigSignatureUrl = sassWxJs.getWxConfigSignatureUrl
+Vue.prototype.$compressionImg = compressionImg
+Vue.component('x-header', XHeader)
+Vue.component('grid', Grid)
+Vue.component('grid-item', GridItem)
+Vue.component('group-title', GroupTitle)
+Vue.component('cell', Cell)
+Vue.directive('transfer-dom', TransferDom)
+Vue.component('x-switch', XSwitch)
+Vue.component('tabbar', Tabbar)
+Vue.component('tabbar-item', TabbarItem)
+Vue.component('group', Group)
+
+Vue.component('popup', Popup)
+Vue.component('x-dialog', XDialog)
+Vue.component('x-button', XButton)
+Vue.component('x-input', XInput)
+Vue.component('x-icon', XIcon)
+
+Vue.component('flexbox', Flexbox)
+Vue.component('flexbox-item', FlexboxItem)
+import wx from 'weixin-js-sdk'
+
+
+//Vue.use(Vuex)
+Vue.use(VueRouter)
+
+// util 和baseService 直接注入到Vue上
+Vue.use(Tools)
+// seesion 过期弹框登录
+import login from '@/components/user/loginDialog.vue'
+Vue.use(login)
+Vue.use(wx)
+
+Vue.config.productionTip = false
+Vue.prototype.Constants = Constants;
+// Vue.prototype.$axios = axios
+/* eslint-disable no-new */
+
+const Base64 = require('js-base64').Base64
+
+// 防抖处理 -- 最后执行
+const on = Vue.prototype.$on
+Vue.prototype.$on = function (event, func) {
+  let timer
+  let newFunc = func
+  if (event === 'click') {
+    newFunc = function () {
+      clearTimeout(timer)
+      timer = setTimeout(function () {
+        func.apply(this, arguments)
+      }, 500)
+    }
+  }
+  // console.log('防抖')
+  on.call(this, event, newFunc)
+}
+
+window.Vue = new Vue({
+  router,
+  store,
+  Base64,
+  render: h => h(App)
+}).$mount('#app-box')
+
+

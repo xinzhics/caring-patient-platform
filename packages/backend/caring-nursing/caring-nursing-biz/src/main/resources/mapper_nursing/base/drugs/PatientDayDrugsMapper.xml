@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.drugs.PatientDayDrugsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.drugs.PatientDayDrugs">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="patient_id" jdbcType="BIGINT" property="patientId"/>
+        <result column="drugs_count_of_day" jdbcType="FLOAT" property="drugsCountOfDay"/>
+        <result column="take_drugs_count_of_day" jdbcType="FLOAT" property="takeDrugsCountOfDay"/>
+        <result column="checkined_number" jdbcType="INTEGER" property="checkinedNumber"/>
+        <result column="checkin_number_total" jdbcType="INTEGER" property="checkinNumberTotal"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="day_compliance" jdbcType="INTEGER" property="dayCompliance"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="service_advisor_id" jdbcType="BIGINT" property="serviceAdvisorId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        patient_id, drugs_count_of_day, take_drugs_count_of_day, checkined_number, checkin_number_total, status, day_compliance, doctor_id, service_advisor_id
+    </sql>
+
+</mapper>

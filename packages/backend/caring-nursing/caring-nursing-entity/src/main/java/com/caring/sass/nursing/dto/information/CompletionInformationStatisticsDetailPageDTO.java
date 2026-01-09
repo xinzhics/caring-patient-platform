@@ -1,0 +1,69 @@
+package com.caring.sass.nursing.dto.information;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.hibernate.validator.constraints.Length;
+
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 实体类
+ * 信息完整度区间统计详细表
+ * </p>
+ *
+ * @author yangshuai
+ * @since 2022-05-24
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
+@Builder
+@ApiModel(value = "CompletionInformationStatisticsDetailPageDTO", description = "信息完整度区间统计详细表")
+public class CompletionInformationStatisticsDetailPageDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 统计ID
+     */
+    @ApiModelProperty(value = "统计ID")
+    private Long statisticsId;
+    /**
+     * 区间ID
+     */
+    @ApiModelProperty(value = "区间ID")
+    private Long intervalId;
+    /**
+     * 区间名称
+     */
+    @ApiModelProperty(value = "区间名称")
+    @Length(max = 20, message = "区间名称长度不能超过20")
+    private String intervalName;
+    /**
+     * 区间最小值
+     */
+    @ApiModelProperty(value = "区间最小值")
+    private Double intervalMinValue;
+    /**
+     * 区间最大值
+     */
+    @ApiModelProperty(value = "区间最大值")
+    private Double intervalMaxValue;
+    /**
+     * 区间占比
+     */
+    @ApiModelProperty(value = "区间占比")
+    private Integer intervalProportion;
+    /**
+     * 患者人数
+     */
+    @ApiModelProperty(value = "患者人数")
+    private Integer patientNumber;
+
+}

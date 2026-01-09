@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caring-tenant-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: caring-tenant-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: caring-tenant-server
+    spec:
+      containers:
+        - name: caring-tenant-server
+          image: registry.cn-beijing.aliyuncs.com/caring/caring-tenant-server:c.2.5.1-SNAPSHOT
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "2"
+            requests:
+              cpu: "0.5"
+          ports:
+            - name: http-port
+              containerPort: 8771
+      imagePullSecrets:
+        - name: regsecret-cn
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caring-tenant-server
+spec:
+  selector:
+    app: caring-tenant-server
+  #    env: prod
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8771
+      targetPort: 8771

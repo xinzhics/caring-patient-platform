@@ -1,0 +1,49 @@
+{
+  "name": "@caring/patient-manage-app",
+  "description": "患者私域管理平台 - 医助患者管理平台H5应用",
+  "author": "Caring Team",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "test": "vite --mode test",
+    "build:prod": "vite build --mode prod",
+    "build:test": "vite build --mode test",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "amfe-flexible": "^2.2.1",
+    "axios": "^0.26.0",
+    "chart.js": "^3.7.1",
+    "compressorjs": "^1.1.1",
+    "cos-js-sdk-v5": "^1.3.6",
+    "dayjs": "^1.11.1",
+    "echarts": "^5.3.2",
+    "js-base64": "^3.7.5",
+    "moment": "^2.29.3",
+    "pinia": "^2.0.11",
+    "pinia-plugin-persistedstate": "^1.5.1",
+    "reset.css": "^2.0.2",
+    "swiper": "^5.3.6",
+    "vant": "^3.4.5",
+    "vue": "^3.5.13",
+    "vue-esign": "^1.1.0",
+    "vue-router": "^4.0.12",
+    "weixin-js-sdk": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.20.46",
+    "@vitejs/plugin-vue": "^2.2.0",
+    "autoprefixer": "^10.4.2",
+    "consola": "^2.15.3",
+    "less": "^4.1.2",
+    "postcss": "^8.4.6",
+    "postcss-pxtorem": "^6.0.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4",
+    "unplugin-vue-components": "^0.19.3",
+    "vite": "^2.8.0",
+    "vite-plugin-style-import": "^1.4.1",
+    "vue-tsc": "^0.29.8"
+  }
+}

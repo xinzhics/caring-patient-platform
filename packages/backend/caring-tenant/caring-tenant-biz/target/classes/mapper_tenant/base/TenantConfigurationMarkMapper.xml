@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.tenant.dao.TenantConfigurationMarkMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.tenant.entity.TenantConfigurationMark">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="library_tenant_status" jdbcType="INTEGER" property="libraryTenantStatus"/>
+        <result column="tenant_register_guide_status" jdbcType="INTEGER" property="tenantRegisterGuideStatus"/>
+        <result column="tenant_register_success_status" jdbcType="INTEGER" property="tenantRegisterSuccessStatus"/>
+        <result column="base_info_form_status" jdbcType="INTEGER" property="baseInfoFormStatus"/>
+        <result column="keyword_reply_status" jdbcType="INTEGER" property="keywordReplyStatus"/>
+        <result column="received_message_reply" jdbcType="INTEGER" property="receivedMessageReply"/>
+        <result column="menu_setting_status" jdbcType="INTEGER" property="menuSettingStatus"/>
+        <result column="disease_info_status" jdbcType="INTEGER" property="diseaseInfoStatus"/>
+        <result column="label_management_status" jdbcType="INTEGER" property="labelManagementStatus"/>
+        <result column="follow_manage_status" jdbcType="INTEGER" property="followManageStatus"/>
+        <result column="system_role_status" jdbcType="INTEGER" property="systemRoleStatus"/>
+        <result column="patient_center_status" jdbcType="INTEGER" property="patientCenterStatus"/>
+        <result column="doctor_center_status" jdbcType="INTEGER" property="doctorCenterStatus"/>
+        <result column="nursing_center_status" jdbcType="INTEGER" property="nursingCenterStatus"/>
+        <result column="project_backend_statistics_status" jdbcType="INTEGER" property="projectBackendStatisticsStatus"/>
+        <result column="recommend_config_status" jdbcType="INTEGER" property="recommendConfigStatus"/>
+        <result column="operational_support_status" jdbcType="INTEGER" property="operationalSupportStatus"/>
+        <result column="push_configuration_status" jdbcType="INTEGER" property="pushConfigurationStatus"/>
+        <result column="android_change_log_status" jdbcType="INTEGER" property="androidChangeLogStatus"/>
+        <result column="uni_change_log_status" jdbcType="INTEGER" property="uniChangeLogStatus"/>
+        <result column="uni_configuration_status" jdbcType="INTEGER" property="uniConfigurationStatus"/>
+        <result column="banner_status" jdbcType="INTEGER" property="bannerStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        library_tenant_status, tenant_register_guide_status, tenant_register_success_status, base_info_form_status, keyword_reply_status,
+        received_message_reply, menu_setting_status, disease_info_status, label_management_status, follow_manage_status, system_role_status,
+         patient_center_status, doctor_center_status, nursing_center_status, project_backend_statistics_status, recommend_config_status,
+          operational_support_status, push_configuration_status, android_change_log_status, uni_change_log_status, uni_configuration_status,
+          banner_status
+    </sql>
+
+</mapper>

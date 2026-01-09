@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.plan.ReminderLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.plan.ReminderLog">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="patient_Id" jdbcType="BIGINT" property="patientId"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="nursing_id" jdbcType="BIGINT" property="nursingId"/>
+        <result column="class_code" jdbcType="VARCHAR" property="classCode"/>
+        <result column="status_" jdbcType="INTEGER" property="status"/>
+        <result column="type_" jdbcType="INTEGER" property="type"/>
+        <result column="work_id" jdbcType="VARCHAR" property="workId"/>
+        <result column="comment_" jdbcType="VARCHAR" property="comment"/>
+        <result column="finish_this_check_in" jdbcType="INTEGER" property="finishThisCheckIn"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="plan_id" jdbcType="BIGINT" property="planId"/>
+        <result column="open_this_message" jdbcType="INTEGER" property="openThisMessage"/>
+        <result column="wait_push_time" jdbcType="TIMESTAMP" property="waitPushTime"/>
+        <result column="push_time_success" jdbcType="TIMESTAMP" property="pushTimeSuccess"/>
+        <result column="plan_detail_id" jdbcType="BIGINT" property="planDetailId"/>
+        <result column="error_message" jdbcType="VARCHAR" property="errorMessage"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time, class_code, doctor_id, nursing_id
+        patient_Id, status_, type_, work_id, comment_, finish_this_check_in, org_id, plan_id,
+        open_this_message, wait_push_time, push_time_success, plan_detail_id, error_message
+    </sql>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.caring.sass</groupId>
+        <artifactId>caring-admin-cloud</artifactId>
+        <version>c.2.5.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>caring-gateway</artifactId>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <description>网关服务</description>
+
+    <modules>
+        <!-- gateway还没调试正确，存在系列的问题-->
+        <module>caring-gateway-server</module>
+        <module>caring-zuul-server</module>
+    </modules>
+</project>

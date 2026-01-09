@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.know.dao.KnowledgeFilePersonalAchievementsLabelMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.know.KnowledgeFilePersonalAchievementsLabel">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="language_" jdbcType="VARCHAR" property="language"/>
+        <result column="key_word" jdbcType="VARCHAR" property="keyWord"/>
+        <result column="release_time" jdbcType="VARCHAR" property="releaseTime"/>
+        <result column="personal_achievement_type" jdbcType="VARCHAR" property="personalAchievementType"/>
+        <result column="author_" jdbcType="VARCHAR" property="author"/>
+        <result column="know_user_id" jdbcType="BIGINT" property="knowUserId"/>
+        <result column="file_id" jdbcType="BIGINT" property="fileId"/>
+        <result column="know_id" jdbcType="BIGINT" property="knowId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        language_, key_word, release_time, personal_achievement_type, author_, know_user_id, file_id, know_id
+    </sql>
+
+</mapper>

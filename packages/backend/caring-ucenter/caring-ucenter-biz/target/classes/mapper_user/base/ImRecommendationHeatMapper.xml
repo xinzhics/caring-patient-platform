@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.user.dao.ImRecommendationHeatMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.user.entity.ImRecommendationHeat">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="function_id" jdbcType="BIGINT" property="functionId"/>
+        <result column="function_heat" jdbcType="INTEGER" property="functionHeat"/>
+        <result column="function_type" jdbcType="VARCHAR" property="functionType"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="user_type" jdbcType="VARCHAR" property="userType"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        function_id, function_heat, function_type, user_id, user_type
+    </sql>
+
+</mapper>

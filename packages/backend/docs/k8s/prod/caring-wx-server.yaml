@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caring-wx-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: caring-wx-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: caring-wx-server
+    spec:
+      containers:
+        - name: caring-wx-server
+          image: registry.cn-beijing.aliyuncs.com/caring/caring-wx-server:c.2.5.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 30605
+      imagePullSecrets:
+        - name: regsecret-cn
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caring-wx-server
+spec:
+  selector:
+    app: caring-wx-server
+  #    env: prod
+  ports:
+    - protocol: TCP
+      port: 30605
+      targetPort: 30605

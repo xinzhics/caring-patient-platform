@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.face.dao.MegviiFusionDiagramResultMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.face.MegviiFusionDiagramResult">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="fusion_diagram_id" jdbcType="BIGINT" property="fusionDiagramId"/>
+        <result column="image_base64" jdbcType="LONGVARCHAR" property="imageBase64"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="image_obs_url" jdbcType="VARCHAR" property="imageObsUrl"/>
+        <result column="fusion_diagram_type_id" jdbcType="BIGINT" property="fusionDiagramTypeId"/>
+        <result column="fusion_diagram_template_id" jdbcType="BIGINT" property="fusionDiagramTemplateId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        fusion_diagram_id, user_id, image_obs_url, fusion_diagram_type_id, fusion_diagram_template_id
+    </sql>
+
+</mapper>

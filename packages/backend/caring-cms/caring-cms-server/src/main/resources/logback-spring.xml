@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="com/caring/sass/log/logback/caring-defaults.xml"/>
+
+    <springProfile name="test,docker,prod">
+        <logger name="com.caring.sass.cms.controller" additivity="true" level="${log.level.controller}">
+            <appender-ref ref="ASYNC_CONTROLLER_APPENDER"/>
+        </logger>
+        <logger name="com.caring.sass.cms.service" additivity="true" level="${log.level.service}">
+            <appender-ref ref="ASYNC_SERVICE_APPENDER"/>
+        </logger>
+        <logger name="com.caring.sass.cms.dao" additivity="false" level="${log.level.dao}">
+            <appender-ref ref="ASYNC_DAO_APPENDER"/>
+        </logger>
+    </springProfile>
+
+    <springProfile name="local,dev">
+        <logger name="com.caring.sass.cms.controller" additivity="true" level="${log.level.controller}">
+            <appender-ref ref="CONTROLLER_APPENDER"/>
+        </logger>
+        <logger name="com.caring.sass.cms.service" additivity="true" level="${log.level.service}">
+            <appender-ref ref="SERVICE_APPENDER"/>
+        </logger>
+    </springProfile>
+</configuration>

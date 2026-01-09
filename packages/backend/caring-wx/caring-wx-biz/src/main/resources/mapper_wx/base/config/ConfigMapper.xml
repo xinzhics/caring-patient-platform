@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.wx.dao.config.ConfigMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.wx.entity.config.Config">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="app_id" jdbcType="VARCHAR" property="appId"/>
+        <result column="app_secret" jdbcType="VARCHAR" property="appSecret"/>
+        <result column="token" jdbcType="VARCHAR" property="token"/>
+        <result column="ase_key" jdbcType="VARCHAR" property="aseKey"/>
+        <result column="source_id" jdbcType="VARCHAR" property="sourceId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="authorization_file_name" jdbcType="VARCHAR" property="authorizationFileName"/>
+        <result column="menu" jdbcType="LONGVARCHAR" property="menu"/>
+        <result column="third_authorization" jdbcType="TINYINT" property="thirdAuthorization"/>
+        <result column="component_app_id" jdbcType="VARCHAR" property="componentAppId"/>
+        <result column="third_create_time" jdbcType="BIGINT" property="thirdCreateTime"/>
+        <result column="authorization_code" jdbcType="VARCHAR" property="authorizationCode"/>
+        <result column="pre_auth_code" jdbcType="VARCHAR" property="preAuthCode"/>
+        <result column="authorization_code_expired_time" jdbcType="BIGINT" property="authorizationCodeExpiredTime"/>
+        <result column="auth_status" jdbcType="VARCHAR" property="authStatus"/>
+        <result column="authorizer_access_token" jdbcType="VARCHAR" property="authorizerAccessToken"/>
+        <result column="authorizer_refresh_token" jdbcType="VARCHAR" property="authorizerRefreshToken"/>
+        <result column="expires_in" jdbcType="BIGINT" property="expiresIn"/>
+        <result column="access_token_create_time" jdbcType="TIMESTAMP" property="accessTokenCreateTime"/>
+        <result column="func_info_json" jdbcType="LONGVARCHAR" property="funcInfoJson"/>
+        <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode"/>
+        <result column="become_silent" jdbcType="INTEGER" property="becomeSilent"/>
+        <result column="auth_type" jdbcType="INTEGER" property="authType"/>
+        <result column="wx_qr_code_url" jdbcType="VARCHAR" property="wxQrCodeUrl"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        app_id, app_secret, token, ase_key, source_id, name, authorization_file_name, menu, third_authorization,
+        component_app_id, third_create_time, authorization_code, pre_auth_code, authorization_code_expired_time,
+        auth_status, authorizer_access_token, authorizer_refresh_token, expires_in, access_token_create_time,
+        func_info_json, tenant_code, become_silent, auth_type, wx_qr_code_url
+    </sql>
+
+    <select id="listAllConfigWithoutTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wx_config where auth_type = 1 or auth_type is null
+    </select>
+
+    <select id="listAllMiniAppWithoutTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wx_config where auth_type = 2 or auth_type is null
+    </select>
+
+
+    <select id="selectMenuLikeUrl" resultMap="BaseResultMap">
+        select id, tenant_code from t_wx_config where menu like #{shareUrl}
+    </select>
+
+    <select id="selectByAppIdWithoutTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wx_config where app_id = #{appId}
+    </select>
+
+    <select id="selectBySourceIdWithoutTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wx_config where source_id = #{sourceId}
+    </select>
+
+    <select id="selectByIdWithoutTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wx_config where id = #{id}
+    </select>
+
+    <select id="selectTokenTimeOutWithoutTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_wx_config where third_authorization = 1 and auth_status = 'authorized' and access_token_create_time &lt; #{accessTokenCreateTime}
+    </select>
+</mapper>

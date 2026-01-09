@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.nursing.dao.statistics.StatisticsTaskMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.nursing.entity.statistics.StatisticsTask">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+
+        <result column="statistics_name" jdbcType="VARCHAR" property="statisticsName"/>
+        <result column="plan_id" jdbcType="BIGINT" property="planId"/>
+        <result column="form_id" jdbcType="BIGINT" property="formId"/>
+        <result column="form_field_id" jdbcType="VARCHAR" property="formFieldId"/>
+        <result column="form_field_label" jdbcType="VARCHAR" property="formFieldLabel"/>
+        <result column="form_field_unit" jdbcType="VARCHAR" property="formFieldUnit"/>
+        <result column="show_number" jdbcType="TINYINT" property="showNumber"/>
+        <result column="show_percentage" jdbcType="TINYINT" property="showPercentage"/>
+        <result column="compliance_rate_chart" jdbcType="TINYINT" property="complianceRateChart"/>
+        <result column="baseline_value_chart" jdbcType="TINYINT" property="baselineValueChart"/>
+        <result column="step" jdbcType="VARCHAR" property="step"/>
+        <result column="init_data" jdbcType="TINYINT" property="initData"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        statistics_name, plan_id, form_id, form_field_id, form_field_label, show_number, show_percentage,
+        compliance_rate_chart, baseline_value_chart, step, init_data, form_field_unit
+    </sql>
+
+</mapper>

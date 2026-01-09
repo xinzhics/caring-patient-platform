@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.humanVideo.dao.BusinessDigitalHumanVideoTaskMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.humanVideo.BusinessDigitalHumanVideoTask">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="business_card_id" jdbcType="BIGINT" property="businessCardId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="task_status" jdbcType="VARCHAR" property="taskStatus"/>
+        <result column="task_name" jdbcType="VARCHAR" property="taskName"/>
+        <result column="make_way" jdbcType="VARCHAR" property="makeWay"/>
+        <result column="photo_human_url" jdbcType="VARCHAR" property="photoHumanUrl"/>
+        <result column="audio_url" jdbcType="VARCHAR" property="audioUrl"/>
+        <result column="video_text_content" jdbcType="VARCHAR" property="videoTextContent"/>
+        <result column="template_video_url" jdbcType="VARCHAR" property="templateVideoUrl"/>
+        <result column="auth_video_url" jdbcType="VARCHAR" property="authVideoUrl"/>
+        <result column="human_video_url" jdbcType="VARCHAR" property="humanVideoUrl"/>
+        <result column="template_video_id" jdbcType="VARCHAR" property="templateVideoId"/>
+        <result column="template_id" jdbcType="VARCHAR" property="templateId"/>
+        <result column="baidu_task_id" jdbcType="VARCHAR" property="baiduTaskId"/>
+        <result column="baidu_task_id" jdbcType="VARCHAR" property="baiduTaskId"/>
+        <result column="task_source" jdbcType="VARCHAR" property="taskSource"/>
+        <result column="video_width" jdbcType="INTEGER" property="videoWidth"/>
+        <result column="video_height" jdbcType="INTEGER" property="videoHeight"/>
+        <result column="create_timbre" jdbcType="INTEGER" property="createTimbre"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="baidu_video_url" jdbcType="VARCHAR" property="baiduVideoUrl"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        business_card_id, user_id, task_status, task_name, make_way, photo_human_url, audio_url,
+        video_text_content, template_video_url, auth_video_url, human_video_url, template_video_id, template_id, baidu_task_id,
+        task_message, task_source, video_width, video_height, create_timbre, start_time, end_time, baidu_video_url
+    </sql>
+
+</mapper>

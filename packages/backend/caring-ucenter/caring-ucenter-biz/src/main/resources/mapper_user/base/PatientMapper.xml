@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.user.dao.PatientMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.user.entity.Patient">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="service_advisor_id" jdbcType="BIGINT" property="serviceAdvisorId"/>
+        <result column="service_advisor_name" jdbcType="VARCHAR" property="serviceAdvisorName"/>
+        <result column="nick_name" jdbcType="VARCHAR" property="nickName"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile" typeHandler="com.caring.sass.common.mybaits.EncryptedStringTypeHandler"/>
+        <result column="sex" jdbcType="TINYINT" property="sex"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
+        <result column="group_id" jdbcType="BIGINT" property="groupId"/>
+        <result column="group_name" jdbcType="VARCHAR" property="groupName"/>
+        <result column="doctor_id" jdbcType="BIGINT" property="doctorId"/>
+        <result column="doctor_name" jdbcType="VARCHAR" property="doctorName"/>
+        <result column="status_" jdbcType="INTEGER" property="status"/>
+        <result column="diagnosis_id" jdbcType="VARCHAR" property="diagnosisId"/>
+        <result column="diagnosis_name" jdbcType="VARCHAR" property="diagnosisName"/>
+        <result column="wx_app_id" jdbcType="VARCHAR" property="wxAppId"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="union_id" jdbcType="VARCHAR" property="unionId"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="im_account" jdbcType="VARCHAR" property="imAccount"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="is_complete_enter_group" jdbcType="TINYINT" property="isCompleteEnterGroup"/>
+        <result column="examine_count" jdbcType="INTEGER" property="examineCount"/>
+        <result column="ckd" jdbcType="TINYINT" property="ckd"/>
+        <result column="nursing_time" jdbcType="TIMESTAMP" property="nursingTime"/>
+        <result column="hospital_name" jdbcType="VARCHAR" property="hospitalName"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="agree_agreement" jdbcType="INTEGER" property="agreeAgreement"/>
+        <result column="grand_total_check" jdbcType="INTEGER" property="grandTotalCheck"/>
+        <result column="successive_check" jdbcType="INTEGER" property="successiveCheck"/>
+        <result column="height" jdbcType="INTEGER" property="height"/>
+        <result column="weight" jdbcType="INTEGER" property="weight"/>
+        <result column="org_id" jdbcType="BIGINT" property="organId"/>
+        <result column="organ_code" jdbcType="VARCHAR" property="organCode"/>
+        <result column="class_code" jdbcType="VARCHAR" property="classCode"/>
+        <result column="organ_name" jdbcType="VARCHAR" property="organName"/>
+        <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp"/>
+        <result column="last_login_time" jdbcType="BIGINT" property="lastLoginTime"/>
+        <result column="total_login_times" jdbcType="INTEGER" property="totalLoginTimes"/>
+        <result column="extra_info" jdbcType="LONGVARCHAR" property="extraInfo"/>
+        <result column="complete_enter_group_time" jdbcType="TIMESTAMP" property="completeEnterGroupTime"/>
+        <result column="im_group_status" jdbcType="INTEGER" property="imGroupStatus"/>
+        <result column="doctor_im_group_status" jdbcType="INTEGER" property="doctorImGroupStatus"/>
+        <result column="nursing_staff_im_group_status" jdbcType="INTEGER" property="nursingStaffImGroupStatus"/>
+        <result column="online" jdbcType="INTEGER" property="online"/>
+        <result column="un_subscribe_time" jdbcType="TIMESTAMP" property="unSubscribeTime"/>
+        <result column="doctor_remark" jdbcType="VARCHAR" property="doctorRemark"/>
+        <result column="name_first_letter" jdbcType="VARCHAR" property="nameFirstLetter"/>
+        <result column="nursing_exit_chat" jdbcType="INTEGER" property="nursingExitChat"/>
+        <result column="doctor_exit_chat_list_json" jdbcType="VARCHAR" property="doctorExitChatListJson"/>
+        <result column="disease_information_status" jdbcType="INTEGER" property="diseaseInformationStatus"/>
+        <result column="follow_stage_id" jdbcType="VARCHAR" property="followStageId"/>
+        <result column="follow_stage_name" jdbcType="VARCHAR" property="followStageName"/>
+        <result column="has_send_chat" jdbcType="TINYINT" property="hasSendChat"/>
+        <result column="default_doctor_patient" jdbcType="TINYINT" property="defaultDoctorPatient"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        service_advisor_id, service_advisor_name, nick_name, mobile, sex, name, birthday, group_id, group_name, doctor_id, doctor_name, status_, diagnosis_id, diagnosis_name, wx_app_id, open_id,union_id, avatar,
+        im_account, remark, is_complete_enter_group, examine_count, ckd, nursing_time, hospital_name, code, agree_agreement, grand_total_check, successive_check, height, weight, org_id, organ_code,
+        class_code, organ_name, last_login_ip, last_login_time, total_login_times, extra_info, complete_enter_group_time
+        ,im_group_status, doctor_im_group_status, nursing_staff_im_group_status, online, un_subscribe_time, doctor_remark, name_first_letter, nursing_exit_chat, doctor_exit_chat_list_json,
+        disease_information_status, follow_stage_id, follow_stage_name, has_send_chat, default_doctor_patient, password
+    </sql>
+
+    <select id="findPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM u_user_patient s ${ew.customSqlSegment}
+    </select>
+</mapper>

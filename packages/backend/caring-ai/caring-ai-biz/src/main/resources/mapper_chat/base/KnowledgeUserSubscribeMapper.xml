@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.ai.know.dao.KnowledgeUserSubscribeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.ai.entity.know.KnowledgeUserSubscribe">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="knowledge_user_id" jdbcType="BIGINT" property="knowledgeUserId"/>
+        <result column="membership_level" jdbcType="VARCHAR" property="membershipLevel"/>
+        <result column="membership_expiration" jdbcType="TIMESTAMP" property="membershipExpiration"/>
+        <result column="experience_ai_time" jdbcType="TIMESTAMP" property="experienceAiTime"/>
+        <result column="user_domain" jdbcType="VARCHAR" property="userDomain"/>
+        <result column="subscribe_status" jdbcType="INTEGER" property="subscribeStatus"/>
+        <result column="subscribe_time" jdbcType="TIMESTAMP" property="subscribeTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, create_user, update_user, update_time,
+        knowledge_user_id, membership_level, membership_expiration, experience_ai_time, user_domain, subscribe_status, subscribe_time
+    </sql>
+
+</mapper>

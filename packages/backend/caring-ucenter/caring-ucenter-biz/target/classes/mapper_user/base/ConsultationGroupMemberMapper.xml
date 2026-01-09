@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caring.sass.user.dao.ConsultationGroupMemberMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.caring.sass.user.entity.ConsultationGroupMember">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="consultation_group_id" jdbcType="BIGINT" property="consultationGroupId"/>
+        <result column="patient_id" jdbcType="BIGINT" property="patientId"/>
+        <result column="member_im_account" jdbcType="VARCHAR" property="memberImAccount"/>
+        <result column="member_open_id" jdbcType="VARCHAR" property="memberOpenId"/>
+        <result column="member_avatar" jdbcType="VARCHAR" property="memberAvatar"/>
+        <result column="member_name" jdbcType="VARCHAR" property="memberName"/>
+        <result column="member_role" jdbcType="VARCHAR" property="memberRole"/>
+        <result column="member_role_remarks" jdbcType="VARCHAR" property="memberRoleRemarks"/>
+        <result column="receive_weixin_template" jdbcType="INTEGER" property="receiveWeiXinTemplate"/>
+        <result column="member_status" jdbcType="INTEGER" property="memberStatus"/>
+        <result column="member_user_id" jdbcType="BIGINT" property="memberUserId"/>
+        <result column="member_refuse_message" jdbcType="VARCHAR" property="memberRefuseMessage"/>
+        <result column="invite_people" jdbcType="BIGINT" property="invitePeople"/>
+        <result column="invite_people_role" jdbcType="VARCHAR" property="invitePeopleRole"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time, member_user_id, member_refuse_message, invite_people, invite_people_role,
+        consultation_group_id, member_im_account, member_open_id, member_avatar, member_name, member_role, member_role_remarks,
+        member_status, patient_id, receive_weixin_template, mobile
+    </sql>
+
+</mapper>
