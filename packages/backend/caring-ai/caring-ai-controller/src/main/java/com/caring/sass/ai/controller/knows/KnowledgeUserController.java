@@ -922,7 +922,7 @@ public class KnowledgeUserController {
             @RequestBody PageParams<KnowledgeUserPageDTO> pageParams) {
 
         KnowledgeUserPageDTO model = pageParams.getModel();
-        // 子平台用户过滤 使用 子平台平台域名 ， 分类分类
+        // 子平台用户过滤 使用 子平台域名 ， 分类分类
         if (StrUtil.isNotEmpty(model.getMenuDomain()) && !knowChildDomainConfig.getDocuknowMainDoamin().equals(model.getMenuDomain())) {
             // 查询子平台的博主信息
             IPage<KnowledgeUser> userIPage = queryChildDomainUser(model, pageParams);

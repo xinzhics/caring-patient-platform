@@ -1,7 +1,7 @@
 {
   "name": "@caring/shared-components",
   "version": "1.0.0",
-  "description": "患者私域管理平台 - 共享组件库",
+  "description": "慢病管理平台 - 共享组件库",
   "author": "Caring Team",
   "main": "src/index.js",
   "private": true,

@@ -1,7 +1,7 @@
 {
   "name": "caring-patient-platform",
   "version": "1.0.0",
-  "description": "患者私域管理平台 - 完整的医疗健康管理系统全栈解决方案（前端+后端）",
+  "description": "慢病管理平台 - 完整的医疗健康管理系统全栈解决方案（前端+后端）",
   "private": true,
   "workspaces": [
     "packages/*"

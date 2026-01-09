@@ -1,7 +1,7 @@
 {
   "name": "@caring/patient-app",
   "version": "1.0.0",
-  "description": "患者私域管理平台 - 患者端应用",
+  "description": "慢病管理平台 - 患者端应用",
   "author": "Caring Team",
   "private": true,
   "scripts": {
