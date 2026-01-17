@@ -448,7 +448,7 @@ Thanks to all developers and designers who contributed to this project.
 - Project Homepage: [GitHub Repository](https://github.com/xinzhics/caring-patient-platform)
 - Issue Tracker: [Issues](https://github.com/xinzhics/caring-patient-platform/issues)
 - Email: allercura_ai@caringcloud.cn
-- WeChat Group: ![WeChat Group](docs/IMG_7686.JPG)
+- WeChat Group: ![WeChat Group](docs/IMG_7686-2.JPG)
 
 ## 🔧 Backend Services
 
