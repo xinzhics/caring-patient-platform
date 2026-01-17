@@ -3,6 +3,7 @@ caring:
     ip: ${NACOS_IP:@nacos.ip@}
     port: ${NACOS_PORT:@nacos.port@}
     namespace: ${NACOS_ID:@nacos.namespace@}
+    group: ${NACOS_GROUP:@nacos.group@}
     username: ${NACOS_USERNAME:@nacos.username@}
     password: ${NACOS_PASSWORD:@nacos.password@}
 spring:
@@ -18,14 +19,19 @@ spring:
         server-addr: ${caring.nacos.ip}:${caring.nacos.port}
         file-extension: yml
         namespace: ${caring.nacos.namespace}
+        group: ${caring.nacos.group}
         shared-configs:
           - dataId: common.yml
+            group: ${caring.nacos.group}
             refresh: true
           - dataId: redis.yml
+            group: ${caring.nacos.group}
             refresh: false
           - dataId: mysql.yml
+            group: ${caring.nacos.group}
             refresh: true
           - dataId: rabbitmq.yml
+            group: ${caring.nacos.group}
             refresh: false
         enabled: true
         username: ${caring.nacos.username}
@@ -35,6 +41,7 @@ spring:
         password: ${caring.nacos.password}
         server-addr: ${caring.nacos.ip}:${caring.nacos.port}
         namespace: ${caring.nacos.namespace}
+        group: ${caring.nacos.group}
         metadata: # 元数据，用于权限服务实时获取各个服务的所有接口
           management.context-path: ${server.servlet.context-path:}${spring.mvc.servlet.path:}${management.endpoints.web.base-path:}
           grayversion: caring
