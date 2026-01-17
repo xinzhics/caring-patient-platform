@@ -444,7 +444,7 @@ npm run test --scope=@caring/patient-app
 - 项目主页: [GitHub Repository](https://github.com/xinzhics/caring-patient-platform)
 - 问题反馈: [Issues](https://github.com/xinzhics/caring-patient-platform/issues)
 - 邮箱: allercura_ai@caringcloud.cn
-- 微信群：![微信群](docs/IMG_7686.JPG)
+- 微信群：![微信群](docs/IMG_7686-2.JPG)
 
 ## 🔧 后端服务
 
