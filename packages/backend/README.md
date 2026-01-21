@@ -182,29 +182,8 @@ nacos.namespace=85d56e61-f676-11f0-a8b0-328ff568776d
 - 每次重新初始化数据库后，UUID 可能会变化，需要重新配置
 - 配置文件中的 `nacos.group` 应该为 `sass-cloud`
 
-#### 第五步：安装依赖
 
-⚠️ **重要**: 首次编译时，必须**优先编译** `caring-public/caring-common` 公共模块，然后再编译整体项目。
-
-```bash
-# 1. 优先编译公共模块（必须先执行）
-cd packages/backend/caring-public/caring-common
-mvn clean install -DskipTests
-
-# 2. 返回项目根目录安装整体依赖
-cd /Users/leizhi/文稿/00-卡柠/卡柠开源代码库/caring-patient-platform
-npm run backend:install
-```
-
-或者使用 npm 脚本（已包含上述步骤）：
-
-```bash
-# 在项目根目录执行
-cd caring-patient-platform
-npm run backend:install
-```
-
-#### 第六步：启动后端服务
+#### 第五步：启动后端服务
 
 **方式一：IDE 启动（推荐用于开发）**
 
@@ -242,7 +221,7 @@ java -jar caring-ucenter/caring-ucenter-server/target/caring-ucenter-server.jar
 ./scripts/restart-services.sh
 ```
 
-#### 第七步：验证服务启动
+#### 第六步：验证服务启动
 
 启动成功后，可以通过以下方式验证：
 
@@ -261,18 +240,6 @@ java -jar caring-ucenter/caring-ucenter-server/target/caring-ucenter-server.jar
    - 权限服务 Swagger: http://localhost:8764/doc.html
    - 文件服务 Swagger: http://localhost:8765/doc.html
 
-### 构建项目
-
-```bash
-# 编译打包
-npm run backend:build
-
-# 跳过测试编译
-npm run backend:install
-
-# 清理并重新编译
-mvn clean compile
-```
 
 ## API接口
 
