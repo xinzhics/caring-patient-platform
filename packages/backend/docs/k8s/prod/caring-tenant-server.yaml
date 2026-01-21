@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: caring-tenant-server
-          image: registry.cn-beijing.aliyuncs.com/caring/caring-tenant-server:c.2.5.1-SNAPSHOT
+          image: YOUR_REGISTRY/caring-tenant-server:c.2.5.1-SNAPSHOT
           imagePullPolicy: Always
           resources:
             limits:
@@ -25,7 +25,7 @@ spec:
             - name: http-port
               containerPort: 8771
       imagePullSecrets:
-        - name: regsecret-cn
+        - name: YOUR_REGISTRY_SECRET
 ---
 apiVersion: v1
 kind: Service

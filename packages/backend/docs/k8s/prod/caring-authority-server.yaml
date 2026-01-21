@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
         - name: caring-authority-server
-          image: registry.cn-beijing.aliyuncs.com/caring/caring-authority-server:c.2.5.1-SNAPSHOT
+          image: YOUR_REGISTRY/caring-authority-server:c.2.5.1-SNAPSHOT
           imagePullPolicy: Always
           ports:
             - name: http-port
               containerPort: 8764
       imagePullSecrets:
-        - name: regsecret-cn
+        - name: YOUR_REGISTRY_SECRET
 ---
 apiVersion: v1
 kind: Service

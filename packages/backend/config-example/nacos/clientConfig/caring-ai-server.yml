@@ -1,0 +1,221 @@
+# Ai配置
+caring:
+  swagger:
+    docket:
+      config:
+        title: ai助手
+        base-package: com.caring.sass.ai.controller
+  bing:
+    subscriptionKey: ${BING_SUBSCRIPTION_KEY:your_subscription_key}
+    endpoint: https://api.bing.microsoft.com/v7.0/search
+
+langchain4j:
+  open-ai:
+    streaming-chat-model:
+      api-key: ${OPENAI_API_KEY:your_api_key}
+      base-url: ${OPENAI_BASE_URL:http://openai.caringsaas.cn/v1}
+      model-name: gpt-3.5-turbo
+      temperature: 0.0
+      timeout: PT60S
+      log-requests: false
+      log-responses: false
+    chat-model:
+      api-key: ${OPENAI_API_KEY:your_api_key}
+      base-url: ${OPENAI_BASE_URL:http://openai.caringsaas.cn/v1}
+      model-name: gpt-4o-mini
+      temperature: 0.0
+      timeout: PT60S
+      log-requests: true
+      log-responses: true
+
+card:
+  config:
+    appId: ${CARD_APP_ID:your_wechat_app_id}
+
+
+signature:
+  config:
+    name: ${SIGNATURE_NAME:敏瑞健康}
+    templateCode: ${SMS_TEMPLATE_CODE:SMS_TEMPLATE_CODE}
+    ALIBABA_CLOUD_ACCESS_KEY_ID: ${ALIBABA_CLOUD_ACCESS_KEY_ID:your_access_key_id}
+    ALIBABA_CLOUD_ACCESS_KEY_SECRET: ${ALIBABA_CLOUD_ACCESS_KEY_SECRET:your_access_key_secret}
+
+
+face:
+  config:
+    apiKey: ${FACE_API_KEY:your_api_key}
+    apiSecret: ${FACE_API_SECRET:your_api_secret}
+    merge_rate: 100
+    feature_rate: 100
+    new_user_free: 1
+    merge_image_cost: 990
+    merge_image_goods_name: 制作艺术头像
+    reqKey: faceswap
+    source_similarity: 1
+    gpen: 0.2
+    skin: 0
+
+dify:
+  config:
+    APIKey: ${DIFY_API_KEY:dataset_your_api_key}
+    apiDomain: ${DIFY_API_DOMAIN:http://ai.caringsaas.cn/v1}
+    difyKnowledgeId: ${DIFY_KNOWLEDGE_ID:your_knowledge_id}
+    metadataCategoryId: ${DIFY_METADATA_CATEGORY_ID:your_category_id}
+    metadataOwnershipId: ${DIFY_METADATA_OWNERSHIP_ID:your_ownership_id}
+    flowControl: 1000
+    textIndexingTechnique: economy
+    case_create_key: ${DIFY_CASE_CREATE_KEY:app_your_key}
+    textProcessRule: automatic
+    titleCreateWorkApiKey: ${DIFY_TITLE_CREATE_KEY:app_your_key}
+    zhuan_ye_xue_shu_key_word_apikey: ${DIFY_ZHUAN_YE_XUE_SHU_KEY:app_your_key}
+    ge_ren_cheng_guo_key_word_apikey: ${DIFY_GE_REN_CHENG_GUO_KEY:app_your_key}
+    bing_li_key_word_apikey: ${DIFY_BING_LI_KEY:app_your_key}
+    ri_chang_shou_ji_key_word_apikey: ${DIFY_RI_CHANG_SHOU_JI_KEY:app_your_key}
+    zhuanyexueshu_condition_extract_apikey: ${DIFY_ZHUANYEXUESHU_CONDITION_KEY:app_your_key}
+    bingliku_condition_extract_apikey: ${DIFY_BINGLIKU_CONDITION_KEY:app_your_key}
+    gerenchengguo_condition_extract_apikey: ${DIFY_GERENCHENGGUO_CONDITION_KEY:app_your_key}
+    richangshouji_condition_extract_apikey: ${DIFY_RICHANGSHOUJI_CONDITION_KEY:app_your_key}
+    docu_search_translation_and_summary: ${DIFY_DOCU_SEARCH_KEY:app_your_key}
+    general_question_key: ${DIFY_GENERAL_QUESTION_KEY:app_your_key}
+    card_human_video_text_create_key: ${DIFY_CARD_HUMAN_VIDEO_KEY:app_your_key}
+    podcastApiDomain: ${DIFY_PODCAST_DOMAIN:http://ai.caringsaas.cn/v1}
+    podcast_bot_key: ${DIFY_PODCAST_BOT_KEY:app_your_key}
+    textual_bot_key: ${DIFY_TEXTUAL_BOT_KEY:app_your_key}
+    podcast_yi_zhisheng: ${DIFY_PODCAST_YI_ZHISHENG:app_your_key}
+
+knowpay:
+  config:
+    merchantId: ${KNOWPAY_MERCHANT_ID:your_merchant_id}
+    appId: ${KNOWPAY_APP_ID:your_wechat_app_id}
+    basicMembershipPrice: 99900
+    basicMembershipName: 体验版
+    professionalVersionPrice: 499900
+    professionalVersionName: 专业版
+    gong_zhong_hao_app_id: ${KNOWPAY_GZH_APP_ID:your_wechat_app_id}
+
+knowchild:
+  config:
+    saibolanDomain: https://openapi.caringcloud.cn
+    aiStudioDomain: https://cstudio.allercura.cn
+
+cardpay:
+  config:
+    merchantId: ${CARDPAY_MERCHANT_ID:your_merchant_id}
+    appId: ${CARDPAY_APP_ID:your_wechat_app_id}
+    basicMembershipPrice: 29900
+    basicMembershipName: 科普名片基础版
+    membershipPrice: 500000
+    membershipName: 科普名片会员版
+
+
+ckdpay:
+  config:
+    merchantId: ${CKDPAY_MERCHANT_ID:your_merchant_id}
+    appId: ${CKDPAY_APP_ID:your_wechat_app_id}
+    monthlyExpenses: 990
+    monthlyExpensesName: 包月会员
+    annualCost: 9900
+    annualCostName: 包年会员
+    lifetime: 19900
+    lifeTimeName: 终身会员
+
+human:
+  config:
+    speakerAppId: ${HUMAN_SPEAKER_APP_ID:your_speaker_app_id}
+    speakerAccessToken: ${HUMAN_SPEAKER_ACCESS_TOKEN:your_access_token}
+    baidu123AppId: ${HUMAN_BAIDU_APP_ID:your_baidu_app_id}
+    baidu123AppSecret: ${HUMAN_BAIDU_APP_SECRET:your_baidu_app_secret}
+
+# 阿里云oss配置
+aliyun:
+  oss:
+    accessKeyId: ${ALIYUN_OSS_ACCESS_KEY_ID:your_access_key_id}
+    secret: ${ALIYUN_OSS_SECRET:your_secret}
+    endpoint: https://oss-cn-beijing-internal.aliyuncs.com
+    bucketName: ${ALIYUN_OSS_BUCKET_NAME:your_bucket_name}
+    TemplateId: ${ALIYUN_OSS_TEMPLATE_ID:your_template_id}
+    pipelineId: ${ALIYUN_OSS_PIPELINE_ID:your_pipeline_id}
+
+
+# 请填写自己的华为云存储配置
+file:
+  hw:
+    bucket-name: ${HW_BUCKET_NAME:your_bucket_name}
+    end-point: obs.cn-north-4.myhuaweicloud.com
+    access-key: ${HW_ACCESS_KEY:your_access_key}
+    security-key: ${HW_SECURITY_KEY:your_security_key}
+    # 北京四的项目ID
+    x-project_id: ${HW_PROJECT_ID:your_project_id}
+
+
+
+textual:
+  wxpay:
+    merchantId: ${TEXTUAL_MERCHANT_ID:your_merchant_id}
+    appId: ${TEXTUAL_APP_ID:your_wechat_app_id}
+    gongnZhifuAppId: ${TEXTUAL_GZH_APP_ID:your_wechat_app_id}
+    annualCost: 1
+    annualCostName: 包年会员
+    newUserRegister: 100
+    chiefPhysicianUseRegister: 100
+    annualGetEnergyBeans: 0
+    energyBeans200Cost:  10000
+    energyBeans800Cost:  30000
+    energyBeans500Cost:  50000
+    energyBeans1000Cost: 100000
+    energyBeans1500Cost: 150000
+    energyBeans2000Cost: 200000
+    energyBeans3000Cost: 100000
+    energyBeans5000Cost: 500000
+    soundCloningSpend: 30
+    imageTextSpend: 2
+    reStartTextSpend: 2
+    createPodcastSpend: 10
+    createPptSpend: 20
+    reCreatePptOutlineSpend: 20
+    createVideoSpend: 60
+    humanTemplateSpend: 0
+
+
+article:
+  wxpay:
+    merchantId: ${ARTICLE_MERCHANT_ID:your_merchant_id}
+    appId: ${ARTICLE_APP_ID:your_wechat_app_id}
+    gongnZhifuAppId: ${ARTICLE_GZH_APP_ID:your_wechat_app_id}
+    annualCost: 499900
+    annualCostName: 包年会员
+    newUserRegister: 200
+    chiefPhysicianUseRegister: 500
+    annualGetEnergyBeans: 2000
+    energyBeans200Cost:  10000
+    energyBeans800Cost:  30000
+    energyBeans500Cost:  50000
+    energyBeans1000Cost: 100000
+    energyBeans1500Cost: 150000
+    energyBeans2000Cost: 200000
+    energyBeans3000Cost: 100000
+    energyBeans5000Cost: 500000
+    soundCloningSpend: 30
+    imageTextSpend: 1
+    createPodcastSpend: 10
+    podcastQuickListeningEssence: 20
+    podcastDeepDiscovery: 20
+    createVideoSpend: 60
+    humanTemplateSpend: 0
+
+call:
+  config:
+    amountPerMinute: 20
+
+minimax:
+  config:
+    maxRpm: 30
+
+coze:
+  config:
+    domain: https://api.coze.cn
+    authorization: ${COZE_AUTHORIZATION:Bearer_your_token}
+    faceBotId: ${COZE_FACE_BOT_ID:your_bot_id}
+
+server:
+  port: 30607

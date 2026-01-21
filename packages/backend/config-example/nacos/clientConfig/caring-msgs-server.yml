@@ -1,0 +1,64 @@
+caring:
+  swagger:
+    enabled: false
+    docket:
+      sms:
+        title: 短信模块
+        base-package: com.caring.sass.sms.controller
+      msgs:
+        title: 消息模块
+        base-package: com.caring.sass.msgs.controller
+      mail:
+        title: 邮件模块
+        base-package: com.caring.sass.mail.controller
+  cache:
+    type: REDIS   # CAFFEINE
+    def:
+      keyPrefix: ${spring.profiles.active}
+    configs:
+      caring:
+        timeToLive: 1h
+        keyPrefix: caring
+      test:
+        timeToLive: 2h
+        keyPrefix: test
+
+# 环信IM配置
+hx:
+  im:
+    appName: ${HX_APP_NAME:your_app_name}
+    clientId: ${HX_CLIENT_ID:your_client_id}
+    clientSecret: ${HX_CLIENT_SECRET:your_client_secret}
+    grantType: client_credentials
+    orgName: ${HX_ORG_NAME:your_org_name}
+    userPassword: ${HX_USER_PASSWORD:default_password}
+
+# 短信签名配置
+signature:
+  config:
+    name: ${SIGNATURE_NAME:卡柠科技}
+    allergicName: ${ALLERGIC_NAME:敏瑞健康}
+    systemEnvironment: ${SYSTEM_ENV:p}
+    # 患者延迟推送咨询通知模版code
+    patient_time_out_consultation_notice: ${SMS_PATIENT_TIME_OUT:SMS_TEMPLATE_CODE}
+    # 患者今日待办模版code
+    patient_today_to_do_list: ${SMS_PATIENT_TODO:SMS_TEMPLATE_CODE}
+    # 患者病例讨论开始通知模版code
+    patient_notice_of_the_start_case_discussion: ${SMS_PATIENT_CASE_START:SMS_TEMPLATE_CODE}
+    # 患者转诊通知
+    patient_referral_notice: ${SMS_PATIENT_REFERRAL:SMS_TEMPLATE_CODE}
+    # 患者@咨询通知模版code
+    patient_immediately_consultation_notice: ${SMS_PATIENT_IMMEDIATE:SMS_TEMPLATE_CODE}
+    # 医生延时咨询通知
+    doctor_time_out_consultation_notice: ${SMS_DOCTOR_TIME_OUT:SMS_TEMPLATE_CODE}
+    # 医生今日待办模版
+    doctor_today_to_do_list: ${SMS_DOCTOR_TODO:SMS_TEMPLATE_CODE}
+    # 医生病例讨论邀请通知
+    doctor_notice_of_invite_case_discussion: ${SMS_DOCTOR_CASE_INVITE:SMS_TEMPLATE_CODE}
+    # 患者信息完整度
+    patient_integrity: ${SMS_PATIENT_INTEGRITY:SMS_TEMPLATE_CODE}
+    # 患者购药预警
+    patient_drug_purchase_warning: ${SMS_PATIENT_DRUG_WARNING:SMS_TEMPLATE_CODE}
+
+server:
+  port: 8768

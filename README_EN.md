@@ -478,19 +478,123 @@ Backend services built with Spring Boot and Spring Cloud, providing complete hea
 
 For detailed development documentation, please refer to [packages/backend/README.md](./packages/backend/README.md)
 
-**Quick Start Backend**:
-```bash
-# Use Maven
-cd packages/backend
-mvn spring-boot:run
+**Requirements**:
+- Java 1.8 (⚠️ Must use JDK 1.8 for compilation)
+- Maven 3.6+
+- MySQL 8.0+
+- Redis 6.0+
+- Docker & Docker Compose (for starting dependency services)
 
-# Or use npm script
-npm run backend:run
+**Quick Start Backend**:
+
+#### Step 1: Start Dependency Services (Docker Compose)
+
+```bash
+cd packages/backend
+docker-compose up -d
 ```
 
+This command will start MySQL, Nacos, Redis, XXL-Job, Nginx and other dependency services, and automatically execute database initialization scripts.
+
+**Wait 1-2 minutes for the first startup to allow all services to fully start.**
+
+After the dependency environment starts, you can access the following services:
+- **Nacos Console**: http://localhost:8848/nacos (username/password: nacos/nacos)
+- **MySQL**: localhost:3306 (username: root, password: change-this-password)
+- **Redis**: localhost:6379 (password: change-this-password)
+- **XXL-Job**: http://localhost:8080/xxl-job-admin (username: admin, password: 123456)
+
+#### Step 2: Verify Nacos Configuration Initialization
+
+1. Access Nacos Console: http://localhost:8848/nacos
+2. Login (username/password: nacos/nacos)
+3. Go to "Configuration Management" -> "Configuration List"
+4. Find and select the `dev` namespace in the namespace dropdown
+5. Confirm the group is `sass-cloud`
+6. You should see configuration files (common.yml, mysql.yml, redis.yml, etc.)
+
+#### Step 3: Get Nacos Namespace UUID
+
+⚠️ **Important**: Before starting backend services, ensure that the `nacos.namespace` in `config-dev.properties` matches the `dev` namespace UUID in Nacos.
+
+**Get Namespace UUID**:
+
+**Method 1: Through Nacos Console**
+1. Go to "Namespace" menu
+2. Find the namespace named `dev`
+3. Copy its namespace ID (UUID format)
+
+**Method 2: Through Database Query**
+```bash
+docker exec -i caring-mysql mysql -uroot -pchange-this-password nacos_config -e "SELECT tenant_id FROM tenant_info WHERE tenant_name = 'dev';"
+```
+
+#### Step 4: Configure Nacos Namespace
+
+Update the obtained namespace UUID to the `src/main/filters/config-dev.properties` file:
+
+```properties
+nacos.namespace=85d56e61-f676-11f0-a8b0-328ff568776d
+nacos.group=sass-cloud
+```
+
+#### Step 5: Install Dependencies
+
+⚠️ **Important**: For the first compilation, you must **prioritize compiling** the `caring-public/caring-common` common module.
+
+```bash
+# Execute from project root directory
+cd caring-patient-platform
+npm run backend:install
+```
+
+#### Step 6: Start Backend Services
+
+**Method 1: Using Startup Script (Recommended)**
+```bash
+cd packages/backend
+./scripts/start-services.sh
+```
+
+**Method 2: IDE Startup**
+Start services in order in your IDE (like IntelliJ IDEA):
+- caring-gateway (Gateway service) - Port 8760
+- caring-authority (Authority service) - Port 8764
+- caring-tenant (Tenant service)
+- caring-ucenter (User center)
+- Other business services
+
+**Method 3: Command Line Startup**
+```bash
+cd packages/backend
+mvn clean package -DskipTests
+java -jar caring-gateway/caring-gateway-server/target/caring-gateway-server.jar
+java -jar caring-authority/caring-authority-server/target/caring-authority-server.jar
+# ... other services
+```
+
+#### Step 7: Verify Service Startup
+
+After successful startup, verify through the following methods:
+
+1. **Check Nacos Service Registration**
+   - Access Nacos Console: http://localhost:8848/nacos
+   - Go to "Service Management" -> "Service List"
+   - You should see started services under the `dev` namespace
+
+2. **Access Gateway**
+   ```bash
+   curl http://localhost:8760/api/actuator/health
+   ```
+
+3. **Access API Documentation**
+   - Gateway API Docs: http://localhost:8760/api/doc.html
+   - Authority Service: http://localhost:8764/doc.html
+
 **Backend API Documentation**:
-- Swagger: http://localhost:8080/caring-standalone/swagger-ui.html
-- Druid Monitor: http://localhost:8080/caring-standalone/druid
+- Gateway Service: http://localhost:8760/api/doc.html
+- Authority Service: http://localhost:8764/doc.html
+- File Service: http://localhost:8765/doc.html
 
 ### Frontend-Backend Collaboration
 

@@ -1,0 +1,24 @@
+caring:
+  swagger:
+    docket:
+      drugs:
+        title: 用药模块
+        base-package: com.caring.sass.nursing.controller.drugs
+      form:
+        title: 表单模块
+        base-package: com.caring.sass.nursing.controller.form
+      plan:
+        title: 护理计划模块
+        base-package: com.caring.sass.nursing.controller.plan
+      statistics:
+        title: 统计模块
+        base-package: com.caring.sass.nursing.controller.statistics
+      tag:
+        title: 标签模块
+        base-package: com.caring.sass.nursing.controller.tag
+server:
+  port: 31005
+
+
+## 请在nacos中新建一个名为: caring-nursing-server.yml 的配置文件，并将： caring-nursing-server/src/main/resources/caring-nursing-server.yml 配置文件的内容移动过去
+## 然后删除此文件！！！

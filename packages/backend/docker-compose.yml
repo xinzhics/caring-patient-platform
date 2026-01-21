@@ -1,0 +1,111 @@
+version: '3.8'
+
+networks:
+  caring-network:
+    driver: bridge
+
+services:
+  mysql:
+    image: mysql:8.0.25
+    platform: linux/amd64
+    restart: always
+    container_name: caring-mysql
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - ./volumes/data/mysqldata:/var/lib/mysql
+      - ./config/mysql/my.cnf:/etc/my.cnf
+      # 数据库初始化脚本
+      - ./config/sql:/docker-entrypoint-initdb.d
+    environment:
+      - "MYSQL_ROOT_PASSWORD=change-this-password"
+      - "MYSQL_DATABASE=nacos_config"
+      - "MYSQL_MULTIPLE_DATABASES=caring_job"
+      - "TZ=Asia/Shanghai"
+    ports:
+      - "3306:3306"
+    networks:
+      - caring-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pchange-this-password"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  nacos:
+    image: nacos/nacos-server:1.4.1
+    platform: linux/amd64
+    container_name: caring-nacos
+    environment:
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_DB_NAME=nacos_config
+      - MYSQL_SERVICE_USER=root
+      - MYSQL_SERVICE_PASSWORD=change-this-password
+      - NACOS_AUTH_ENABLE=true
+      - NACOS_AUTH_TOKEN_SECRET_KEY=SecretKey012345678901234567890123456789012345678901234567890123456789
+      - NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789
+    volumes:
+      - ./volumes/data/nacos-logs:/home/nacos/logs
+      - ./config/nacos/conf:/home/nacos/conf
+      - ./config/nacos/init.d:/home/nacos/init.d
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: always
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    networks:
+      - caring-network
+
+  redis:
+    image: redis:6.2
+    platform: linux/amd64
+    restart: always
+    container_name: caring-redis
+    volumes:
+      - ./volumes/data/redsidata:/data
+      - ./config/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    networks:
+      - caring-network
+    command: redis-server /usr/local/etc/redis/redis.conf
+
+  # xxl-job 分布式调度中心
+  xxl-job:
+    image: xuxueli/xxl-job-admin:2.3.0
+    platform: linux/amd64
+    restart: always
+    container_name: caring-xxl-job
+    environment:
+      - PARAMS=--spring.config.location=/application.properties
+    volumes:
+      - ./volumes/data/xxl-job:/data/applogs
+      - ./config/xxl-job/application.properties:/application.properties
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    networks:
+      - caring-network
+
+  nginx:
+    image: nginx:1.21
+    platform: linux/amd64
+    container_name: caring-nginx
+    volumes:
+      - ./config/nginx/conf:/etc/nginx
+      - ./config/nginx/html:/usr/share/nginx/html
+      - ./volumes/data/nginx-log:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - caring-network

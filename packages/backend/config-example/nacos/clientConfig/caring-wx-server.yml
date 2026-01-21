@@ -1,0 +1,21 @@
+caring:
+  swagger:
+    docket:
+      config:
+        title: 配置模块
+        base-package: com.caring.sass.wx.controller.config
+      keyword:
+          title: 关键字模块
+          base-package: com.caring.sass.wx.controller.keyword
+      menu:
+          title: 菜单模块
+          base-package: com.caring.sass.wx.controller.menu
+      template:
+          title: 模板模块
+          base-package: com.caring.sass.wx.controller.template
+      guide:
+          title: 注册引导模块
+          base-package: com.caring.sass.wx.controller.guide
+
+server:
+  port: 30605

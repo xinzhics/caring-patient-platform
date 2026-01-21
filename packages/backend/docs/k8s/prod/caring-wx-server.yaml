@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
         - name: caring-wx-server
-          image: registry.cn-beijing.aliyuncs.com/caring/caring-wx-server:c.2.5.1-SNAPSHOT
+          image: YOUR_REGISTRY/caring-wx-server:c.2.5.1-SNAPSHOT
           imagePullPolicy: Always
           ports:
             - name: http-port
               containerPort: 30605
       imagePullSecrets:
-        - name: regsecret-cn
+        - name: YOUR_REGISTRY_SECRET
 ---
 apiVersion: v1
 kind: Service

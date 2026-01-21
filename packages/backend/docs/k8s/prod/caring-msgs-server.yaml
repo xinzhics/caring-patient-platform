@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
         - name: caring-msgs-server
-          image: registry.cn-beijing.aliyuncs.com/caring/caring-msgs-server:c.2.5.1-SNAPSHOT
+          image: YOUR_REGISTRY/caring-msgs-server:c.2.5.1-SNAPSHOT
           imagePullPolicy: Always
           ports:
             - name: http-port
               containerPort: 8768
       imagePullSecrets:
-        - name: regsecret-cn
+        - name: YOUR_REGISTRY_SECRET
 ---
 apiVersion: v1
 kind: Service

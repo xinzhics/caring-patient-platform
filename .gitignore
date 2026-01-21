@@ -89,3 +89,6 @@ config/staging.js
 *.p12
 
 SECURITY_FIX_REPORT.md
+
+# Docker volumes
+packages/backend/volumes/

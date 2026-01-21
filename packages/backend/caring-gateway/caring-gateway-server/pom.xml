@@ -19,6 +19,12 @@
             <groupId>com.caring.sass</groupId>
             <artifactId>caring-common</artifactId>
             <version>${caring-project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.caring.sass</groupId>
+                    <artifactId>caring-mq-starter</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.caring.sass</groupId>

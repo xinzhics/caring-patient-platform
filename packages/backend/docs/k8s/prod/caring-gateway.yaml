@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: caring-gateway-server
-          image: registry.cn-beijing.aliyuncs.com/caring/caring-gateway-server:c.2.5.1-SNAPSHOT
+          image: YOUR_REGISTRY/caring-gateway-server:c.2.5.1-SNAPSHOT
           ports:
             - name: http-port
               containerPort: 8760
       imagePullSecrets:
-        - name: regsecret-cn
+        - name: YOUR_REGISTRY_SECRET
 ---
 apiVersion: v1
 kind: Service
