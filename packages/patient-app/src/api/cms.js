@@ -5,7 +5,7 @@ import apiUrl from './baseUrl.js'
 export function getCmsList (data) {
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/cms/studioCms/page`,
+    url: `${apiUrl}/api/cms/studioCms/page`,
     data
   })
 }
@@ -19,7 +19,7 @@ export function getCmsList (data) {
 export function getCmsInfo(cmsId) {
   return axiosApi({
     method: 'GET',
-    url: `${apiUrl}/cms/studioCms/${cmsId}`
+    url: `${apiUrl}/api/cms/studioCms/${cmsId}`
   })
 }
 
@@ -29,7 +29,7 @@ export function getCmsInfo(cmsId) {
 export function studioContentReplySave(data) {
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/cms/studioContentReply`,
+    url: `${apiUrl}/api/cms/studioContentReply`,
     data
   })
 }
@@ -40,7 +40,7 @@ export function studioContentReplySave(data) {
 export function studioCollectSave(data) {
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/cms/studioCollect`,
+    url: `${apiUrl}/api/cms/studioCollect`,
     data
   })
 }
@@ -53,7 +53,7 @@ export function studioCollectSave(data) {
 export function studioCollectPage(data) {
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/cms/studioCollect/page`,
+    url: `${apiUrl}/api/cms/studioCollect/page`,
     data
   })
 }
@@ -66,7 +66,7 @@ export function studioCollectPage(data) {
 export function myStudioContentReply(data) {
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/cms/studioContentReply/pageContent`,
+    url: `${apiUrl}/api/cms/studioContentReply/pageContent`,
     data
   })
 }
@@ -79,7 +79,7 @@ export function myStudioContentReply(data) {
 export function studioContentReplyPage(data) {
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/cms/studioContentReply/page`,
+    url: `${apiUrl}/api/cms/studioContentReply/page`,
     data
   })
 }
@@ -92,6 +92,6 @@ export function studioContentReplyPage(data) {
 export function countPatientCms(userId) {
   return axiosApi({
     method: 'GET',
-    url: `${apiUrl}/cms/studioCms/countPatient?userId=${userId}`,
+    url: `${apiUrl}/api/cms/studioCms/countPatient?userId=${userId}`,
   })
 }

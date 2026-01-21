@@ -115,13 +115,14 @@ export default {
       Api.getContent({ id: localStorage.getItem('userId') }).then((res) => {
         const userName = res.data.data.imAccount;
         const password = "123456";
-        var options = {
-          apiUrl: WebIM.config.apiURL,
-          user: userName,
-          pwd: password,
-          appKey: WebIM.config.appkey
-        };
-        WebIM.conn.open(options);
+        //2026daxiong调试注释
+        // var options = {
+        //   apiUrl: WebIM.config.apiURL,
+        //   user: userName,
+        //   pwd: password,
+        //   appKey: WebIM.config.appkey
+        // };
+    //WebIM.conn.open(options);
       })
     },
     closeWXWindow() {

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import {Base64} from 'js-base64'
 import wx from "weixin-js-sdk";
 import {debounce} from "../components/utils";
-
+import { patientLogin } from '@/api/patientRegister.js'
 
 Vue.use(Router)
 
@@ -486,7 +486,7 @@ const router = new Router({
 
 
 let apiUrl = process.env.NODE_ENV === 'development' 
-  ? "https://dev-api.example.com" 
+  ? "http://localhost:8760/api" 
   : "https://api.example.com"
 // 首次加载判断是否患者需要完成入组
 let shouldCheckEnterGroupStatus = true
@@ -503,6 +503,7 @@ function ruleSelectFilter(userId, token, wxAppId, headerTenant,  to, from, next)
   if (localStorage.getItem('projectInfo') && JSON.parse(localStorage.getItem('projectInfo')).name) {
     window.document.title = JSON.parse(localStorage.getItem('projectInfo')).name
   }
+
   // 用户ID已经存在。token已经生成。直接去首页
   if (userId && token) {
     next({
@@ -587,6 +588,37 @@ function wxAuthorize(to, next) {
     })
     return
   }
+  // 开发环境自动登录配置 2026daxiong 测试用，正式环境注释
+ if (process.env.NODE_ENV === 'development' || localStorage.getItem('AUTO_LOGIN_ENABLED')) {
+      // 设置测试账户信息
+      const testPhone = localStorage.getItem('TEST_PHONE') || '15969881998';
+      const testPassword = localStorage.getItem('TEST_PASSWORD') || '123456';
+      
+      // 直接调用登录方法
+      const phone = caringDecode(testPhone);
+      const params = {
+        phone: phone,
+        password: testPassword
+      };
+      
+      patientLogin(params).then((res) => {
+        console.log('自动登录',res.data);
+        if (res.data.code === 0) {
+            localStorage.setItem("LAST_LOGIN_ROLE", "patient")
+            localStorage.setItem('token', res.data.data.token)
+            localStorage.setItem('userId', res.data.data.userId)
+            localStorage.setItem('expiration', res.data.data.expiration)
+            window.location.reload();
+        } else {
+          console.log('自动登录失败，回退到普通登录流程');
+        }
+      }).catch((e) => {
+          debugger;
+        // 自动登录出错，回退到普通登录流程
+        console.error('自动登录出错，回退到普通登录流程',e);
+      });
+       return;
+  }
   var s = window.location.href;
   var h = s.split(".")[0];
   var a = h.split("//")[1];
@@ -596,7 +628,17 @@ function wxAuthorize(to, next) {
   }
   window.location.href = apiUrl + '/wx/wxUserAuth/anno/getWxUserCode?domain=' + a + '&redirectUri=' + encodeURIComponent(s)
 }
-
+/**
+ * 对信息加密
+ * @param str
+ * @returns {Uint8Array}
+ */
+function  caringDecode(str) {
+  str = 'caring_' + str
+  const base64 = Base64.encode(str)
+  const result = 'A' + base64 + 'B'
+  return Base64.encode(result)
+}
 /**
  * 初始化字典。并存入缓存
  * @param tenantCode
@@ -753,7 +795,6 @@ router.beforeEach((to, from, next) => {
   let userId = localStorage.getItem('userId') //获取用户的userId
   let token = localStorage.getItem('token') //获取请求头的token
   // 注意：不要在代码中硬编码token，应通过正常的登录流程获取
-
   localStorage.setItem('currentPathRouter', to.path)
 
   // 患者端的白名单页面，用户不需要注册，不需要入组就可以访问

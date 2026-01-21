@@ -9,6 +9,9 @@ caring:
     username: ${NACOS_ID:@nacos.username@}
     password: ${NACOS_ID:@nacos.password@}
 
+server:
+  port: 8770
+
 spring:
   main:
     allow-bean-definition-overriding: true

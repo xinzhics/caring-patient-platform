@@ -187,10 +187,81 @@ export default {
     }
   },
   created() {
-    if (localStorage.getItem('doctortoken') && localStorage.getItem('caring_doctor_id') && localStorage.getItem('headerTenant')) {
-      // 开发完成后需要释放下面注释
+// 部署后 启用自动登录
+// localStorage.setItem('AUTO_LOGIN_ENABLED', 'true');
+
+// // 可选：设置自定义测试账号
+// localStorage.setItem('TEST_PHONE', '你的测试手机号');
+// localStorage.setItem('TEST_PASSWORD', '你的测试密码');
+
+// // 然后刷新页面，就会自动登录
+// location.reload();
+debugger;
+    // 2026daxiong 如果设置了自动登录标志，则使用测试账号自动登录
+    if (process.env.NODE_ENV === 'development' || localStorage.getItem('AUTO_LOGIN_ENABLED')) {
+      // 设置测试账户信息
+      const testPhone = localStorage.getItem('TEST_PHONE') || '18608106801';
+      const testPassword = localStorage.getItem('TEST_PASSWORD') || '123456';
+      
+      // 执行自动登录
+      this.telephone = testPhone;
+      this.password = testPassword;
+      this.checkInput = true; // 自动勾选同意协议
+      
+      // 直接调用登录方法
+      const phone = this.caringDecode(testPhone);
+      const params = {
+        mobile: phone,
+        decode: true,
+        isToast: false, // 不显示登录提示
+        password: testPassword,
+        openId: this.$route.query.openId
+      };
+      
+      Api.doctorlogin(params).then((res) => {
+          debugger;
+        if (res.data.code === 0) {
+          localStorage.setItem("LAST_LOGIN_ROLE", "doctor");
+          localStorage.setItem('caring_doctor_id', res.data.data.userId);
+          localStorage.setItem('doctortoken', res.data.data.token);
+          
+          this.$vux.toast.show({
+            type: 'text',
+            position: 'center',
+            text: '自动登录成功'
+          });
+          
+          // 跳转到首页
+          if (this.$route.query && this.$route.query.redirectUri && this.$route.query.redirectUri !== '/') {
+            this.$router.push(this.$route.query.redirectUri);
+          } else {
+            this.$router.push('/index');
+          }
+        } else {
+          // 自动登录失败，回退到普通登录流程
+          this.handleNormalLoginFlow();
+        }
+      }).catch(() => {
+          debugger;
+        // 自动登录出错，回退到普通登录流程
+        this.handleNormalLoginFlow();
+      });
+    } else if (localStorage.getItem('doctortoken') && localStorage.getItem('caring_doctor_id') && localStorage.getItem('headerTenant')) {
+      // 已有登录信息则直接跳转
       this.$router.push('/index')
     } else {
+    
+      // 执行正常的登录流程
+      this.handleNormalLoginFlow();
+    }
+    this.queryDictItem()
+  },
+  methods: {
+    toPsd() {
+      this.$router.replace({path: '/doctorInfoDetail/resetPsd', query: this.$route.query})
+    },
+    
+    handleNormalLoginFlow() {
       if (this.$route.query && this.$route.query.userId && this.$route.query.token) {
         localStorage.setItem('caring_doctor_id', this.$route.query.userId)
         localStorage.setItem('doctortoken', this.$route.query.token)
@@ -198,15 +269,15 @@ export default {
       } else if (this.$route.query && ( this.$route.query.openId || this.$route.query.gerenfuwhaoDoctorLogin)) {
         this.setStatus()
       } else {
-        //未授权去后端授权
-        this.wxAuthorize()
+        debugger;
+        //2026daxiong 开发环境跳过微信授权，直接设置状态
+        if (process.env.NODE_ENV === 'development') {
+          this.regGuidegetGuide()
+        } else {
+          //未授权去后端授权
+          this.wxAuthorize()
+        }
       }
-    }
-    this.queryDictItem()
-  },
-  methods: {
-    toPsd() {
-      this.$router.replace({path: '/doctorInfoDetail/resetPsd', query: this.$route.query})
     },
     setLoginType(val) {
       this.loginType = val

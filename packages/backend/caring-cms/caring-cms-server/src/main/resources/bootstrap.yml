@@ -8,6 +8,8 @@ caring:
     discoverygroup: ${NACOS_DISCOVERYGROUP:@nacos.discoverygroup@}
     username: ${NACOS_ID:@nacos.username@}
     password: ${NACOS_ID:@nacos.password@}
+server:
+  port: 8761
 
 spring:
   main:

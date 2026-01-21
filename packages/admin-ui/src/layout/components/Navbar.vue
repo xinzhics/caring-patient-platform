@@ -379,71 +379,14 @@ export default {
   }
 }
 .el-badge {
-  /deep/.el-badge__content.is-fixed {
-    top: 10px
+  ::v-deep .el-badge__content.is-fixed {
+    top: 10px;
   }
 }
 .msgs-title-content {
-  color: #303133;
-  font-size: 20px;
-  line-height: 1;
-  margin: 12px 0px 5px 0px;
-  overflow:hidden;
-  .msgs-title {
-    margin-left: 20px;
-    float: left;
-  }
-  .msgs-title-icon {
-    float: right;
-    margin-right: 28px;
-  }
-}
-.avue-notice__item {
-  padding: 12px 24px;
-  border-bottom: 1px solid #e8eaec;
-  cursor: pointer;
-  -webkit-transition: background-color .2s ease-in-out;
-  transition: background-color .2s ease-in-out;
-  text-align: left;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.avue-notice__content {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-.avue-notice__title {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
-  color: #515a6e;
-  margin-bottom: 4px;
-  overflow:hidden
-}
-.avue-notice__tag {
-  float: right;
-  margin-top: 2px;
-}
-.avue-notice__name {
-  line-height: 25px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 280px;
-  float: left;
-}
-.avue-notice__subtitle {
-  font-size: 12px;
-  color: #808695;
-}
-.avue-notice__more{
-  text-align: center;
-  padding: 20px 0 10px
-}
-
 </style>

@@ -233,12 +233,6 @@
                 <profile.active>local</profile.active>
             </properties>
         </profile>
-        <profile>
-            <id>ys_local</id>
-            <properties>
-                <profile.active>ys_local</profile.active>
-            </properties>
-        </profile>
         <!-- 生产环境-->
         <profile>
             <id>prod</id>
@@ -329,6 +323,21 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+
+        <repository>
+            <id>nexus</id>
+            <name>snapshots</name>
+            <url>http://nexus.caringsaas.cn/repository/maven-snapshots/</url>
+        </repository>
+    </repositories>
+
+
 
     <!-- 
     <distributionManagement>

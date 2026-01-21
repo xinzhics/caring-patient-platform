@@ -1,13 +1,12 @@
 import Vue from 'vue';
 import { ToastPlugin } from 'vux'
 import VueRouter from 'vue-router'
-import { Toast } from 'vant'
+import { Toast, Dialog } from 'vant'
 import router from '../router/index'
 import apiUrl from "./baseUrl";
 
 Vue.use(ToastPlugin)
 Vue.use(VueRouter)
-let vm = new Vue({router})
 // 请求添加条件，如token
 axios.interceptors.request.use(
   config => {
@@ -64,7 +63,7 @@ function wxAuthorize() {
   // 项目是个人服务号的项目。直接去患者登录页面
   const officialAccountType = localStorage.getItem('officialAccountType')
   if (officialAccountType && officialAccountType === 'PERSONAL_SERVICE_NUMBER') {
-    vm.$router.replace('/patient/login')
+    router.replace('/patient/login')
     return
   }
 
@@ -81,29 +80,24 @@ function handleSuccess(res, resolve) {
   if (res.data.isError) {
     // 未登录
     // debugger
-    Toast.clear
+    Toast.clear()
     if (res.data.code === 40000 || res.data.code === 40001 ||
       res.data.code === 40002 || res.data.code === 40003 ||
       res.data.code === 40005 || res.data.code === 40006 ||
       res.data.code === 40008) {
         Toast(res.data.msg)
-        vm.$vux.alert.show({
-          content: res.data.msg,
-          buttonText: '确定',
-          maskZIndex: 100,
-          onShow () {
-            localStorage.setItem('headerTenant', '')
-            localStorage.setItem('wxAppId', '')
-            localStorage.setItem('userId', '')
-            localStorage.setItem('token', '')
-            localStorage.setItem('renovate', '')
-            localStorage.setItem('routerData', '')
-            localStorage.setItem('styleDate', '')
-            vm.$router.replace('/')
-          },
-          onHide () {
-
-          }
+        Dialog.alert({
+          message: res.data.msg,
+          confirmButtonText: '确定'
+        }).then(() => {
+          localStorage.setItem('headerTenant', '')
+          localStorage.setItem('wxAppId', '')
+          localStorage.setItem('userId', '')
+          localStorage.setItem('token', '')
+          localStorage.setItem('renovate', '')
+          localStorage.setItem('routerData', '')
+          localStorage.setItem('styleDate', '')
+          router.replace('/')
         })
     } else {
       //当患者不存在时重新授权

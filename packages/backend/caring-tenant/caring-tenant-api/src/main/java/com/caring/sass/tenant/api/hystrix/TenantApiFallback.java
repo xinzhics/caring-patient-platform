@@ -100,7 +100,8 @@ public class TenantApiFallback implements TenantApi {
 
     @Override
     public R<String> queryOfficialAccountType(String tenantCode) {
-        return R.timeout();
+        return R.success("CERTIFICATION_SERVICE_NUMBER");//2026daxiong 调试加入
+        //return R.timeout();
     }
 
 }

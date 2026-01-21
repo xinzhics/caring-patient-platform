@@ -1,59 +1,48 @@
+import { App } from 'vue';
+import { 
+  Button, 
+  Cell, 
+  Field, 
+  Popup, 
+  Picker, 
+  DatetimePicker,
+  List,
+  Toast,
+  Dialog,
+  Sticky,
+  Search
+  // 根据实际需要添加更多组件
+} from 'vant';
+import 'vant/lib/index.less'; // 或者使用 'vant/lib/index.css'
 
-import {
-	Button,
-	Field,
-	Tab,
-	Tabs,
-	CellGroup,
-	Uploader,
-	Sticky,
-	Step,
-	Steps,
-	Icon,
-	Dialog,
-	Checkbox,
-	CheckboxGroup,
-	Empty,
-	Divider,
-	List,
-	Cell,
-	PullRefresh,
-	ActionSheet,
-	Badge,
-	Loading,
-	Toast,
-	Popup,
-	ImagePreview
-} from 'vant'
+export const vantPlugins = {
+  install(app: App) {
+    app.use(Button);
+    app.use(Cell);
+    app.use(Field);
+    app.use(Popup);
+    app.use(Picker);
+    app.use(DatetimePicker);
+    app.use(List);
+    app.use(Toast);
+    app.use(Dialog);
+    app.use(Sticky);
+    app.use(Search);
+    // 添加更多组件...
+  },
+};
 
-const vant = {
-	install(Vue: any) {
-		Vue.use(Button)
-			.use(Field)
-			.use(Tab)
-			.use(Tabs)
-			.use(CellGroup)
-			.use(Uploader)
-			.use(Sticky)
-			.use(Step)
-			.use(Steps)
-			.use(Icon)
-			.use(Checkbox)
-			.use(CheckboxGroup)
-			.use(Empty)
-			.use(Divider)
-			.use(List)
-			.use(Cell)
-			.use(Badge)
-			.use(ActionSheet)
-			.use(PullRefresh)
-			.use(Loading)
-			.use(Toast)
-			.use(Popup)
-			.use(ImagePreview)
-
-			.use(Dialog)
-	},
-}
-
-export default vant
+// 单独导出特定组件，以便在需要时单独导入
+export {
+  Button,
+  Cell,
+  Field,
+  Popup,
+  Picker,
+  DatetimePicker,
+  List,
+  Toast,
+  Dialog,
+  Sticky,
+  Search
+};

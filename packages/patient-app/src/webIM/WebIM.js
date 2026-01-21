@@ -12,7 +12,24 @@ function ack(message) {
 
 // 初始化IM SDK
 let WebIM = {};
-WebIM = window.WebIM = websdk.default;
+// 检查 websdk 是否已从 CDN 加载
+if (typeof websdk !== 'undefined' && websdk && websdk.default) {
+  WebIM = window.WebIM = websdk.default;
+  WebIM.WebRTC = webrtc;
+  WebIM.EMedia = emedia;
+} else {
+  console.error('环信 IM SDK 未正确加载，请检查网络连接或联系管理员.');
+  // 创建一个模拟对象防止完全崩溃，但会显示错误
+  WebIM = window.WebIM = {
+    message: function() {},
+    connection: function() {
+      return {
+        listen: function() {},
+        getUniqueId: function() { return 'mock-id'; }
+      };
+    }
+  };
+}
 WebIM.config = config;
 WebIM.conn = new WebIM.connection({
   appKey: config.appkey,
@@ -77,6 +94,5 @@ WebIM.conn.listen({
   }, // 失败回调
 });
 
-WebIM.WebRTC = webrtc;
-WebIM.EMedia = emedia;
+
 export default WebIM;

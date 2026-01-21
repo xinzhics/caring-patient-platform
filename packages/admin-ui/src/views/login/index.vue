@@ -81,8 +81,8 @@
       <span v-if="login.type === 'social'">
         {{ $t("login.chooseToSignIn") }}
         <div>
-          <template v-for="(l, index) in logo">
-            <div :key="index" class="logo-wrapper">
+          
+            <div v-for="(l, index) in logo" :key="index" class="logo-wrapper">
               <img
                 :class="{ radius: l.radius }"
                 :src="resolveLogo(l.img)"
@@ -90,7 +90,7 @@
                 alt
               />
             </div>
-          </template>
+        
         </div>
       </span>
       <span style="margin-top: -1rem" v-if="login.type === 'bind'">
@@ -169,22 +169,22 @@
 </template>
 
 <script>
-  import LangSelect from "@/components/LangSelect";
+  // import LangSelect from "@/components/LangSelect";
   import db from "@/utils/localstorage";
   import {randomNum} from "@/utils";
   import {socialLoginUrl} from "@/settings";
   import loginApi from "@/api/Login.js";
-  import {Base64} from 'js-base64';
+  // import {Base64} from 'js-base64';
   import axios from 'axios'
   export default {
     name: "Login",
-    components: {LangSelect},
+    components: {},
     data() {
       return {
         //是否启用多租户
-        isMultiTenant:
+        isMultiTenant: 
           process.env.VUE_APP_IS_MULTI_TENANT === "true" ? true : false,
-        isCaptcha:
+        isCaptcha: 
           process.env.VUE_APP_IS_CAPTCHA === "true" ? true : false,
         tabActiveName: "bindLogin",
         login: {
@@ -302,7 +302,7 @@
         var s = window.location.href;
         var h = s.split(".")[0];
         var a = h.split("//")[1];
-        axios.get('http://api-test.caringsaas.cn/api/tenant/tenant/anno/getByDomain?domain=' + a).then(res => {
+        axios.get('http://192.168.31.32:8760/api/tenant/tenant/anno/getByDomain?domain=' + a).then(res => {
           console.log(res)
           if(res.data.code===0){
             if(res.data.data){
@@ -482,7 +482,7 @@
       },
       handleLogin() {
         console.log(this.loginForm.tenantView)
-        this.loginForm.tenant = `${Base64.encode(this.loginForm.tenantView)}`;
+        this.loginForm.tenant = this.loginForm.tenantView //2026daxiong 不编码 `${Base64.encode(this.loginForm.tenantView)}`;
         this.$refs.loginForm.validate((valid) => {
           if (valid) {
             this.loginSubmit();

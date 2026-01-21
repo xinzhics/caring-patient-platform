@@ -1,7 +1,7 @@
 import axiosApi from './apiAxios.js'
 
 const apiUrl = process.env.NODE_ENV === 'development' 
-  ? 'https://dev-api.example.com/api' 
+  ? 'http://localhost:8760/api' 
   : 'https://api.example.com/api'
 //const apiUrl = 'http://192.168.1.133:8760'
 const apiList = {

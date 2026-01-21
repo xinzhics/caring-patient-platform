@@ -29,7 +29,7 @@
     WeixinJSBridge.invoke("setFontSizeCallback", { fontSize: 0 });
     // 重写设置网页字体大小的事件
     WeixinJSBridge.on("menu:setfont", function () {
-      WeixinJSBridge.invoke("setFontSizeCallback", { fontSize: 0 });
+    WeixinJSBridge.invoke("setFontSizeCallback", { fontSize: 0 });
     });
   }
 })();

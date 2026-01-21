@@ -161,10 +161,10 @@ FLUSH PRIVILEGES;
 #### 执行数据库迁移
 ```bash
 # 导入基础表结构
-mysql -u caring_saas -p caring_saas < docs/sql/saas_base_schema.sql
+mysql -u caring_saas -p caring_saas < docs/sql/caring_base_0000.sql
 
 # 导入租户模板
-mysql -u caring_saas -p caring_tenant_template < docs/sql/tenant_template_schema.sql
+mysql -u caring_saas -p caring_tenant_template < docs/sql/caring_column.sql
 ```
 
 ### 3. 配置 Nacos

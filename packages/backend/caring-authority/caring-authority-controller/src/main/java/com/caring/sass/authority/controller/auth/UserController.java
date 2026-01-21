@@ -246,7 +246,7 @@ public class UserController extends SuperCacheController<UserService, Long, User
             user.setEducation(new RemoteData<>(educationMap.getOrDefault(item.getEducation(), StrPool.EMPTY)));
             user.setNation(new RemoteData<>(nationMap.getOrDefault(item.getNation(), StrPool.EMPTY)));
             user.setPositionStatus(new RemoteData<>(positionStatusMap.getOrDefault(item.getPositionStatus(), StrPool.EMPTY)));
-            user.setPassword(BizConstant.DEF_PASSWORD_MD5);
+            user.setPassword(BizConstant.DEF_PASSWORD_MD5_PLACEHOLDER);
             return user;
         }).collect(Collectors.toList());
 

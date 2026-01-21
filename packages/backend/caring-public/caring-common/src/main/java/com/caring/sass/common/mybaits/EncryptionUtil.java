@@ -110,6 +110,7 @@ public class EncryptionUtil {
         try {
 //            decrypt = decrypt("6sg2734lUui69Ns/v4rbjQ==");
             decrypt = encrypt(str);
+            String result = decrypt(decrypt);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

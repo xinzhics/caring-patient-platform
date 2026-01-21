@@ -22,7 +22,6 @@ import com.caring.sass.user.entity.NursingStaff;
 import com.caring.sass.user.entity.Patient;
 import io.swagger.models.auth.In;
 import org.hibernate.validator.constraints.Length;
-import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;

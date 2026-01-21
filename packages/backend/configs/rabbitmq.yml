@@ -1,0 +1,194 @@
+caring:
+  rabbitmq:
+    
+    
+    
+    
+    
+    enabled: false
+
+
+
+
+
+
+spring:
+  rabbitmq:
+    
+    
+    host: ${RABBITMQ_HOST:192.168.83.0}
+    
+    port: ${RABBITMQ_PORT:5672}
+    
+    username: ${RABBITMQ_USERNAME:root}
+    
+    password: ${RABBITMQ_PASSWORD:123456}
+    
+    
+    
+    
+    virtual-host: ${RABBITMQ_VHOST:/}
+    
+    connection-timeout: ${RABBITMQ_CONNECTION_TIMEOUT:10000}
+
+    
+    
+    
+    
+    
+    
+    publisher-confirms: ${RABBITMQ_PUBLISHER_CONFIRMS:true}
+    
+    
+    
+    
+    
+    publisher-returns: ${RABBITMQ_PUBLISHER_RETURNS:true}
+
+    
+    listener:
+      simple:
+        
+        concurrency: ${RABBITMQ_CONCURRENCY:10}
+        
+        max-concurrency: ${RABBITMQ_MAX_CONCURRENCY:20}
+        
+        prefetch: ${RABBITMQ_PREFETCH:10}
+        
+        
+        
+        
+        
+        acknowledge-mode: ${RABBITMQ_ACKNOWLEDGE_MODE:MANUAL}
+        
+        retry:
+          
+          enabled: ${RABBITMQ_RETRY_ENABLED:true}
+          
+          max-attempts: ${RABBITMQ_MAX_ATTEMPTS:3}
+          
+          initial-interval: ${RABBITMQ_INITIAL_INTERVAL:1000}
+          
+          multiplier: ${RABBITMQ_MULTIPLIER:1.0}
+          
+          max-interval: ${RABBITMQ_MAX_INTERVAL:10000}
+
+    
+    template:
+      
+      receive-timeout: ${RABBITMQ_RECEIVE_TIMEOUT:0}
+      
+      reply-timeout: ${RABBITMQ_REPLY_TIMEOUT:60000}
+      
+      mandatory: ${RABBITMQ_MANDATORY:true}
+      
+      exchange: ${RABBITMQ_EXCHANGE:caring-exchange}
+      
+      routing-key: ${RABBITMQ_ROUTING_KEY:caring-routing-key}
+      
+      default-receive-queue: ${RABBITMQ_DEFAULT_QUEUE:caring-queue}
+
+
+
+
+
+message:
+  
+  enabled: ${MESSAGE_ENABLED:true}
+  
+  type: ${MESSAGE_TYPE:rabbitmq}
+
+  
+  exchange:
+    
+    user-event: ${USER_EVENT_EXCHANGE:caring.user.event}
+    
+    order-event: ${ORDER_EVENT_EXCHANGE:caring.order.event}
+    
+    system-event: ${SYSTEM_EVENT_EXCHANGE:caring.system.event}
+    
+    notification-event: ${NOTIFICATION_EVENT_EXCHANGE:caring.notification.event}
+
+  
+  queue:
+    
+    user-event: ${USER_EVENT_QUEUE:caring.user.event.queue}
+    
+    order-event: ${ORDER_EVENT_QUEUE:caring.order.event.queue}
+    
+    system-event: ${SYSTEM_EVENT_QUEUE:caring.system.event.queue}
+    
+    notification-event: ${NOTIFICATION_EVENT_QUEUE:caring.notification.event.queue}
+
+  
+  routing-key:
+    
+    user-created: ${USER_CREATED_KEY:user.created}
+    
+    user-updated: ${USER_UPDATED_KEY:user.updated}
+    
+    user-deleted: ${USER_DELETED_KEY:user.deleted}
+    
+    order-created: ${ORDER_CREATED_KEY:order.created}
+    
+    order-completed: ${ORDER_COMPLETED_KEY:order.completed}
+    
+    system-started: ${SYSTEM_STARTED_KEY:system.started}
+    
+    system-shutdown: ${SYSTEM_SHUTDOWN_KEY:system.shutdown}
+    
+    email-notification: ${EMAIL_NOTIFICATION_KEY:notification.email}
+    
+    sms-notification: ${SMS_NOTIFICATION_KEY:notification.sms}
+    
+    push-notification: ${PUSH_NOTIFICATION_KEY:notification.push}
+
+
+async:
+  
+  enabled: ${ASYNC_ENABLED:true}
+  
+  executor:
+    
+    core-pool-size: ${ASYNC_CORE_POOL_SIZE:10}
+    
+    max-pool-size: ${ASYNC_MAX_POOL_SIZE:20}
+    
+    queue-capacity: ${ASYNC_QUEUE_CAPACITY:100}
+    
+    thread-name-prefix: ${ASYNC_THREAD_PREFIX:caring-async-}
+    
+    await-termination-seconds: ${ASYNC_AWAIT_SECONDS:60}
+    
+    wait-for-tasks-on-shutdown: ${ASYNC_WAIT_ON_SHUTDOWN:true}
+
+
+scheduling:
+  
+  enabled: ${SCHEDULING_ENABLED:true}
+  
+  executor:
+    
+    pool-size: ${SCHEDULING_POOL_SIZE:10}
+    
+    thread-name-prefix: ${SCHEDULING_THREAD_PREFIX:caring-scheduler-}
+  
+  tasks:
+    
+    user-sync:
+      
+      enabled: ${USER_SYNC_ENABLED:true}
+      
+      interval: ${USER_SYNC_INTERVAL:3600}
+    
+    data-cleanup:
+      
+      enabled: ${DATA_CLEANUP_ENABLED:true}
+      
+      interval: ${DATA_CLEANUP_INTERVAL:86400}
+    
+    cache-refresh:
+      
+      enabled: ${CACHE_REFRESH_ENABLED:true}
+      
+      interval: ${CACHE_REFRESH_INTERVAL:1800}

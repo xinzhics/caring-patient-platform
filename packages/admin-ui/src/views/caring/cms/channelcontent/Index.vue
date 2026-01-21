@@ -270,7 +270,7 @@ import elDragDialog from '@/directive/el-drag-dialog'
 import ChannelContentEdit from "./Edit";
 import channelContentApi from "@/api/ChannelContent.js";
 import ChannelContentImport from "@/components/caring/Import"
-import {convertEnum} from '@/utils/utils'
+// import {convertEnum} from '@/utils/utils'
 import downSelect from './downSelect'
 import {downloadFile, loadEnums, initDicts, initQueryParams} from '@/utils/commons'
 import db from '@/utils/localstorage'
@@ -371,7 +371,7 @@ export default {
       // })
       const clientId = process.env.VUE_APP_CLIENT_ID
       const clientSecret = process.env.VUE_APP_CLIENT_SECRET
-      axios.post('http://api-test.caringsaas.cn/api/tenant/cmsConfig/channel/page',params,{headers: {
+      axios.post('http://192.168.31.32:8760/api/tenant/cmsConfig/channel/page',params,{headers: {
           'token': 'Bearer ' + db.get('TOKEN', ''),
           'Authorization':`Basic ${Base64.encode(`${clientId}:${clientSecret}`)}`,
           'tenant':null
@@ -440,7 +440,7 @@ export default {
       this.showlist = true
       // this.loading = true
       // let param = new URLSearchParams()
-      const token = db.get('TOKEN', '')
+      // const token = db.get('TOKEN', '')
       const clientId = process.env.VUE_APP_CLIENT_ID
       const clientSecret = process.env.VUE_APP_CLIENT_SECRET
       this.getheaderData()
@@ -467,7 +467,7 @@ export default {
         'sort': 'updateTime'
       }
       // console.log(axios.post)
-      axios.post('http://api-test.caringsaas.cn/api/tenant/cmsConfig/content/page',params,{headers: {
+      axios.post('http://192.168.31.32:8760/api/tenant/cmsConfig/content/page',params,{headers: {
           'token': 'Bearer ' + db.get('TOKEN', ''),
           'Authorization':`Basic ${Base64.encode(`${clientId}:${clientSecret}`)}`,
           'tenant':null

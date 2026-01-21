@@ -49,7 +49,7 @@ router.beforeEach((to, from, next) => {
     var s = window.location.href;
     var h = s.split(".")[0];
     var a = h.split("//")[1];
-    axios.get(`${process.env.NODE_ENV === 'development' ? 'https://dev-api.example.com' : 'https://api.example.com'}/api/tenant/tenant/anno/getByDomain?domain=`+ a).then(res => {
+    axios.get(`${process.env.NODE_ENV === 'development' ? 'http://localhost:8760' : 'https://api.example.com'}/api/tenant/tenant/anno/getByDomain?domain=`+ a).then(res => {
       if (res.data.code === 0) {
         if (res.data.data) {
           localStorage.setItem('Code', res.data.data.code)

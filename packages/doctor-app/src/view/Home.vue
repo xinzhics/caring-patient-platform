@@ -32,10 +32,8 @@
     <div style="padding: 0.5rem 1rem 0rem 1rem;">
       <div class="sysBox" @click="() => $router.push('/sysMessage')">
 
-        <van-image
-          width="18px"
-          height="18px"
-          fit="contain"
+        <img
+          style="width: 18px; height: 18px; object-fit: contain;"
           :src="require('@/assets/my/home_horn.png')"
         />
 
@@ -43,21 +41,26 @@
           {{ sysMessage }}
         </div>
 
-        <van-image
-          width="25px"
-          height="25px"
-          fit="contain"
+        <img
+          style="width: 25px; height: 25px; object-fit: contain;"
           :src="require('@/assets/my/home_arrow.png')"
         />
       </div>
     </div>
 
     <div class="content">
-      <van-grid :column-num="3" :border="false" clickable :icon-size="43">
-        <van-grid-item  v-for="(i,k) in routerData" :icon="i.iconUrl" :key="k" :text="i.name" style="height: 85.6px; font-size: 16px"
-                        :badge="i.badge" @click="clickMenu(i)">
-        </van-grid-item>
-      </van-grid>
+      <grid :show-lr-borders="false" :show-vertical-dividers="false" :cols="3">
+        <grid-item v-for="(i,k) in routerData" :key="k" :label="i.name" @click.native="clickMenu(i)">
+          <div slot="icon" style="position: relative; width: 43px">
+            <badge
+              v-if="i.badge"
+              :text="i.badge"
+              style="position: absolute; right: -5px; top: -6px; min-width: 17px; height: 17px; font-size: 12px; padding: 2px; border-radius: 50%">
+            </badge>
+            <img :src="i.iconUrl" style="width: 43px; height: 43px" />
+          </div>
+        </grid-item>
+      </grid>
 <!--      <grid :show-lr-borders="false" :show-vertical-dividers="false" v-for="(i,k) in list" :key="k+'1'">-->
 <!--        <grid-item v-show="z.path"  v-for="(z,index) in i" :key="index" :label="z.name" :link="z.path">-->
 <!--          <div slot="icon" style="position: relative;width: 43px">-->
@@ -97,14 +100,18 @@ import Api from '@/api/doctor.js'
 import ApiT from '@/api/Content.js'
 import {
   ImagePreview,
-  Grid, GridItem
+  Icon
 } from 'vant'
 import {
-  Badge
+  Badge,
+  Grid,
+  GridItem
 } from 'vux'
 import {mapGetters} from 'vuex'
+// 使用 Vux 的 Grid 组件和 Vant 的 Icon
 Vue.use(Grid)
 Vue.use(GridItem)
+Vue.use(Icon)
 
 export default {
   components: {
@@ -146,18 +153,41 @@ export default {
     }
   },
   created() {
+
     this.routerData = []
     if (localStorage.getItem('caring_doctor_id') && localStorage.getItem('caring_doctor_id') !== 'undefined') {
       this.doctorId = localStorage.getItem('caring_doctor_id')
     }
     if (localStorage.getItem('doctorRouterData') && this.routerData.length === 0) {
       const routers = JSON.parse(localStorage.getItem('doctorRouterData'))
-      for (let i = 0; i < routers.length; i++) {
-        if (routers[i].status) {
-          this.routerData.push(routers[i])
+      const uniqueRouters = Array.from(
+        new Map(routers.map(router => [router.name, router])).values()
+      );
+      console.log('=== 加载的路由数据 ===', uniqueRouters)
+      console.log('=== 路由数据数量 ===', uniqueRouters.length)
+
+      for (let i = 0; i < uniqueRouters.length; i++) {
+        // 过滤掉登录页和首页，只显示功能菜单
+        if (uniqueRouters[i].path !== '/' &&
+            uniqueRouters[i].path !== '/index' &&
+            !uniqueRouters[i].component &&
+            !uniqueRouters[i].meta &&
+            !uniqueRouters[i].path.includes(':')) {  // 排除带动态参数的路由
+          // 添加 iconUrl 字段（使用默认图标）
+          const menuItem = {
+            ...uniqueRouters[i],
+            iconUrl: uniqueRouters[i].iconUrl,
+            status: uniqueRouters[i].status !== undefined ? uniqueRouters[i].status : true
+          }
+          this.routerData.push(menuItem)
         }
       }
+
+      console.log('=== 处理后的菜单数据 ===', this.routerData)
+      console.log('=== 菜单数据数量 ===', this.routerData.length)
+
       this.updateBadge('doctorCount')
+
     }
     this.getInfo()
     if (this.doctorId) {
@@ -319,7 +349,8 @@ export default {
                 pwd: '123456',
                 appKey: WebIM.config.appkey
               }
-              WebIM.conn.open(options)
+                         //2026daxiong调试注释
+    //WebIM.conn.open(options);
               this.baseInfo = res.data.data
               this.loadingData()
               this.getSysMessage()
@@ -464,36 +495,7 @@ export default {
     }
   }
 
-  /deep/.content {
-    background: #fff;
-    width: 82vw;
-    // border-radius: 12px;
-    padding: 1rem 4vw;
-    margin: 10px 5vw 0px;
-
-    .weui-grids {
-      &::before {
-        border: none !important;
-      }
-      .weui-grid__icon{
-        width: 43px !important;
-        height: 43px !important;
-      }
-      .weui-grid {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-
-        &::after {
-          border: none !important;
-        }
-      }
-    }
-    .van-grid-item__text{
-      font-size: 14px !important;
-    }
-  }
+ 
 
   .sysBox {
     background: white;
@@ -546,6 +548,38 @@ export default {
     }
   }
 }
+</style>
+<style lang="less">
+ .content {
+    background: #fff;
+    width: 82vw;
+    // border-radius: 12px;
+    padding: 1rem 4vw;
+    margin: 10px 5vw 0px;
+
+    .weui-grids {
+      &::before {
+        border: none !important;
+      }
+      .weui-grid__icon{
+        width: 43px !important;
+        height: 43px !important;
+      }
+      .weui-grid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        &::after {
+          border: none !important;
+        }
+      }
+    }
+    .van-grid-item__text{
+      font-size: 14px !important;
+    }
+  }
 </style>
 
 
