@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.caring.sass.authority.dto.auth.*;
 import com.caring.sass.base.R;
+import com.caring.sass.common.mybaits.EncryptionUtil;
 import com.caring.sass.common.utils.LoginDecryption;
 import com.caring.sass.context.BaseContextHandler;
 import com.caring.sass.exception.BizException;
@@ -128,7 +129,33 @@ public class OauthController {
         if (StrUtil.isEmpty(login.getTenant())) {
             login.setTenant(BaseContextHandler.getTenant());
         }
-        login.setTenant(JwtUtil.base64Decoder(login.getTenant()));
+        login.setTenant(login.getTenant());//2026daxiong 不解密(JwtUtil.base64Decoder(login.getTenant()));
+        try {
+//            nursing001
+//            nursing002
+//            nursing003
+//            nursing004
+//            nursing005
+//            nursing006
+//            nursing007
+//            nursing008
+//            nursing009
+//            nursing010
+            //打印密文
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing001"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing002"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing003"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing004"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing005"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing006"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing007"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing008"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing009"));
+            log.info("打印密文：{}",EncryptionUtil.encrypt("nursing010"));
+
+        } catch (Exception e) {
+
+        }
 
         String grantType = login.getGrantType();
         TokenGranter granter;
@@ -140,11 +167,11 @@ public class OauthController {
             if (StrUtil.isEmpty(account) || StrUtil.isEmpty(password)) {
                 return R.fail("账密或密码不能为空");
             }
-            account = LoginDecryption.loginDecryption(account);
-            password = LoginDecryption.loginDecryption(password);
+//            account = LoginDecryption.loginDecryption(account);
+//            password = LoginDecryption.loginDecryption(password);
             // 校验 account 字段是否包含非法字符
             if (!LoginDecryption.isValidAccount(account)) {
-                return R.fail("账号不能包含特殊字符：< > & # $ * ( ) -");
+                return R.fail("账号不能包含 特殊字符：< > & # $ * ( ) -");
             }
             login.setAccount(account);
             login.setPassword(password);

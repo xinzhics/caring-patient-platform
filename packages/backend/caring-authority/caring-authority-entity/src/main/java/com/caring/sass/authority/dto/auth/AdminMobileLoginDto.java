@@ -1,5 +1,6 @@
 package com.caring.sass.authority.dto.auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ import java.io.Serializable;
  * @Desc: 超管使用手机号登录
  */
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AdminMobileLoginDto implements Serializable {
 
     @NotEmpty(message = "手机号不能为空")

@@ -1,0 +1,205 @@
+logging:
+  level:
+    
+    com.caring.sass: DEBUG
+    
+    org.springframework: INFO
+    org.springframework.cloud: INFO
+    org.springframework.security: INFO
+    
+    org.hibernate: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    max-size: 100MB
+    max-history: 30
+caring:
+  caring:
+    file:
+      type: "HW"
+  application:
+    
+    webTenantDomain: "example.com"
+    
+    domainProtocol: "https"
+    
+    domainName: "example.com"
+    
+    mainDomainName: ""
+    
+    apiSubDomain: "api"
+    
+    whiteList: "127.0.0.1,192.168.0.1"
+    
+    tempFolderLocation: "/tmp"
+    
+    apkSourceCodeFolder: "/var/www/apk/source"
+    
+    apkVersion: "1.0.0"
+    
+    baseUniAppId: "uni_app_id"
+    
+    apkVersionCode: 1
+    
+    apkLaunchImage: "/images/launch.png"
+    
+    doctorTokenExpire: 86400
+    
+    thirdPlatformEncodingAesKey: "your_third_platform_encoding_aes_key"
+    
+    thirdPlatformToken: "your_third_platform_token"
+    
+    thirdPlatformComponentAppSecret: "your_third_platform_component_app_secret"
+    
+    thirdPlatformComponentAppId: "your_third_platform_component_app_id"
+    
+    openAiToken:
+      - "your_openai_api_key_here"
+    
+    openAiHost: "https://api.openai.com/"
+    
+    doctorGptMaxiMumPoolSize: 8
+    
+    botName: "智能助手"
+    
+    baiduBotAK: "your_baidu_bot_ak"
+    
+    baiduBotSK: "your_baidu_bot_sk"
+    
+    encryptionKey: "your_encryption_key"
+
+security:
+  jwt:
+    
+    secret: ${JWT_SECRET:caring-saas-platform-secret-key-2024-change-in-production}
+    
+    expiration: ${JWT_EXPIRATION:86400}
+    
+    refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800}
+    
+    token-prefix: Bearer
+    
+    header: Authorization
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,env,configprops
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+
+file:
+  upload:
+    
+    path: ${FILE_UPLOAD_PATH:./uploads}
+    
+    max-size: ${FILE_MAX_SIZE:10MB}
+    
+    allowed-types: jpg,jpeg,png,gif,pdf,doc,docx,xls,xlsx,txt,zip,mp4,avi,mov
+    
+    temp-path: ${FILE_TEMP_PATH:./temp}
+
+
+business:
+  
+  system-name: Caring SaaS Platform
+  
+  system-version: c.2.5.1-SNAPSHOT
+  
+  demo-mode: false
+  
+  admin:
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:admin123}
+    email: ${ADMIN_EMAIL:admin@caring.com}
+  
+  system:
+    
+    enable-register: true
+    
+    enable-email-verify: false
+    
+    enable-sms-verify: false
+
+
+spring:
+  cache:
+    type: GENERIC
+
+  j2cache:
+    config-location: ''
+
+
+server:
+  connection-timeout: 30000
+  max-http-header-size: 8KB
+  servlet:
+    session:
+      timeout: 30m
+
+
+cors:
+  allowed-origins: "*"
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: "*"
+  allow-credentials: true
+  max-age: 3600
+
+
+aliyun:
+  oss:
+    enabled: false
+    endpoint: ${OSS_ENDPOINT:}
+    access-key-id: ${OSS_ACCESS_KEY_ID:}
+    access-key-secret: ${OSS_ACCESS_KEY_SECRET:}
+    bucket-name: ${OSS_BUCKET_NAME:}
+    region: ${OSS_REGION:}
+
+
+wechat:
+  enabled: false
+  app-id: ${WECHAT_APP_ID:}
+  app-secret: ${WECHAT_APP_SECRET:}
+  token: ${WECHAT_TOKEN:}
+  encoding-aes-key: ${WECHAT_ENCODING_AES_KEY:}
+
+
+sms:
+  enabled: false
+  provider: ${SMS_PROVIDER:aliyun}
+  aliyun:
+    access-key-id: ${SMS_ACCESS_KEY_ID:}
+    access-key-secret: ${SMS_ACCESS_KEY_SECRET:}
+    region-id: ${SMS_REGION_ID:cn-hangzhou}
+    sign-name: ${SMS_SIGN_NAME:}
+    template-code: ${SMS_TEMPLATE_CODE:}
+
+
+mail:
+  enabled: false
+  host: ${MAIL_HOST:}
+  port: ${MAIL_PORT:587}
+  username: ${MAIL_USERNAME:}
+  password: ${MAIL_PASSWORD:}
+  from: ${MAIL_FROM:}
+  from-name: ${MAIL_FROM_NAME:Caring Platform}
+
+
+ai:
+  enabled: false
+  openai:
+    api-key: ${OPENAI_API_KEY:}
+    model: ${OPENAI_MODEL:gpt-3.5-turbo}
+    timeout: 30s
+

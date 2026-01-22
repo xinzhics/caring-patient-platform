@@ -70,7 +70,7 @@ API地址通过环境变量配置，开发环境和生产环境使用不同的AP
 ```javascript
 // src/api/baseUrl.js
 const apiUrl = process.env.NODE_ENV === 'development' 
-  ? 'https://dev-api.example.com' 
+  ? 'http://localhost:8760' 
   : 'https://api.example.com'
 ```
 

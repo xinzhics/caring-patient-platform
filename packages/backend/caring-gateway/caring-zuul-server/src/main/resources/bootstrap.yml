@@ -6,6 +6,10 @@ caring:
     group: ${NACOS_GROUP:@nacos.group@}
     username: ${NACOS_USERNAME:@nacos.username@}
     password: ${NACOS_PASSWORD:@nacos.password@}
+server:
+  port: 8760
+  servlet:
+    context-path: /api
 spring:
   main:
     allow-bean-definition-overriding: true
@@ -45,6 +49,54 @@ spring:
         metadata: # 元数据，用于权限服务实时获取各个服务的所有接口
           management.context-path: ${server.servlet.context-path:}${spring.mvc.servlet.path:}${management.endpoints.web.base-path:}
           grayversion: caring
+# Zuul路由配置 - 添加所有服务的路由并加上api前缀
+zuul:
+#  prefix: /api
+  # 允许转发敏感请求头（默认Zuul会过滤掉Authorization、Cookie等敏感头）
+  sensitive-headers:
+  # 忽略所有服务的敏感头过滤，允许转发Authorization头
+  routes:
+    # ucenter服务路由配置
+    ucenter:
+      path: /ucenter/**
+      serviceId: caring-ucenter-server
+    # authority服务路由配置
+    authority:
+      path: /authority/**
+      serviceId: caring-authority-server
+    # ai服务路由配置
+    ai:
+      path: /ai/**
+      serviceId: caring-ai-server
+    # cms服务路由配置
+    cms:
+      path: /cms/**
+      serviceId: caring-cms-server
+    # file服务路由配置
+    file:
+      path: /file/**
+      serviceId: caring-file-server
+    # msg/sms服务路由配置
+    msgs:
+      path: /msgs/**
+      serviceId: caring-msgs-server
+    # nursing服务路由配置
+    nursing:
+      path: /nursing/**
+      serviceId: caring-nursing-server
+    # open服务路由配置
+    open:
+      path: /open/**
+      serviceId: caring-open-server
+    # tenant服务路由配置
+    tenant:
+      path: /tenant/**
+      serviceId: caring-tenant-server
+    # wx服务路由配置
+    wx:
+      path: /wx/**
+      serviceId: caring-wx-server
+
 # 只能配置在bootstrap.yml ，否则会生成 log.path_IS_UNDEFINED 文件夹
 # window会自动在 代码所在盘 根目录下自动创建文件夹，  如： D:/data/projects/logs
 logging:

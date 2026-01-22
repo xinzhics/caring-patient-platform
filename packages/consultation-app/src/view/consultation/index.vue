@@ -312,15 +312,19 @@
         this.sheetShow = !this.sheetShow
       },
       setStatus() {
+        var testToken ='eyJ0eXAiOiJKc29uV2ViVG9rZW4iLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX3R5cGUiOiJOVVJTSU5HX1NUQUZGIiwibmFtZSI6IuWtmeWKqeeQhiIsInRva2VuX3R5cGUiOiJ0b2tlbiIsInVzZXJpZCI6IjIwMDEwMDAwMDAwMDAwMDAwMTAiLCJhY2NvdW50IjoiMTUxNzM3ODY1NTQiLCJleHAiOjE4MDAxNTQxMzEsIm5iZiI6MTc2OTA1MDEzMX0.Nl9ebv71Z1M6DfgQEjsAaPl41KqOOhFPWEc_JFMdLDk';
+        var testUserId = '2001000000000000010';
+        debugger;
         if (this.officialAccountType === 'CERTIFICATION_SERVICE_NUMBER') {
-          if (getQueryString('groupId')) {
-            localStorage.setItem('consultationtoken', getQueryString('token'))
-            this.userId = getQueryString('userId')
+          //2026daxiong 调试注释
+          // if (getQueryString('groupId')||1) {
+            localStorage.setItem('consultationtoken', getQueryString('token') || testToken)
+            this.userId = getQueryString('userId') || testUserId
             this.getDictionary()
             this.getConsultationGroupMemeberInfo()
-          } else {
-            wxAuthorize()
-          }
+          // } else {
+          //   wxAuthorize()
+          // }
         } else {
           this.getDictionary()
         }
@@ -403,7 +407,7 @@
       getwxSignature() {
         const that = this
         let url = that.$getWxConfigSignatureUrl();
-        axios.get(`${process.env.NODE_ENV === 'development' ? 'https://dev-api.example.com' : 'https://api.example.com'}/api/wx/config/anno/createJsapiSignature?url=`+encodeURIComponent(url)+'&appId='+localStorage.getItem('wxAppId')).then(res => {
+        axios.get(`${process.env.NODE_ENV === 'development' ? 'http://localhost:8760' : 'https://api.example.com'}/api/wx/config/anno/createJsapiSignature?url=`+encodeURIComponent(url)+'&appId='+localStorage.getItem('wxAppId')).then(res => {
           if (res.data.code === 0) {
             wx.config({
               // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。

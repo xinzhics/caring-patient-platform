@@ -1,5 +1,6 @@
 package com.caring.sass.authority.dto.auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -20,6 +21,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = false)
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 @ApiModel(value = "LoginParamDTO", description = "登录参数")
 public class LoginParamDTO {
     @ApiModelProperty(value = "验证码KEY")

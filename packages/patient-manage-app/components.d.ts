@@ -10,6 +10,8 @@ declare module '@vue/runtime-core' {
     MassPopup: typeof import('./src/components/massPopup/mass-popup.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VanSearch: typeof import('vant/es')['Search']
+    VanSticky: typeof import('vant/es')['Sticky']
   }
 }
 

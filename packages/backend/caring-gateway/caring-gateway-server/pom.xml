@@ -6,7 +6,7 @@
         <artifactId>caring-gateway</artifactId>
         <groupId>com.caring.sass</groupId>
         <version>c.2.5.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -125,6 +125,10 @@
             <artifactId>caring-oauth-entity</artifactId>
             <version>c.2.5.1-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
         </dependency>
 
     </dependencies>

@@ -78,7 +78,8 @@ export default {
         pwd: password,
         appKey: WebIM.config.appkey
       };
-      WebIM.conn.open(options);
+      //2026daxiong调试注释
+    //WebIM.conn.open(options);WebIM.conn.open(options);
       Vue.$store.commit("updateDoctorMessageList", {
         receiverImAccount: item.imAccount,
       });

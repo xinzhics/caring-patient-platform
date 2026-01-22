@@ -126,7 +126,7 @@ router.beforeEach((to, from, next) => {
           loginApi.getRouter({}).then((response) => {
             const res = response.data
             asyncRouter = res.data
-
+            console.log(asyncRouter)
             if (!(asyncRouter && asyncRouter.length > 0)) {
               asyncRouter = []
             }

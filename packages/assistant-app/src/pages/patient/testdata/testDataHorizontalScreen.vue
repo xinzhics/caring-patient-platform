@@ -56,7 +56,7 @@ import { getMonitorLineChart, monitorLineChart } from '@/api/formApi.js'
 import Vue from 'vue'
 import {DatetimePicker, Toast} from 'vant'
 import moment from 'moment'
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 
 Vue.use(DatetimePicker)
 Vue.use(Toast)

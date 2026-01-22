@@ -1,0 +1,98 @@
+caring:
+  redis:
+    
+    ip: ${REDIS_HOST:192.168.83.0}
+    
+    port: ${REDIS_PORT:6379}
+    
+    password: ${REDIS_PASSWORD:123456}
+    
+    database: 10
+
+
+spring:
+  
+  cache:
+    
+    type: GENERIC
+
+  
+  redis:
+    
+    host: ${caring.redis.ip}
+    
+    port: ${caring.redis.port}
+    
+    password: ${caring.redis.password}
+    
+    database: ${caring.redis.database}
+
+
+
+
+
+j2cache:
+  
+  open-spring-cache: true
+  
+  cache-clean-mode: passive
+  
+  allow-null-values: true
+  
+  redis-client: lettuce
+  
+  l2-cache-open: true
+  
+  broadcast: net.oschina.j2cache.cache.support.redis.SpringRedisPubSubPolicy
+  
+  L1:
+
+    provider_class: caffeine
+
+    config_section: caffeine
+  
+  L2:
+    
+    provider_class: net.oschina.j2cache.cache.support.redis.SpringRedisProvider
+    
+    config_section: lettuce
+  
+  sync_ttl_to_redis: true
+  
+  default_cache_null_object: false
+  
+  serialization: fst
+
+
+caffeine:
+  
+  properties: /j2cache/caffeine.properties
+
+
+lettuce:
+  
+  mode: single
+  
+  namespace: ''
+  
+  storage: generic
+  
+  channel: j2cache
+  
+  scheme: redis
+  
+  hosts: ${caring.redis.ip}:${caring.redis.port}
+  
+  password: ${caring.redis.password}
+  
+  database: ${caring.redis.database}
+  
+  sentinelMasterId: ''
+  
+  maxTotal: 100
+  
+  maxIdle: 10
+  
+  minIdle: 10
+  
+  timeout: 10000

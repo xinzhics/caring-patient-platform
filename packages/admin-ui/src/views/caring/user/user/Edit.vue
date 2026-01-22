@@ -35,7 +35,7 @@
           effect="dark"
           placement="top-start"
         >
-          <el-input type="password" value="123456" />
+          <el-input type="password" value="a12345678" />
         </el-tooltip>
       </el-form-item>
       <el-form-item :label="$t('table.user.avatar')" prop="avatar">
@@ -275,7 +275,7 @@ export default {
         status: true,
         avatar: "",
         workDescribe: "",
-        password: "123456"
+        password: "a12345678"
       };
     },
     initWidth() {

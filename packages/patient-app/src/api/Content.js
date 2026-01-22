@@ -346,7 +346,7 @@ const apiList = {
   },
   putappoint: {
     method: 'PUT',
-    url: apiUrl + `/nursing/appointment/patient/cancel/appoint?appointmentId=`
+    url: apiUrl + `/api/nursing/appointment/patient/cancel/appoint?appointmentId=`
   },
   channelContentWithReply: {
     method: 'GET',
@@ -526,12 +526,12 @@ const apiList = {
   //分页查询血压数据
   monitorFormResult: {
     method: 'POST',
-    url: apiUrl + `/nursing/formResult/monitorFormResult/`
+    url: apiUrl + `/api/nursing/formResult/monitorFormResult/`
   },
   // 监测数据折线图新版-含监测事件
   monitorLineChart: {
     method: 'POST',
-    url: apiUrl + `/nursing/formResult/monitorLineChart/`
+    url: apiUrl + `/api/nursing/formResult/monitorLineChart/`
   },
   updateFieldReference: {
     method: 'POST',
@@ -570,98 +570,98 @@ const apiList = {
   // 【精准预约】 患者删除预约
   deleteAppoint: {
     method: 'DELETE',
-    url: apiUrl + `/nursing/appointment/patient/delete/appoint?appointmentId=`
+    url: apiUrl + `/api/nursing/appointment/patient/delete/appoint?appointmentId=`
   },
   // 查询患者预约详情
   appointment: {
     method: 'GET',
-    url: apiUrl + `/nursing/appointment/`
+    url: apiUrl + `/api/nursing/appointment/`
   },
   //患者个人中心2.0根据域名获取项目信息
   getByDomain: {
     method: 'GET',
-    url: apiUrl + `/tenant/tenant/v2/anno/patient/getByDomain?domain=`
+    url: apiUrl + `/api/tenant/tenant/v2/anno/patient/getByDomain?domain=`
   },
   // 患者随访日历数据
   patientMenuFollow: {
     method: 'GET',
-    url: apiUrl + `/nursing/patientNursingPlan/v_4_3/patientMenuFollow?patientId=`
+    url: apiUrl + `/api/nursing/patientNursingPlan/v_4_3/patientMenuFollow?patientId=`
   },
   //患者同意入组协议
   agreeAgreement: {
     method: 'POST',
-    url: apiUrl + `/ucenter/patient/agreeAgreement?patientId=`
+    url: apiUrl + `/api/ucenter/patient/agreeAgreement?patientId=`
   },
   //查询表单是否一题一页填写,1：是 。 2否
   getFormIntoTheGroup: {
     method: 'GET',
-    url: apiUrl + `/nursing/form/getFormIntoTheGroup?category=`
+    url: apiUrl + `/api/nursing/form/getFormIntoTheGroup?category=`
   },
   // 首次分阶段保存基本信息或疾病信息
   saveFormResultStage: {
     method: 'POST',
-    url: apiUrl + `/nursing/formResult/saveFormResultStage`
+    url: apiUrl + `/api/nursing/formResult/saveFormResultStage`
   },
   // 患者基本信息完成后的菜单
   getPatientJoinGroupAfterMenu: {
     method: 'GET',
-    url: apiUrl + `/tenant/h5Router/getPatientJoinGroupAfterMenu`
+    url: apiUrl + `/api/tenant/h5Router/getPatientJoinGroupAfterMenu`
   },
   planDetail: {
     method: 'GET',
-    url: apiUrl + `/nursing/planDetail/getPlanDetail/`
+    url: apiUrl + `/api/nursing/planDetail/getPlanDetail/`
   },
   // 首页 患者文章评论列表
   pageContent: {
     method: 'POST',
-    url: apiUrl + `/cms/contentReply/pageContent`
+    url: apiUrl + `/api/cms/contentReply/pageContent`
   },
   // 患者待办中直接打开文章
   patientSubmitCms: {
     method: 'GET',
-    url: apiUrl + `/nursing/reminderLog/submitCms`
+    url: apiUrl + `/api/nursing/reminderLog/submitCms`
   },
   // 查询患者首页的文章
   getPatientHomeContent: {
     method: 'POST',
-    url: apiUrl + `/cms/channelContent/queryPatientHomeContent?patientHomeRegion=`
+    url: apiUrl + `/api/cms/channelContent/queryPatientHomeContent?patientHomeRegion=`
   },
   // 消息角标上的未读消息总和
   getCountMessage: {
     method: 'GET',
-    url: apiUrl + `/msgs/msgPatientSystemMessage/countMessage?patientId=`
+    url: apiUrl + `/api/msgs/msgPatientSystemMessage/countMessage?patientId=`
   },
   // 患者消息页面的所有数据
   getMessagePageData: {
     method: 'GET',
-    url: apiUrl + `/msgs/msgPatientSystemMessage/messagePageData?patientId=`
+    url: apiUrl + `/api/msgs/msgPatientSystemMessage/messagePageData?patientId=`
   },
   // 系统消息列表
   getPatientSystemMessage: {
     method: 'POST',
-    url: apiUrl + `/msgs/msgPatientSystemMessage/page`
+    url: apiUrl + `/api/msgs/msgPatientSystemMessage/page`
   },
   countPatient:{
     method: 'GET',
-    url: apiUrl + `/cms/channelContent/countPatient?roleType=patient&userId=`
+    url: apiUrl + `/api/cms/channelContent/countPatient?roleType=patient&userId=`
   },
   //患者疾病信息列表
   healthFormResultList: {
     method: 'POST',
-    url: apiUrl + `/nursing/formResult/healthFormResultList`
+    url: apiUrl + `/api/nursing/formResult/healthFormResultList`
   },
   formResult:{
     method: 'GET',
-    url: apiUrl + `/nursing/formResult/`
+    url: apiUrl + `/api/nursing/formResult/`
   },
   deleteFormResult:{
     method: 'DELETE',
-    url: apiUrl + `/nursing/formResult`
+    url: apiUrl + `/api/nursing/formResult`
   },
   // 设置系统消息已读
   setSystemMessageStatus:{
     method: 'PUT',
-    url: apiUrl+`/msgs/msgPatientSystemMessage/setMessageStatus`
+    url: apiUrl+`/api/msgs/msgPatientSystemMessage/setMessageStatus`
   },
   // 设置患者聊天消息已读
   setPatientMessageStatus:{
@@ -670,29 +670,29 @@ const apiList = {
   },
   patientGetForm:{
     method: 'GET',
-    url: apiUrl + `/nursing/form/patientGetForm`
+    url: apiUrl + `/api/nursing/form/patientGetForm`
   },
   getHealthRecordByMessageId:{
     method: 'GET',
-    url: apiUrl + `/nursing/formResult/getHealthRecordByMessageId?messageId=`
+    url: apiUrl + `/api/nursing/formResult/getHealthRecordByMessageId?messageId=`
   },
   byCategory:{
     method: 'GET',
-    url: apiUrl + `/nursing/formResult/byCategory/`
+    url: apiUrl + `/api/nursing/formResult/byCategory/`
   },
   updateForDeleteFormResult:{
     method: 'PUT',
-    url: apiUrl+`/nursing/formResult/updateForDeleteFormResult/`
+    url: apiUrl+`/api/nursing/formResult/updateForDeleteFormResult/`
   },
   // 设置游客选择的身份
   setTouristUserRole:{
     method: 'GET',
-    url: apiUrl+`/wx/config/anno/setTouristUserRole?openId=`
+    url: apiUrl+`/api/wx/config/anno/setTouristUserRole?openId=`
   },
   // 游客选择患者身份后，登录
   getWxUserLogin:{
     method: 'POST',
-    url: apiUrl+`/ucenter/anno/anno/wxPatient/login?userType=`
+    url: apiUrl+`/api/ucenter/anno/anno/wxPatient/login?userType=`
   },
   // 表单提交后。查询表单的成绩结果
   getFormResultScore:{

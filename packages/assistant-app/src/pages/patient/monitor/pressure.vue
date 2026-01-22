@@ -83,7 +83,7 @@ import {getValue, getValueStatus} from '@/components/utils/index'
 import Vue from 'vue'
 import {Button, List, PullRefresh} from 'vant'
 import moment from 'moment'
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 Vue.use(PullRefresh)
 Vue.use(List)
 Vue.use(Button)

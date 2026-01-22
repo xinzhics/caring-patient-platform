@@ -7,6 +7,9 @@ caring:
     discoverygroup: ${NACOS_DISCOVERYGROUP:@nacos.discoverygroup@}
     username: ${NACOS_USERNAME:@nacos.username@}
     password: ${NACOS_PASSWORD:@nacos.password@}
+
+server:
+  port: 8762
 spring:
   main:
     allow-bean-definition-overriding: true

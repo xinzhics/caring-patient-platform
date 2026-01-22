@@ -1,6 +1,6 @@
 package com.caring.sass.wx.dao.config;
 
-import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
+import  com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.caring.sass.base.mapper.SuperMapper;

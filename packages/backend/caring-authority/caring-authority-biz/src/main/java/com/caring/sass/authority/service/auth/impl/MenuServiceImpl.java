@@ -128,7 +128,7 @@ public class MenuServiceImpl extends SuperCacheServiceImpl<MenuMapper, Menu> imp
                 // 关注后自动回复
                 "/assistant/automatic".toLowerCase()
         ));
-        if (accountTypeData.equals(TenantOfficialAccountType.PERSONAL_SERVICE_NUMBER.toString())) {
+        if (accountTypeData !=null && accountTypeData.equals(TenantOfficialAccountType.PERSONAL_SERVICE_NUMBER.toString())) {
             menuList = menuList.stream()
                     .filter(menu -> !excludedPaths.contains(menu.getPath().toLowerCase())) // 统一转小写
                     .collect(Collectors.toList());

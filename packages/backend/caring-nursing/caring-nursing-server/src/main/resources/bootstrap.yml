@@ -9,8 +9,9 @@ caring:
     username: ${NACOS_ID:@nacos.username@}
     password: ${NACOS_ID:@nacos.password@}
   kafka:
-    enabled: true
-
+    enabled: false
+server:
+  port: 8765
 spring:
   main:
     allow-bean-definition-overriding: true

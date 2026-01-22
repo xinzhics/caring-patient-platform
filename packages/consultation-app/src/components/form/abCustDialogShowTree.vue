@@ -5,7 +5,7 @@
 <script>
 import Vue from 'vue';
 import '@/assets/ztree/css/zTreeStyle.css';
-import "@/assets/ztree/jquery.min.js";
+import $ from 'jquery';
 import "@/assets/ztree/jquery.ztree.all.min.js";
 
 export default {

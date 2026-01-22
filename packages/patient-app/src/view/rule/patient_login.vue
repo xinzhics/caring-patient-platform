@@ -259,7 +259,7 @@
             localStorage.setItem("LAST_LOGIN_ROLE", "patient")
             localStorage.setItem('token', res.data.data.token)
             localStorage.setItem('userId', res.data.data.userId)
-            localStorage.setItem('wxAppId', res.data.data.wxAppId)
+            // localStorage.setItem('wxAppId', res.data.data.wxAppId) 这里不会返回appid
             localStorage.setItem('expiration', res.data.data.expiration)
             this.$vux.toast.show({
               type: 'text',

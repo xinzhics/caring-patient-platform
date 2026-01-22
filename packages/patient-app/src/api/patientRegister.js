@@ -9,7 +9,7 @@ import apiUrl from './baseUrl.js'
 export function checkMobileIsPatient(phone) {
   return axiosApi({
     method: 'GET',
-    url: `${apiUrl}/ucenter/patient/anno/checkMobile?phone=${phone}`,
+    url: `${apiUrl}/api/ucenter/patient/anno/checkMobile?phone=${phone}`,
   })
 }
 
@@ -22,7 +22,7 @@ export function checkMobileIsPatient(phone) {
 export function sendPsdCode(data) {
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/msgs/verification/anno/send`,
+    url: `${apiUrl}/api/msgs/verification/anno/send`,
     data
   })
 }
@@ -36,7 +36,7 @@ export function sendPsdCode(data) {
 export function verification(data) {
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/msgs/verification/anno`,
+    url: `${apiUrl}/api/msgs/verification/anno`,
     data
   })
 }
@@ -45,7 +45,7 @@ export function resetPassword(data) {
 
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/ucenter/patient/anno/resetPassword`,
+    url: `${apiUrl}/api/ucenter/patient/anno/resetPassword`,
     data
   })
 }
@@ -64,7 +64,7 @@ export function patientRegister(data) {
 
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/ucenter/anno/patient/register`,
+    url: `${apiUrl}/api/ucenter/anno/patient/register`,
     data
   })
 
@@ -82,7 +82,7 @@ export function patientLogin(data) {
 
   return axiosApi({
     method: 'POST',
-    url: `${apiUrl}/ucenter/anno/patient/login`,
+    url: `${apiUrl}/api/ucenter/anno/patient/login`,
     data
   })
 

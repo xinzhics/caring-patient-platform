@@ -102,6 +102,11 @@ public class FormController extends SuperController<FormService, Long, Form, For
         } else {
             throw new BizException("参数不能都为空");
         }
+        //2026daxiong 调试前端添加
+        if (form == null) {
+            // 如果form为null，返回默认值或适当的响应
+            return R.success(2); // 或者其他适当的默认值
+        }
         Integer questionPage = form.getOneQuestionPage();
         if (questionPage == null) {
             return R.success(2);

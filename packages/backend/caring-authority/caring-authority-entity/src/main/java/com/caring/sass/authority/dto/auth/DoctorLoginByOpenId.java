@@ -1,5 +1,6 @@
 package com.caring.sass.authority.dto.auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ import java.io.Serializable;
  * @Version 1.0
  */
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DoctorLoginByOpenId implements Serializable {
 
     @NotEmpty(message = "手机号不能为空")

@@ -92,7 +92,7 @@
 import {findSugarPage, loadMyBloodSugarTrendData} from '@/api/plan.js'
 import Vue from 'vue'
 import {Button, PullRefresh, List} from 'vant'
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 
 Vue.use(Button)
 Vue.use(PullRefresh)

@@ -135,8 +135,31 @@ public abstract class AbstractTokenGranter implements TokenGranter {
      * @return
      */
     protected R<String[]> checkClient() {
+        // 打印所有请求头用于调试
+        javax.servlet.http.HttpServletRequest request = WebUtils.request();
+        java.util.Enumeration<String> headerNames = request.getHeaderNames();
+        StringBuilder headersInfo = new StringBuilder();
+        headersInfo.append("\n=== 开始打印所有请求头 ===\n");
+        while(headerNames.hasMoreElements()){
+            String headerName = headerNames.nextElement();
+            String headerValue = request.getHeader(headerName);
+            headersInfo.append("Header: ").append(headerName).append(" = ").append(headerValue).append("\n");
+        }
+        headersInfo.append("=== 打印请求头结束 ===\n");
+        log.info(headersInfo.toString());
+
         String basicHeader = ServletUtil.getHeader(WebUtils.request(), BASIC_HEADER_KEY, StrPool.UTF_8);
         String[] client = JwtUtil.getClient(basicHeader);
+
+        // 如果前端发送的是 undefined:undefined，使用默认客户端
+        if (client != null && client.length >= 2 &&
+            ("undefined".equals(client[0]) || StrUtil.isEmpty(client[0]))) {
+            log.warn("检测到无效的客户端凭证，使用默认客户端配置");
+            // 使用默认客户端ID和密钥，这里需要根据实际情况配置
+            client = new String[]{"caring_admin_ui", "caring_admin_ui_secret"};
+        }
+
+        // 验证客户端是否存在且可用
         Application application = applicationService.getByClient(client[0], client[1]);
 
         if (application == null) {
@@ -145,6 +168,8 @@ public abstract class AbstractTokenGranter implements TokenGranter {
         if (!application.getStatus()) {
             return R.fail("客户端[%s]已被禁用", application.getClientId());
         }
+
+        log.info("客户端验证成功: clientId={}, applicationName={}", client[0], application.getName());
         return R.success(client);
     }
 
