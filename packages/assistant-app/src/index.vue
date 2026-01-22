@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     reLoad () {
-      debugger;
       const NET_WORK_STATUS = localStorage.getItem('NET_WORK_STATUS')
       let query = {}
       if (this.urlQuery) {

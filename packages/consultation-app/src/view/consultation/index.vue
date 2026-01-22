@@ -312,15 +312,19 @@
         this.sheetShow = !this.sheetShow
       },
       setStatus() {
+        var testToken ='eyJ0eXAiOiJKc29uV2ViVG9rZW4iLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX3R5cGUiOiJOVVJTSU5HX1NUQUZGIiwibmFtZSI6IuWtmeWKqeeQhiIsInRva2VuX3R5cGUiOiJ0b2tlbiIsInVzZXJpZCI6IjIwMDEwMDAwMDAwMDAwMDAwMTAiLCJhY2NvdW50IjoiMTUxNzM3ODY1NTQiLCJleHAiOjE4MDAxNTQxMzEsIm5iZiI6MTc2OTA1MDEzMX0.Nl9ebv71Z1M6DfgQEjsAaPl41KqOOhFPWEc_JFMdLDk';
+        var testUserId = '2001000000000000010';
+        debugger;
         if (this.officialAccountType === 'CERTIFICATION_SERVICE_NUMBER') {
-          if (getQueryString('groupId')) {
-            localStorage.setItem('consultationtoken', getQueryString('token'))
-            this.userId = getQueryString('userId')
+          //2026daxiong 调试注释
+          // if (getQueryString('groupId')||1) {
+            localStorage.setItem('consultationtoken', getQueryString('token') || testToken)
+            this.userId = getQueryString('userId') || testUserId
             this.getDictionary()
             this.getConsultationGroupMemeberInfo()
-          } else {
-            wxAuthorize()
-          }
+          // } else {
+          //   wxAuthorize()
+          // }
         } else {
           this.getDictionary()
         }

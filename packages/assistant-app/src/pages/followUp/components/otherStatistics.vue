@@ -35,7 +35,7 @@ import Vue from 'vue'
 import { Cell } from 'vant'
 import {appQueryCountOtherPush} from '@/api/followUp.js'
 import loadingDialog from './loadingDialog'
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 
 Vue.use(Cell)
 export default {

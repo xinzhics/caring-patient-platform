@@ -422,6 +422,16 @@ const router = new Router({
 })
 
 router.beforeEach((to, form, next) => {
+  var testToken=undefined;
+  var testUserId=undefined;
+  var testTenant=undefined;
+   
+   // 开发环境自动登录配置 2026daxiong 测试用，正式环境注释
+ if (process.env.NODE_ENV === 'development' || localStorage.getItem('AUTO_LOGIN_ENABLED')) {
+    testToken='eyJ0eXAiOiJKc29uV2ViVG9rZW4iLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX3R5cGUiOiJOVVJTSU5HX1NUQUZGIiwibmFtZSI6IuWtmeWKqeeQhiIsInRva2VuX3R5cGUiOiJ0b2tlbiIsInVzZXJpZCI6IjIwMDEwMDAwMDAwMDAwMDAwMTAiLCJhY2NvdW50IjoiMTUxNzM3ODY1NTQiLCJleHAiOjE4MDAxNTQxMzEsIm5iZiI6MTc2OTA1MDEzMX0.Nl9ebv71Z1M6DfgQEjsAaPl41KqOOhFPWEc_JFMdLDk'
+    testUserId = '2001000000000000010'
+    testTenant = 'TENANT_H5'
+ }
   // 先取 路径上的 医助ID 。 路径上没有 ，看本地缓存。 本地缓存也没有，则使用测试数据
   // token 和租户同样
   let NET_WORK_STATUS = localStorage.getItem('NET_WORK_STATUS')
@@ -440,16 +450,16 @@ router.beforeEach((to, form, next) => {
       return
     }
   }
-  const userId = getQueryString('caringNursingId')
+  const userId = getQueryString('caringNursingId') || testUserId
   if (userId) {
     localStorage.setItem('caringNursingId', userId)
   }
-  const token = getQueryString('caringToken')
+  const token = getQueryString('caringToken') || testToken
   if (token) {
     localStorage.setItem('caringToken', token)
   }
 
-  const tenant = getQueryString('tenantCode')
+  const tenant = getQueryString('tenantCode') || testTenant
   if (tenant) {
     localStorage.setItem('tenantCode', tenant)
   }

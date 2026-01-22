@@ -215,7 +215,7 @@ import {getValue} from '@/components/utils/index'
 import Vue from 'vue'
 import {DatetimePicker, Toast, Overlay, PullRefresh, List, Image as VanImage, Cell, Popover, Button} from 'vant'
 import moment from 'moment'
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 
 Vue.use(DatetimePicker)
 Vue.use(PullRefresh)

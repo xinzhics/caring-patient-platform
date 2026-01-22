@@ -1,5 +1,6 @@
 
 import { createWebHistory, createRouter, RouteRecordRaw } from 'vue-router'
+import {Base64} from 'js-base64'
 const routes: RouteRecordRaw[] = [
     // 登录
     {
@@ -172,7 +173,7 @@ router.beforeEach((to, form, next) => {
         localStorage.setItem("caring-userId", userId)
     } else {
         if (!localUserId) {
-            localStorage.setItem("caring-userId", '1506916742331367424')
+            localStorage.setItem("caring-userId", '2001000000000000010')
         }
     }
     const token = getQueryString('token')
@@ -181,7 +182,7 @@ router.beforeEach((to, form, next) => {
         localStorage.setItem("caring-token", token)
     } else {
         if (!localToken) {
-            localStorage.setItem("caring-token", 'test')
+            localStorage.setItem("caring-token", 'eyJ0eXAiOiJKc29uV2ViVG9rZW4iLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX3R5cGUiOiJOVVJTSU5HX1NUQUZGIiwibmFtZSI6IuWtmeWKqeeQhiIsInRva2VuX3R5cGUiOiJ0b2tlbiIsInVzZXJpZCI6IjIwMDEwMDAwMDAwMDAwMDAwMTAiLCJhY2NvdW50IjoiMTUxNzM3ODY1NTQiLCJleHAiOjE4MDAxNTQxMzEsIm5iZiI6MTc2OTA1MDEzMX0.Nl9ebv71Z1M6DfgQEjsAaPl41KqOOhFPWEc_JFMdLDk')
         }
     }
     const currentDevice = getQueryString('currentDevice')
@@ -194,7 +195,7 @@ router.beforeEach((to, form, next) => {
         localStorage.setItem("caring-tenant", tenant)
     } else {
         if (!localTenant) {
-            localStorage.setItem("caring-tenant", 'MDExMg==')
+            localStorage.setItem("caring-tenant", Base64.encode('TENANT_H5'))
         }
     }
 

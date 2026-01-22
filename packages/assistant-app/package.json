@@ -68,7 +68,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
-    "less": "^3.13.1",
+    "less": "^4.1.3",
     "less-loader": "^5.0.0",
     "nightwatch": "^0.9.12",
     "node-notifier": "^5.1.2",
