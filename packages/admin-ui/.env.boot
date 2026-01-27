@@ -1,6 +1,22 @@
-# Boot环境配置
-NODE_ENV=production
-VUE_APP_PROJECT_NAME=dist-boot
-VUE_APP_BASE_API=/api
-VUE_APP_DEV_REQUEST_DOMAIN_PREFIX=https://boot-api.example.com
-VUE_APP_PROD_REQUEST_DOMAIN_PREFIX=https://boot-api.example.com
+NODE_ENV = production
+
+# just a flag
+ENV = 'boot'
+
+
+VUE_APP_PROJECT_NAME = 'zuihou-admin-ui'
+# 开发环境请求域名前缀， 该变量仅仅开发环境需要设置
+VUE_APP_DEV_REQUEST_DOMAIN_PREFIX = 'http://42.202.130.216:10000'
+# 请求域名前缀， 该变量仅仅生产环境需要设置
+VUE_APP_PROD_REQUEST_DOMAIN_PREFIX = 'http://42.202.130.216:10000'
+
+# 是否启用验证码
+VUE_APP_IS_CAPTCHA = true
+# 客户端秘钥
+VUE_APP_CLIENT_ID=zuihou_admin_ui
+VUE_APP_CLIENT_SECRET=zuihou_admin_ui_secret
+
+
+# base api
+VUE_APP_BASE_API = '/api'
+

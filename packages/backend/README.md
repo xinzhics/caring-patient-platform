@@ -593,7 +593,7 @@ public class ExampleServiceTest {
    <repositories>
      <repository>
        <id>nexus</id>
-       <url>https://nexus.caringsaas.cn/repository/maven-snapshots/</url>
+       <url>https://nexus.caringsaas.cn/repository/maven-releases/</url>
        <releases>
          <enabled>true</enabled>
        </releases>

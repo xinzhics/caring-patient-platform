@@ -1,3 +1,13 @@
+# 启动要求
+
+npm 14.5.0
+npm install 安装不了， 可以下载 node_modules 在进行安装：
+通过网盘分享的文件：node_modules.zip
+链接: https://pan.baidu.com/s/16ptUvIMPKBY89hQHIx6x6Q?pwd=ih7q 提取码: ih7q
+--来自百度网盘超级会员v4的分享
+
+
+
 # 管理后台 (@caring/admin-ui)
 
 慢病管理平台的管理后台应用，提供租户管理、权限控制、内容管理和系统配置等功能。

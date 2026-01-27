@@ -19,7 +19,6 @@ import * as filters from './filters' // global filters
 import { hasPermission, hasNoPermission, hasAnyPermission } from './utils/permissionDirect'
 import uploader from 'vue-simple-uploader'
 
-
 const Plugins = [
   hasPermission,
   hasNoPermission,

@@ -1,7 +1,7 @@
 'use strict'
 const settings = require('./src/settings.js')
 const path = require('path')
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
@@ -9,7 +9,7 @@ const name = settings.title // page title
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
-const port = 9527 // dev port
+// const port = 9527 // dev port
 
 const targetUrl = process.env.VUE_APP_DEV_REQUEST_DOMAIN_PREFIX
 const proxyUrl = process.env.VUE_APP_BASE_API
@@ -34,13 +34,16 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
-    port: port,
+    // port: port,
     open: true,
     overlay: {
       warnings: false,
       errors: true
     },
-    contentBase: './',
+    // 新增：配置 chokidar 忽略系统文件
+    watchOptions: {
+      ignored: /.*/
+    },
     proxy: {
       // change xxx-api/login => ≥mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
@@ -48,16 +51,8 @@ module.exports = {
         target: targetUrl,
         changeOrigin: true,
         pathRewrite: {
-          // caring-admin-cloud  项目使用这段配置
+          // SpringCloud 项目使用这段配置
           ['^' + proxyUrl]: proxyUrl
-
-          // caring-admin-boot 项目 请使用以下的配置
-          // ['^/api/oauth']: '/',
-          // ['^/api/authority']: '/',
-          // ['^/api/file']: '/',
-          // ['^/api/msgs']: '/',
-          // ['^/api/gateway']: '/gateway',
-          // ['^/api/gate']: '/',
         }
       }
     }
@@ -72,7 +67,7 @@ module.exports = {
       }
     }
   },
-  chainWebpack (config) {
+  chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
 

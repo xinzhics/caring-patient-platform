@@ -2,4 +2,4 @@
 cnpm install
 npm run build:docker
 
-docker build -t caring-ui .
+docker build -t dist .
