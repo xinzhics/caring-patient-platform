@@ -1,0 +1,55 @@
+# ============================================================
+# 慢病管理平台 - 后端独立部署镜像 (Standalone)
+# 用于 docker-compose.yml 中 backend 服务的构建
+# ============================================================
+
+# ---------- 构建阶段 ----------
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
+
+WORKDIR /build
+
+# 先复制 pom.xml 以充分利用 Maven 依赖缓存层
+COPY pom.xml ./
+RUN mvn -B -q dependency:go-offline || true
+
+# 复制源码并打包（跳过测试）
+COPY src ./src
+RUN mvn -B clean package -DskipTests
+
+# spring-boot-maven-plugin 会额外生成 original-*.jar，
+# 删除它后 target 下只剩唯一的可执行 fat jar，便于固定为 app.jar
+RUN find target -maxdepth 1 -name 'original-*.jar' -delete
+    && mv target/*.jar target/app.jar
+
+# ---------- 运行阶段 ----------
+FROM eclipse-temurin:17-jre
+
+# 安装 curl，供 docker-compose 健康检查使用
+RUN apt-get update
+    && apt-get install -y --no-install-recommends curl
+    && rm -rf /var/lib/apt/lists/*
+
+# 创建非 root 运行用户
+RUN groupadd -r caring
+    && useradd -r -g caring -s /sbin/nologin caring
+
+WORKDIR /app
+
+# 复制构建产物
+COPY --from=builder /build/target/app.jar app.jar
+
+# 上传文件与日志目录（与 docker-compose 卷挂载对应）
+RUN mkdir -p /app/uploads /app/logs
+    && chown -R caring:caring /app
+
+VOLUME ["/app/uploads", "/app/logs"]
+
+USER caring
+
+# 默认激活 standalone profile，可被运行时环境变量覆盖
+ENV SPRING_PROFILES_ACTIVE=standalone
+    SERVER_PORT=8080
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
