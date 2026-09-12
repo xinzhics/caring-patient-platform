@@ -1,3 +1,5 @@
+
+
 # 卡柠慢病管理平台 (Caring Patient Platform)
 
 [English](./README_EN.md) | [中文](./README.md)
@@ -115,7 +117,7 @@ npm run backend:install
 npm run dev
 
 # 启动单个前端项目
-npm run dev --scope=@caring/patient-app
+npm run dev:patient
 ```
 
 **后端开发**:
